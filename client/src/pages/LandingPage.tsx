@@ -200,73 +200,65 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Projected Earnings Section */}
-        <section className="bg-[#f7f4f0] px-5 py-10" data-testid="section-projection-intro">
-          <div className="text-center max-w-[600px] mx-auto">
-            <p className="text-[20px] font-bold text-[#333333] leading-[28px]">
+        {/* Combined Projected Earnings & Breakdown Section */}
+        <section className="bg-[#f7f4f0] px-5 md:px-8 py-10" data-testid="section-projection-breakdown">
+          {/* Header with Property Info and Revenue Range */}
+          <div className="text-center mb-10">
+            <p className="text-[22px] font-bold text-[#333333] leading-[30px]">
               Your Projected Earnings for
             </p>
-            <p className="text-[18px] font-bold italic text-[#d3bda2] leading-[24px] mt-2" data-testid="text-property-address">
+            <p className="text-[20px] font-bold italic text-[#d3bda2] leading-[28px] mt-2" data-testid="text-property-address">
               {property.address.split(',')[0]}
             </p>
             <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-1" data-testid="text-property-details">
               {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms | {property.squareFeet.toLocaleString()} sq ft
             </p>
             
-            <div className="mt-8 bg-white rounded-lg p-6 shadow-sm">
-              <p className="text-[13px] text-[#333333] leading-[20px]">
-                Based on our revenue experts' analysis, we estimate your home can earn
-              </p>
-              <div className="mt-4 flex items-center justify-center gap-3">
-                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
-                <span className="text-[16px] text-[#333333]/60">to</span>
-                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
-              </div>
-              <p className="text-[13px] text-[#333333] leading-[20px] mt-2">
-                per year in rental revenue under LocalVR's professional management.
-              </p>
+            <div className="mt-6 inline-flex items-center gap-3 bg-white rounded-full px-8 py-4 shadow-sm">
+              <span className="text-[13px] text-[#333333]">Estimated annual revenue:</span>
+              <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
+              <span className="text-[14px] text-[#333333]/60">to</span>
+              <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
             </div>
           </div>
-        </section>
 
-        {/* How This Breaks Down - Side by Side Layout */}
-        <section className="bg-white px-5 md:px-8 py-10" data-testid="section-breakdown">
-          <div className="flex flex-col md:flex-row gap-8">
+          {/* Two Column Layout: Left info + Right chart/table */}
+          <div className="flex flex-col md:flex-row gap-8 bg-white rounded-lg p-6 shadow-sm">
             {/* Left Column - Title and Icons */}
-            <div className="md:w-[220px] flex-shrink-0 flex flex-col">
-              <p className="text-[22px] font-bold text-[#333333] leading-[30px] mb-6">
-                How This Projection Breaks Down
+            <div className="md:w-[200px] flex-shrink-0 flex flex-col">
+              <p className="text-[18px] font-bold text-[#333333] leading-[26px] mb-6">
+                How This Breaks Down
               </p>
               
-              <div className="flex flex-col justify-between flex-1">
-                <div className="flex items-start gap-4">
+              <div className="flex flex-col justify-between flex-1 gap-6">
+                <div className="flex items-start gap-3">
                   <img 
                     src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
                     alt="" 
-                    className="w-[28px] h-auto flex-shrink-0 mt-1"
+                    className="w-[24px] h-auto flex-shrink-0 mt-0.5"
                   />
-                  <p className="text-[13px] text-[#333333] leading-[20px]">
-                    Built from more than a decade of performance data in your specific local rental market.
+                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                    Built from more than a decade of performance data in your local market.
                   </p>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3">
                   <img 
                     src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
                     alt="" 
-                    className="w-[28px] h-auto flex-shrink-0 mt-1"
+                    className="w-[24px] h-auto flex-shrink-0 mt-0.5"
                   />
-                  <p className="text-[13px] text-[#333333] leading-[20px]">
-                    Powered by LocalVR's proprietary Local Pricing algorithm for dynamic rate optimization.
+                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                    Powered by LocalVR's proprietary Local Pricing algorithm.
                   </p>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3">
                   <img 
                     src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
                     alt="" 
-                    className="w-[28px] h-auto flex-shrink-0 mt-1"
+                    className="w-[24px] h-auto flex-shrink-0 mt-0.5"
                   />
-                  <p className="text-[13px] text-[#333333] leading-[20px]">
-                    Seasonal demand patterns analyzed for peak, shoulder, and off-peak periods.
+                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                    Seasonal demand patterns for peak, shoulder, and off-peak periods.
                   </p>
                 </div>
               </div>
