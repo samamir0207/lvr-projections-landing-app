@@ -2,13 +2,44 @@
 
 ## Overview
 
-This is a single-page application that generates custom vacation rental revenue projections for LocalVR properties. The application displays property details, annual revenue projections with low/high estimates, monthly revenue breakdowns, seasonal performance data, and trust-building content to encourage prospective clients to book a consultation call.
+This is a template-driven single-page application that generates custom vacation rental revenue projections for LocalVR properties. The application displays property details, annual revenue projections with low/high estimates, monthly revenue breakdowns, seasonal performance data, and trust-building content to encourage prospective clients to book a consultation call.
 
-The application is built as a marketing landing page that presents data-driven revenue projections in a premium, clean aesthetic aligned with LocalVR's brand identity.
+The application is built as a marketing landing page template that can render any property whose data is provided via JSON, presenting data-driven revenue projections in a premium, clean aesthetic aligned with LocalVR's brand identity.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+
+## Template System
+
+### ProjectionData Interface
+
+The application uses a strongly-typed `ProjectionData` interface defined in `shared/schema.ts` that includes:
+
+- **meta**: Slug, homeowner first name, homeowner full name
+- **property**: Address, bedrooms, bathrooms, square feet, city, state, market
+- **projections**: Expected, low, and high revenue estimates with disclaimer
+- **monthlyRevenue**: Array of monthly low/high revenue data
+- **seasonalBreakdown**: Seasonal performance metrics
+- **trust**: Company stats and value pillars
+- **cta**: Account executive info (name, title, phone, email, Calendly URL)
+- **testimonials**: Array of homeowner testimonials
+- **benefits**: Service benefits with icons
+- **comparableProperties**: Similar properties in the portfolio
+
+### Data Loading
+
+- `shared/localvrData.ts` exports:
+  - `getProjectionBySlug(slug)`: Returns ProjectionData by URL slug
+  - `getDefaultProjection()`: Returns default sample data
+  - `localvrData`: Direct access to sample data
+
+### Adding New Properties
+
+To add a new property projection:
+1. Create a new ProjectionData object with all required fields
+2. Add it to the `projectionsMap` in `shared/localvrData.ts`
+3. The page will automatically render with the new data when accessed
 
 ## System Architecture
 
@@ -27,15 +58,14 @@ Preferred communication style: Simple, everyday language.
 - Custom CSS variables for theming (defined in `index.css`)
 
 **Design System:**
-- Single font family (Inter) with varied weights for hierarchy
-- Color palette: Charcoal gray (#636466) for text, Gold (#d4bda2) for accents/CTAs
-- Consistent spacing units using Tailwind (4, 6, 8, 12, 16, 20)
-- Component-based architecture with reusable UI elements in `/client/src/components`
+- Color palette: Cream (#f7f4f0) background, Charcoal (#333333) for text, Gold (#d3bda2) for accents/CTAs
+- Consistent spacing units using Tailwind
+- Component-based architecture with reusable UI elements
 
 **State & Data Management:**
-- Static JSON data stored in `shared/localvrData.ts` for property and projection information
-- No API calls currently - all data is hardcoded for demonstration purposes
-- Client-side only rendering with no server-side state
+- Template data loaded from `shared/localvrData.ts`
+- LandingPage accepts optional `data: ProjectionData` prop
+- Falls back to default projection if no data provided
 
 ### Backend Architecture
 
@@ -53,12 +83,6 @@ Preferred communication style: Simple, everyday language.
 **Storage Layer:**
 - In-memory storage implementation (`MemStorage`) for development
 - Interface-based storage design (`IStorage`) for future database integration
-- User schema defined but not actively used in current implementation
-
-**Environment & Configuration:**
-- Environment-based configuration (NODE_ENV)
-- Database URL configuration present but not utilized (prepared for future use)
-- Drizzle ORM configuration pointing to PostgreSQL (setup ready but not active)
 
 ### External Dependencies
 
@@ -66,28 +90,26 @@ Preferred communication style: Simple, everyday language.
 - Drizzle ORM v0.39.1 for type-safe database queries
 - @neondatabase/serverless v0.10.4 for Postgres connection
 - PostgreSQL dialect configured in `drizzle.config.ts`
-- Schema defined in `shared/schema.ts` with user table
-- Note: Database is configured but the application currently uses in-memory storage
 
 **UI & Component Libraries:**
 - @radix-ui/* packages (v1.x) for accessible UI primitives
 - chart.js v4.5.1 for data visualization
 - lucide-react for iconography
 - react-hook-form with @hookform/resolvers for form handling
-- date-fns v3.6.0 for date manipulation
-- class-variance-authority and clsx for dynamic class composition
-
-**Development Tools:**
-- Replit-specific plugins for enhanced development experience
-- TypeScript for type safety across the stack
-- ESBuild for production bundling
-- PostCSS with Tailwind and Autoprefixer
 
 **Third-Party Services:**
 - Calendly integration for booking calls (referenced in CTA URLs)
-- Google Fonts for Inter font family
 
 **Asset Management:**
 - Static assets stored in `attached_assets/` directory
-- Generated images (e.g., AE headshots) referenced from `@assets` alias
-- Vite aliases configured for clean imports (@, @shared, @assets)
+- Property images referenced via `@assets` alias
+- AE headshots stored in attached_assets
+
+## Recent Changes
+
+- **Dec 8, 2025**: Converted landing page to template-driven architecture
+  - Added ProjectionData interface with all data blocks
+  - Implemented getProjectionBySlug() for multi-property support
+  - LandingPage now accepts data prop for complete customization
+  - Personalized headline uses homeowner's first name
+  - Testimonials, comparable properties now data-driven

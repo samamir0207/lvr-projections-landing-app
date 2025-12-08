@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { localvrData } from "@shared/localvrData";
+import { getDefaultProjection } from "@shared/localvrData";
+import type { ProjectionData } from "@shared/schema";
 import aeHeadshot from "@assets/NEW-HIRE-30a-EDIT-11-10-2025a_1765166969752.png";
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
 import property2Image from "@assets/14_1765164174413.jpg";
@@ -26,22 +27,12 @@ ChartJS.register(
   Legend
 );
 
-const testimonials = [
-  {
-    quote: "Switching to LocalVR was the best decision we've made. Their local team is responsive, proactive, and truly cares about our home.",
-    name: "Marc"
-  },
-  {
-    quote: "You weren't one of the big companies. You were growing, but still small enough to feel personal.",
-    name: "Beth"
-  },
-  {
-    quote: "I'm very impressed with LocalVR's ability to generate revenue. They have exceeded my expectations and I not only cover the mortgage and expenses, but I am cash-flowing significantly more on this property than I would with other property managers.",
-    name: "Lucy"
-  }
-];
+interface LandingPageProps {
+  data?: ProjectionData;
+}
 
-export default function LandingPage() {
+export default function LandingPage({ data }: LandingPageProps) {
+  const projectionData = data || getDefaultProjection();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -54,7 +45,13 @@ export default function LandingPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
   
-  const { property, projections, trust, cta, monthlyRevenue, seasonalBreakdown } = localvrData;
+  const { meta, property, projections, trust, cta, monthlyRevenue, seasonalBreakdown, testimonials, comparableProperties } = projectionData;
+  
+  const propertyImages: Record<string, string> = {
+    property1: property1Image,
+    property2: property2Image,
+    property3: property3Image
+  };
   
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -166,7 +163,7 @@ export default function LandingPage() {
             />
             <div className="mt-8 text-center">
               <p className="text-[22px] font-bold text-[#333333] leading-[30px]" data-testid="text-headline">
-                Your Custom Rental Projections Are Ready
+                {meta.homeownerFirstName}, Your Custom Rental Projections Are Ready
               </p>
               <p className="text-[14px] font-bold text-[#333333] leading-[21px]" data-testid="text-subheadline">
                 Prepared for you by your local expert {cta.aeName.split(' ')[0]}, using real performance data from homes like yours.
@@ -420,80 +417,32 @@ export default function LandingPage() {
         {/* Property Cards */}
         <section className="bg-[#f7f4f0] px-5 md:px-[60px] py-10" data-testid="section-portfolio-cards">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Property 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
-              <img 
-                src={property1Image}
-                alt="8BR Escape with Pool, Hot Tub and Game Room"
-                className="w-full h-[220px] object-cover rounded-md"
-              />
-              <div className="mt-5 flex flex-col flex-1">
-                <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
-                  8BR Escape with Pool, Hot Tub and Game Room
-                </p>
-                <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
-                  Destin, FL<br />8 bedrooms | 8.5 bathrooms
-                </p>
-                <a 
-                  href="https://stay.golocalvr.com/property/67546fef23c1900012d5832c"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
-                >
-                  View Property
-                </a>
+            {comparableProperties.map((comp, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
+                <img 
+                  src={propertyImages[comp.image] || property1Image}
+                  alt={comp.title}
+                  className="w-full h-[220px] object-cover rounded-md"
+                />
+                <div className="mt-5 flex flex-col flex-1">
+                  <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
+                    {comp.title}
+                  </p>
+                  <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
+                    {comp.location}<br />{comp.bedrooms} bedrooms | {comp.bathrooms} bathrooms
+                  </p>
+                  <a 
+                    href={comp.propertyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
+                    data-testid={`link-property-${index}`}
+                  >
+                    View Property
+                  </a>
+                </div>
               </div>
-            </div>
-            
-            {/* Property 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
-              <img 
-                src={property3Image}
-                alt="New 30A Retreat Beach Access"
-                className="w-full h-[220px] object-cover rounded-md"
-              />
-              <div className="mt-5 flex flex-col flex-1">
-                <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
-                  New 30A Retreat Beach Access Hot Tub & Guest Suite
-                </p>
-                <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
-                  Seacrest Beach, FL<br />6 bedrooms | 6.5 bathrooms
-                </p>
-                <a 
-                  href="https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
-                >
-                  View Property
-                </a>
-              </div>
-            </div>
-            
-            {/* Property 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
-              <img 
-                src={property2Image}
-                alt="Gulf Coast Retreat with Pool"
-                className="w-full h-[220px] object-cover rounded-md"
-              />
-              <div className="mt-5 flex flex-col flex-1">
-                <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
-                  Gulf Coast Retreat with Pool &lt; 1 Mile to Beach
-                </p>
-                <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
-                  Blue Mountain Beach, FL<br />4 bedrooms | 4 bathrooms
-                </p>
-                <a 
-                  href="https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
-                >
-                  View Property
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 

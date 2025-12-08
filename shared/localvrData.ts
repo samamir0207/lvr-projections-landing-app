@@ -206,21 +206,27 @@ const grandePointeData: ProjectionData = {
   comparableProperties: [
     {
       image: "property1",
-      bedrooms: 4,
-      bathrooms: 4,
-      revenue: 125000
+      title: "8BR Escape with Pool, Hot Tub and Game Room",
+      location: "Destin, FL",
+      bedrooms: 8,
+      bathrooms: "8.5",
+      propertyUrl: "https://stay.golocalvr.com/property/67546fef23c1900012d5832c"
     },
     {
       image: "property2",
-      bedrooms: 4,
-      bathrooms: 3,
-      revenue: 115000
+      title: "New 30A Retreat Beach Access Hot Tub & Guest Suite",
+      location: "Seacrest Beach, FL",
+      bedrooms: 6,
+      bathrooms: "6.5",
+      propertyUrl: "https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
     },
     {
       image: "property3",
-      bedrooms: 5,
-      bathrooms: 4,
-      revenue: 140000
+      title: "Gulf Coast Retreat with Pool < 1 Mile to Beach",
+      location: "Blue Mountain Beach, FL",
+      bedrooms: 4,
+      bathrooms: "4",
+      propertyUrl: "https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
     }
   ]
 };

@@ -116,9 +116,11 @@ export interface Benefit {
 
 export interface ComparableProperty {
   image: string;
+  title: string;
+  location: string;
   bedrooms: number;
-  bathrooms: number;
-  revenue: number;
+  bathrooms: string;
+  propertyUrl: string;
 }
 
 export interface ProjectionData {
