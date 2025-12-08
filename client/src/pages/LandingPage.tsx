@@ -388,27 +388,27 @@ export default function LandingPage() {
         </section>
 
         {/* Property Cards */}
-        <section className="bg-[#f7f4f0] px-5 md:px-[100px] py-8" data-testid="section-portfolio-cards">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <section className="bg-[#f7f4f0] px-5 md:px-[60px] py-10" data-testid="section-portfolio-cards">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Property 1 */}
-            <div className="bg-white p-5 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <img 
                 src={property1Image}
                 alt="8BR Escape with Pool, Hot Tub and Game Room"
-                className="w-full h-auto rounded"
+                className="w-full h-[220px] object-cover rounded-md"
               />
-              <div className="mt-4">
-                <p className="text-[14px] font-bold text-[#333333] leading-[18px]">
+              <div className="mt-5">
+                <p className="text-[16px] font-bold text-[#333333] leading-[22px]">
                   8BR Escape with Pool, Hot Tub and Game Room
                 </p>
-                <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-3">
+                <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
                   Destin, FL<br />8 bedrooms | 8.5 bathrooms
                 </p>
                 <a 
                   href="https://stay.golocalvr.com/property/67546fef23c1900012d5832c"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[13px] text-[#d3bda2] font-medium leading-[18px] mt-3 underline block hover:text-[#333333] transition-colors"
+                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-4 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
@@ -416,24 +416,24 @@ export default function LandingPage() {
             </div>
             
             {/* Property 2 */}
-            <div className="bg-white p-5 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <img 
                 src={property3Image}
                 alt="New 30A Retreat Beach Access"
-                className="w-full h-auto rounded"
+                className="w-full h-[220px] object-cover rounded-md"
               />
-              <div className="mt-4">
-                <p className="text-[14px] font-bold text-[#333333] leading-[18px]">
+              <div className="mt-5">
+                <p className="text-[16px] font-bold text-[#333333] leading-[22px]">
                   New 30A Retreat Beach Access Hot Tub & Guest Suite
                 </p>
-                <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-3">
+                <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
                   Seacrest Beach, FL<br />6 bedrooms | 6.5 bathrooms
                 </p>
                 <a 
                   href="https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[13px] text-[#d3bda2] font-medium leading-[18px] mt-3 underline block hover:text-[#333333] transition-colors"
+                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-4 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
@@ -441,24 +441,24 @@ export default function LandingPage() {
             </div>
             
             {/* Property 3 */}
-            <div className="bg-white p-5 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <img 
                 src={property2Image}
                 alt="Gulf Coast Retreat with Pool"
-                className="w-full h-auto rounded"
+                className="w-full h-[220px] object-cover rounded-md"
               />
-              <div className="mt-4">
-                <p className="text-[14px] font-bold text-[#333333] leading-[18px]">
+              <div className="mt-5">
+                <p className="text-[16px] font-bold text-[#333333] leading-[22px]">
                   Gulf Coast Retreat with Pool &lt; 1 Mile to Beach
                 </p>
-                <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-3">
+                <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
                   Blue Mountain Beach, FL<br />4 bedrooms | 4 bathrooms
                 </p>
                 <a 
                   href="https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[13px] text-[#d3bda2] font-medium leading-[18px] mt-3 underline block hover:text-[#333333] transition-colors"
+                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-4 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
