@@ -137,3 +137,37 @@ export interface ProjectionData {
   benefits: Benefit[];
   comparableProperties: ComparableProperty[];
 }
+
+export interface PropertyProjectionInput {
+  homeownerFirstName: string;
+  homeownerFullName: string;
+  property: {
+    internalId?: string;
+    address: string;
+    bedrooms: number;
+    bathrooms: number;
+    squareFeet: number;
+    city: string;
+    state: string;
+    market?: string;
+    isLuxe?: boolean;
+  };
+  projections: {
+    expectedRevenue: number;
+    highRevenue: number;
+    lowRevenue: number;
+  };
+  monthlyRevenue: MonthlyRevenueData[];
+  seasonalBreakdown: SeasonalBreakdownItem[];
+}
+
+export interface MarketDefaults {
+  cta: CTAInfo;
+  trust: TrustSection;
+  testimonials: Testimonial[];
+  benefits: Benefit[];
+  comparableProperties: ComparableProperty[];
+  seasonality: Seasonality;
+  aiNarrativePlaceholders: AINarrativePlaceholders;
+  projectionDisclaimer: string;
+}
