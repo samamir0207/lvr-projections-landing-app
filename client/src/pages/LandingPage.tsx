@@ -103,13 +103,13 @@ export default function LandingPage() {
         </section>
 
         {/* Primary CTA */}
-        <section className="bg-[#333333] px-5 pb-4" data-testid="section-primary-cta">
-          <div className="text-center">
+        <section className="bg-[#333333] px-5 pb-6 pt-2" data-testid="section-primary-cta">
+          <div className="flex justify-center">
             <a 
               href={cta.scheduleCallUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#d3bda2] text-[#333333] text-[10px] font-bold py-[10px] px-5 rounded-full leading-[12px]"
+              className="inline-block bg-[#d3bda2] text-[#333333] text-[12px] font-bold py-[12px] px-6 rounded-full leading-[14px]"
               data-testid="button-primary-cta"
             >
               Review My Projections Now
