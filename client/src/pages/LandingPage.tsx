@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getDefaultProjection } from "@shared/localvrData";
 import type { ProjectionData } from "@shared/schema";
+import { initializeTracking, trackCTAClick, trackFormSubmit, trackInteraction } from "@/lib/analytics";
 import aeHeadshot from "@assets/NEW-HIRE-30a-EDIT-11-10-2025a_1765166969752.png";
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
 import property2Image from "@assets/14_1765164174413.jpg";
@@ -27,11 +28,18 @@ ChartJS.register(
   Legend
 );
 
-interface LandingPageProps {
-  data?: ProjectionData;
+interface UrlParams {
+  lid?: string;
+  src?: string;
+  campaign?: string;
 }
 
-export default function LandingPage({ data }: LandingPageProps) {
+interface LandingPageProps {
+  data?: ProjectionData;
+  urlParams?: UrlParams;
+}
+
+export default function LandingPage({ data, urlParams = {} }: LandingPageProps) {
   const projectionData = data || getDefaultProjection();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [formData, setFormData] = useState({
@@ -47,6 +55,16 @@ export default function LandingPage({ data }: LandingPageProps) {
   
   const { meta, property, projections, trust, cta, monthlyRevenue, seasonalBreakdown, testimonials, comparableProperties } = projectionData;
   
+  useEffect(() => {
+    initializeTracking({
+      slug: meta.slug,
+      aeSlug: cta.aeSlug,
+      lid: urlParams.lid,
+      campaign: urlParams.campaign,
+      src: urlParams.src
+    });
+  }, [meta.slug, cta.aeSlug, urlParams]);
+  
   const propertyImages: Record<string, string> = {
     property1: property1Image,
     property2: property2Image,
@@ -58,7 +76,7 @@ export default function LandingPage({ data }: LandingPageProps) {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError('');
     
@@ -72,7 +90,35 @@ export default function LandingPage({ data }: LandingPageProps) {
       return;
     }
     
-    setFormSubmitted(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.comments,
+          slug: meta.slug,
+          aeId: cta.aeId,
+          aeEmail: cta.aeEmail,
+          leadId: urlParams.lid,
+          campaign: urlParams.campaign
+        })
+      });
+      
+      if (response.ok) {
+        trackFormSubmit({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email
+        });
+        setFormSubmitted(true);
+      } else {
+        setFormError('There was an error submitting your request. Please try again.');
+      }
+    } catch (error) {
+      setFormError('There was an error submitting your request. Please try again.');
+    }
   };
 
   const formatCurrency = (value: number) => {
@@ -244,6 +290,7 @@ export default function LandingPage({ data }: LandingPageProps) {
               href="#contact-form"
               className="inline-block bg-[#d3bda2] text-[#333333] text-[12px] font-bold py-[12px] px-6 rounded-full leading-[14px]"
               data-testid="button-primary-cta"
+              onClick={() => trackCTAClick("hero_primary_cta")}
             >
               Review My Projections Now
             </a>
@@ -356,6 +403,7 @@ export default function LandingPage({ data }: LandingPageProps) {
               href="#contact-form"
               className="inline-block bg-[#333333] text-[#f7f4f0] text-[14px] font-bold py-3 px-8 rounded-full"
               data-testid="button-gold-cta"
+              onClick={() => trackCTAClick("gold_banner_cta")}
             >
               Review My Projections Now
             </a>
@@ -736,6 +784,7 @@ export default function LandingPage({ data }: LandingPageProps) {
               href="#contact-form"
               className="inline-block bg-[#d3bda2] text-[#333333] text-[14px] font-bold py-3 px-6 rounded-full"
               data-testid="button-footer-cta"
+              onClick={() => trackCTAClick("footer_primary_cta")}
             >
               Schedule My Revenue Review Call Now
             </a>
