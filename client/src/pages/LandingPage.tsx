@@ -27,7 +27,7 @@ export default function LandingPage() {
               data-testid="img-logo"
             />
             <div className="mt-8 text-center">
-              <p className="text-[18px] font-bold text-[#333333] leading-[27px]" data-testid="text-headline">
+              <p className="text-[22px] font-bold text-[#333333] leading-[30px]" data-testid="text-headline">
                 Your Custom Rental Projections Are Ready
               </p>
               <p className="text-[14px] font-bold text-[#333333] leading-[21px]" data-testid="text-subheadline">
