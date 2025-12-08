@@ -80,21 +80,24 @@ export default function LandingPage() {
         </section>
 
         {/* Stats Bar */}
-        <section className="bg-[#333333] px-5 md:px-[180px] py-5" data-testid="section-stats">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-4">
-            <div className="text-center w-[108px]">
-              <p className="text-[16px] font-bold text-[#d3bda2] leading-[24px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
-              <p className="text-[10px] font-bold text-white leading-[12px]">Homeowner</p>
-              <p className="text-[10px] font-bold text-white leading-[12px]">Retention</p>
+        <section className="bg-[#333333] px-5 md:px-[100px] py-8" data-testid="section-stats">
+          <div className="flex flex-wrap justify-center items-start">
+            <div className="text-center px-6 md:px-10">
+              <p className="text-[20px] font-bold text-[#d3bda2] leading-[28px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
+              <p className="text-[12px] font-bold text-white leading-[16px]">Homeowner</p>
+              <p className="text-[12px] font-bold text-white leading-[16px]">Retention</p>
             </div>
-            <div className="text-center w-[108px]">
-              <p className="text-[16px] font-bold text-[#d3bda2] leading-[24px]">10+ YEARS</p>
-              <p className="text-[10px] font-bold text-white leading-[12px]">Managing High-End</p>
-              <p className="text-[10px] font-bold text-white leading-[12px]">Vacation Rentals</p>
+            <div className="hidden md:block w-[1px] h-[60px] bg-[#d3bda2]/50"></div>
+            <div className="text-center px-6 md:px-10">
+              <p className="text-[20px] font-bold text-[#d3bda2] leading-[28px]">10+ Years</p>
+              <p className="text-[12px] font-bold text-white leading-[16px]">Managing High-End</p>
+              <p className="text-[12px] font-bold text-white leading-[16px]">Vacation Rentals</p>
             </div>
-            <div className="text-center w-[108px]">
-              <p className="text-[16px] font-bold text-[#d3bda2] leading-[24px]">1:10 Ratio</p>
-              <p className="text-[10px] font-bold text-white leading-[12px]">Home Care Experts to Properties Managed</p>
+            <div className="hidden md:block w-[1px] h-[60px] bg-[#d3bda2]/50"></div>
+            <div className="text-center px-6 md:px-10">
+              <p className="text-[20px] font-bold text-[#d3bda2] leading-[28px]">1:10 Ratio</p>
+              <p className="text-[12px] font-bold text-white leading-[16px]">Home Care Experts to</p>
+              <p className="text-[12px] font-bold text-white leading-[16px]">Properties Managed</p>
             </div>
           </div>
         </section>
@@ -109,7 +112,7 @@ export default function LandingPage() {
               className="inline-block bg-[#d3bda2] text-[#333333] text-[10px] font-bold py-[10px] px-5 rounded-full leading-[12px]"
               data-testid="button-primary-cta"
             >
-              Review My Projection With An Expert
+              Review My Projections Now
             </a>
           </div>
         </section>
@@ -208,7 +211,7 @@ export default function LandingPage() {
               className="inline-block bg-[#333333] text-[#f7f4f0] text-[10px] font-bold py-[10px] px-5 rounded-full leading-[12px]"
               data-testid="button-gold-cta"
             >
-              Review My Projection With An Expert
+              Review My Projections Now
             </a>
           </div>
         </section>
