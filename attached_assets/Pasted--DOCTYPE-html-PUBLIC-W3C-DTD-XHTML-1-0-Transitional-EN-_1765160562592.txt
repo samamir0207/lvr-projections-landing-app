@@ -1,0 +1,842 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <title>PROJECTION HTML</title><!--[if (mso 16)]>
+      <style type="text/css">
+         a {text-decoration: none;}
+      </style>
+      <![endif]--><!--[if gte mso 9]>
+      <style>sup { font-size: 100% !important; }</style>
+      <![endif]--><!--[if gte mso 9]>
+      <noscript>
+         <xml>
+           <o:OfficeDocumentSettings>
+           <o:AllowPNG></o:AllowPNG>
+           <o:PixelsPerInch>96</o:PixelsPerInch>
+           </o:OfficeDocumentSettings>
+         </xml>
+      </noscript>
+      <![endif]--><!--[if mso]><xml>
+    <w:WordDocument xmlns:w="urn:schemas-microsoft-com:office:word">
+      <w:DontUseAdvancedTypographyReadingMail/>
+    </w:WordDocument>
+    </xml><![endif]-->
+  <style type="text/css">.rollover:hover .rollover-first {
+  max-height:0px!important;
+  display:none!important;
+}
+.rollover:hover .rollover-second {
+  max-height:none!important;
+  display:block!important;
+}
+.rollover span {
+  font-size:0px;
+}
+u + .body img ~ div div {
+  display:none;
+}
+#outlook a {
+  padding:0;
+}
+span.MsoHyperlink,
+span.MsoHyperlinkFollowed {
+  color:inherit;
+  mso-style-priority:99;
+}
+a.ct {
+  mso-style-priority:100!important;
+  text-decoration:none!important;
+}
+a[x-apple-data-detectors],
+#MessageViewBody a {
+  color:inherit!important;
+  text-decoration:none!important;
+  font-size:inherit!important;
+  font-family:inherit!important;
+  font-weight:inherit!important;
+  line-height:inherit!important;
+}
+.ch {
+  display:none;
+  float:left;
+  overflow:hidden;
+  width:0;
+  max-height:0;
+  line-height:0;
+  mso-hide:all;
+}
+@media only screen and (max-width:600px) {.dk { padding-bottom:20px!important } .dj { padding-bottom:10px!important } .di { padding-bottom:50px!important }  *[class="gmail-fix"] { display:none!important } p, a { line-height:150%!important } h1, h1 a { line-height:120%!important } h2, h2 a { line-height:120%!important } h3, h3 a { line-height:120%!important } h4, h4 a { line-height:120%!important } h5, h5 a { line-height:120%!important } h6, h6 a { line-height:120%!important } .dg p { } .df p { }   h1 { font-size:40px!important; text-align:left } h2 { font-size:32px!important; text-align:left } h3 { font-size:28px!important; text-align:left } h4 { font-size:24px!important; text-align:left } h5 { font-size:20px!important; text-align:left } h6 { font-size:16px!important; text-align:left }        .dg p, .dg a { font-size:14px!important } .df p, .df a { font-size:14px!important }        .cz .rollover:hover .rollover-second, .da .rollover:hover .rollover-second, .db .rollover:hover .rollover-second { display:inline!important }  .cy { display:inline-table } a.ct, button.ct { font-size:14px!important; padding:10px 20px 10px 20px!important; line-height:120%!important } a.ct, button.ct, .cx { display:inline-block!important }   .cp table, .cq, .cr { width:100%!important } .cm table, .cn table, .co table, .cm, .co, .cn { width:100%!important; max-width:600px!important } .adapt-img { width:100%!important; height:auto!important }  .cj, .ck { display:none!important }         .h-auto { height:auto!important } .img-2433 { height:30px!important } .img-7853 { height:30px!important } .img-3406 { height:30px!important } .cc .cd, .cc .cd * { font-size:18px!important } .cc .d, .cc .d * { font-size:10px!important } .cb .d, .cb .d * { font-size:10px!important } .ca .d, .ca .d * { font-size:10px!important } .bz .d, .bz .d * { font-size:10px!important } .by .d, .by .d * { font-size:10px!important } .bx .d, .bx .d * { font-size:10px!important } .bw .d, .bw .d * { font-size:10px!important } .bv .d, .bv .d * { font-size:10px!important } .bu .d, .bu .d * { font-size:10px!important } .bt .d, .bt .d * { font-size:10px!important } .bu .k, .bu .k * { font-size:16px!important } .bt .k, .bt .k * { font-size:16px!important } .bs .k, .bs .k * { font-size:16px!important } .bs .d, .bs .d * { font-size:10px!important } .bq .k, .bq .k * { font-size:16px!important } .bq .d, .bq .d * { font-size:10px!important } .bq .br, .bq .br * { font-size:14px!important } .bp .d, .bp .d * { font-size:10px!important } .bo .d, .bo .d * { font-size:10px!important } .bn .d, .bn .d * { font-size:10px!important } .bm .d, .bm .d * { font-size:10px!important } .bl .d, .bl .d * { font-size:10px!important } .bk .k, .bk .k * { font-size:16px!important } .bj .k, .bj .k * { font-size:16px!important } .bi .k, .bi .k * { font-size:16px!important } .bh .k, .bh .k * { font-size:16px!important } .bg .k, .bg .k * { font-size:16px!important } .v .d, .v .d * { font-size:10px!important } .u .d, .u .d * { font-size:10px!important } .t .d, .t .d * { font-size:10px!important } .s .d, .s .d * { font-size:10px!important } .q .d, .q .d * { font-size:10px!important } .ba .d, .ba .d * { font-size:10px!important } .z .d, .z .d * { font-size:10px!important } .y .d, .y .d * { font-size:10px!important } .x .d, .x .d * { font-size:10px!important } .w .d, .w .d * { font-size:10px!important } .bf .d, .bf .d * { font-size:10px!important } .be .d, .be .d * { font-size:10px!important } .bd .d, .bd .d * { font-size:10px!important } .bc .d, .bc .d * { font-size:10px!important } .bb .d, .bb .d * { font-size:10px!important } .bf .r, .bf .r * { font-size:11px!important } .be .r, .be .r * { font-size:11px!important } .bd .r, .bd .r * { font-size:11px!important } .bc .r, .bc .r * { font-size:11px!important } .bb .r, .bb .r * { font-size:11px!important } .ba .r, .ba .r * { font-size:11px!important } .z .r, .z .r * { font-size:11px!important } .y .r, .y .r * { font-size:11px!important } .x .r, .x .r * { font-size:11px!important } .w .r, .w .r * { font-size:11px!important } .v .r, .v .r * { font-size:11px!important } .u .r, .u .r * { font-size:11px!important } .t .r, .t .r * { font-size:11px!important } .s .r, .s .r * { font-size:11px!important } .q .r, .q .r * { font-size:11px!important } .p .k, .p .k * { font-size:16px!important } .o .k, .o .k * { font-size:16px!important } .p .d, .p .d * { font-size:10px!important } .o .d, .o .d * { font-size:10px!important } .n .d, .n .d * { font-size:10px!important } .m .d, .m .d * { font-size:10px!important } .l .d, .l .d * { font-size:10px!important } .j .k, .j .k * { font-size:16px!important } .i .d, .i .d * { font-size:10px!important } .h .d, .h .d * { font-size:10px!important } .g .d, .g .d * { font-size:10px!important } .f .d, .f .d * { font-size:10px!important } .e .d, .e .d * { font-size:10px!important } .c .d, .c .d * { font-size:10px!important }  }
+@media screen and (max-width:384px) {.mail-message-content { width:414px!important } }</style>
+ </head>
+ <body class="body" style="width:100%;height:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
+  <div dir="ltr" class="es-wrapper-color" lang="en" style="background-color:#FFFFFF"><!--[if gte mso 9]>
+ <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+   <v:fill type="tile"  color="#ffffff" ></v:fill>
+ </v:background>
+<![endif]-->
+   <table width="100%" cellspacing="0" cellpadding="0" class="es-wrapper" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-color:#FFFFFF">
+     <tr>
+      <td valign="top" style="padding:0;Margin:0">
+       <table cellspacing="0" cellpadding="0" align="center" class="cn" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;width:100%;table-layout:fixed !important;background-color:transparent">
+         <tr>
+          <td align="center" style="padding:0;Margin:0">
+           <table align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" class="dg" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;background-color:#FFFFFF;width:900px">
+             <tr>
+              <td align="left" bgcolor="#f7f4f0" style="padding:0;Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;background-color:#f7f4f0">
+               <table width="100%" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/logo02.png" alt="" width="200" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="center" class="cc" style="padding:0;Margin:0;padding-top:35px"><p class="cd" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:27px;letter-spacing:0;color:#333333;font-size:18px"><strong>Your Custom Rental Projections Are Ready</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><strong>Prepared for you by your local expert Kaci, using real performance data from homes like yours.</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+             </tr>
+           </table></td>
+         </tr>
+       </table>
+       <table cellspacing="0" cellpadding="0" align="center" class="cm" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;width:100%;table-layout:fixed !important">
+         <tr>
+          <td align="center" style="padding:0;Margin:0">
+           <table align="center" cellpadding="0" cellspacing="0" class="df" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;background-color:transparent;width:900px" role="none">
+             <tr>
+              <td align="left" bgcolor="#f7f4f0" style="Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;padding-bottom:20px;background-color:#f7f4f0"><!--[if mso]><table style="width:860px" cellpadding="0" cellspacing="0"><tr><td style="width:421px" valign="top"><![endif]-->
+               <table align="left" cellspacing="0" cellpadding="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:421px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="right" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/profile_image03.png" alt="" width="119" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:20px"></td><td style="width:419px" valign="top"><![endif]-->
+               <table cellspacing="0" cellpadding="0" align="right" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:419px">
+                   <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><strong>Kaci Wolkers</strong></p></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="cb" style="padding:0;Margin:0"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><strong><em>Account Executive, LocalVR 30A</em></strong></p></td>
+                     </tr>
+                     <tr>
+                      <td align="center" bgcolor="#f7f4f0" style="padding:0;Margin:0;padding-top:5px;padding-bottom:5px;font-size:0">
+                       <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" class="cy" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                         <tr>
+                          <td style="padding:0;Margin:0;height:0px;width:100%;margin:0px;border-bottom:1px solid #f7f4f0;background:none"></td>
+                         </tr>
+                       </table></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="ca" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/99521615454511536_mhn.png" align="left" height="22" class="img-3406" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0" alt=""><span class="d" style="font-size:10px">(850) 641-1001</span></p></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="by" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><img height="22" align="left" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/99521615454511536_mhn.png" class="img-7853" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0" alt=""><span class="d" style="font-size:10px">(850) 641-1001</span></p></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bw" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><img height="22" align="left" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/99521615454511536_mhn.png" class="img-2433" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0" alt=""><span class="d" style="font-size:10px">(850) 641-1001</span></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#333333" style="Margin:0;padding-top:20px;padding-right:180px;padding-bottom:25px;padding-left:180px;background-color:#333333" data-custom-paddings-d-l="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true"><!--[if mso]><table style="width:540px" cellpadding="0" cellspacing="0"><tr><td style="width:108px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:108px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" class="bs" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;letter-spacing:0;color:#d3bda2;font-size:16px;text-align:center"><strong>90%</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#ffffff;font-size:10px;text-align:center"><strong>Homeowner</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#ffffff;font-size:10px;text-align:center"><strong>Retention</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:108px" valign="top"><![endif]-->
+               <table cellspacing="0" align="left" cellpadding="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dj" style="padding:0;Margin:0;width:108px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/spacer02.png" alt="" width="13" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:108px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:108px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" class="bt" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;letter-spacing:0;color:#d3bda2;font-size:16px;text-align:center"><strong>10+ YEARS</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#ffffff;font-size:10px;text-align:center"><strong>Managing High-End</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#333333;font-size:10px;text-align:center"><strong style="color:#ffffff">Vacation Rental</strong><strong>s</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:108px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:108px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img alt="" width="13" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/spacer02.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:108px" valign="top"><![endif]-->
+               <table align="right" cellpadding="0" cellspacing="0" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" class="dj" style="padding:0;Margin:0;width:108px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" class="bu" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;letter-spacing:0;color:#d3bda2;font-size:16px;text-align:center"><strong>1:10 Ratio</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#ffffff;font-size:10px;text-align:center"><strong>Home Care Experts to Properties Managed</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#333333" style="padding:0;Margin:0;padding-right:20px;padding-left:20px;padding-bottom:15px;background-color:#333333" data-custom-paddings-d-t="true" data-custom-paddings-d-b="true">
+               <table width="100%" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0"><span class="cx" style="border-style:solid;border-color:#2CB543;background:#d3bda2;border-width:0;display:inline-block;border-radius:23px;width:auto"><a href="" target="_blank" class="ct" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#333333;font-size:10px;padding:10px 20px;display:inline-block;background:#d3bda2;border-radius:23px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #d3bda2">Review My Projection With An Expert</a></span></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#f7f4f0" style="padding:0;Margin:0;padding-right:20px;padding-left:20px;padding-top:5px;background-color:#f7f4f0" data-custom-paddings-d-t="true">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="bq" style="padding:0;Margin:0;padding-top:20px"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:19.2px;letter-spacing:0;color:#333333;font-size:16px"><strong>Your Projecte</strong><strong style="line-height:30%">d Earnings for</strong></p><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:4.8px;letter-spacing:0;color:#333333;font-size:16px"><strong><br></strong></p><p class="br" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.8px;letter-spacing:0;color:#d3bda2;font-size:14px"><strong><em>174 Grande Pointe Circle</em></strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#333333;font-size:10px"><strong>4BR | 4BA | 2,600 sq ft | 30A, FL</strong></p></td>
+                     </tr>
+                     <tr>
+                      <td align="center" class="bp" style="padding:0;Margin:0;padding-bottom:20px;padding-top:15px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Based on our revenue experts’ analysis, we estimate your home can earn</p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">$89,000 to $134,000 per year in rental revenue under professional management.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#ffffff" style="padding:0;Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;background-color:#ffffff">
+               <table width="100%" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="bk" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;letter-spacing:0;color:#333333;font-size:16px"><strong>How this projection breaks down</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#ffffff" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-right:150px;padding-left:150px;background-color:#ffffff" data-custom-paddings-d-l="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:213px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:113px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bo" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Built from more than a decade of performance data in your specific local rental market.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:50px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:163px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:113px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a03.png" alt="" width="35" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bn" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Built from more than a decade of performance data in your specific local rental market.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:50px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:112px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:112px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" alt="" width="35" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bl" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Built from more than a decade of performance data in your specific local rental market.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:50px"></td><td style="width:112px" valign="top"><![endif]-->
+               <table align="right" cellpadding="0" cellspacing="0" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:112px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" alt="" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bm" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Built from more than a decade of performance data in your specific local rental market.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" style="padding:0;Margin:0">
+               <table width="100%" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:900px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;background-color:#ffffff">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-bottom:20px;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_92903am.png" alt="" height="351" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#d3bda2" style="padding:20px;Margin:0;background-color:#d3bda2" data-custom-paddings-d-b="true">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="bi" style="padding:0;Margin:0;padding-bottom:15px"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:19.2px;letter-spacing:0;color:#333333;font-size:16px"><strong>Want a local expert to walk you through these</strong></p><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:19.2px;letter-spacing:0;color:#333333;font-size:16px"><strong>numbers and what they mean for your home?</strong></p></td>
+                     </tr>
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0"><span class="cx" style="border-style:solid;border-color:#2CB543;background:#333333;border-width:0;display:inline-block;border-radius:23px;width:auto"><a href="" target="_blank" class="ct" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#f7f4f0;font-size:10px;padding:10px 20px 10px 20px;display:inline-block;background:#333333;border-radius:23px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #333333">Review My Projection With An Expert</a></span></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#ffffff" style="padding:0;Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;background-color:#ffffff">
+               <table width="100%" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="bj" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;letter-spacing:0;color:#333333;font-size:16px"><strong>Why You Can Trust These Projections</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" data-custom-paddings-d-l="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-right:150px;padding-left:150px"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:214px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:164px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" alt="" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="ba" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Real Data,</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Not Guesswork</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">We use anonymized performance data from comparable homes we manage in your market, combined with third-party short-term rental market data. This gives you projections grounded in what similar homes actually earn, not in generic rules of thumb.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:50px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:167px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:167px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="v" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Market-Specific,</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Not Nationwide Averages</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Every projection incorporates local demand patterns, seasonality, events, and rate trends for your specific neighborhood. We adjust for your home’s location, size, and profile instead of applying nationwide averages that ignore local realities.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:50px"></td><td style="width:169px" valign="top"><![endif]-->
+               <table align="right" cellpadding="0" cellspacing="0" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:169px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bf" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Luxury-Focused</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>approach</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Our LocalLuxe program focuses on high-value guests, premium pricing, and protecting your home’s long-term value, not just filling nights. We care about who stays in your home, how they treat it, and how that impacts your asset over time.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#f7f4f0" style="padding:0;Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;background-color:#f7f4f0">
+               <table cellspacing="0" width="100%" cellpadding="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="p" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:19.2px;letter-spacing:0;color:#333333;font-size:16px"><strong>See Homes Like Yours in Our Collection</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#333333;font-size:10px"><strong>We manage a curated collection of premium and luxury homes in 30A and other premier markets.</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#f7f4f0" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-right:150px;padding-left:150px;background-color:#f7f4f0" data-custom-paddings-d-l="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:207px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:187px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;background-color:#ffffff">
+                     <tr>
+                      <td align="center" style="padding:15px;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered07.jpg" alt="" width="157" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="n" style="padding:0;Margin:0;padding-bottom:15px;padding-right:15px;padding-left:15px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><strong>South Lake Escape | Indoor Pool + Movie Theater</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><br></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">South Lake Tahoe, CA 13 bedrooms | 15 bathrooms</p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><br></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><u>View Luxe Property</u></p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:20px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:187px" valign="top"><![endif]-->
+               <table cellspacing="0" align="left" cellpadding="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:187px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;background-color:#ffffff">
+                     <tr>
+                      <td align="center" style="padding:15px;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered07.jpg" alt="" width="157" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="m" style="padding:0;Margin:0;padding-bottom:15px;padding-right:15px;padding-left:15px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><strong>South Lake Escape | Indoor Pool + Movie Theater</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><br></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">South Lake Tahoe, CA 13 bedrooms | 15 bathrooms</p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><br></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><u>View Luxe Property</u></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:20px"></td><td style="width:186px" valign="top"><![endif]-->
+               <table cellspacing="0" align="right" cellpadding="0" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:186px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;background-color:#ffffff">
+                     <tr>
+                      <td align="center" style="padding:15px;Margin:0;font-size:0"><img alt="" width="156" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered07.jpg" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="l" style="padding:0;Margin:0;padding-bottom:15px;padding-right:15px;padding-left:15px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><strong>South Lake Escape | Indoor Pool + Movie Theater</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><br></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">South Lake Tahoe, CA 13 bedrooms | 15 bathrooms</p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><br></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px"><u>View Luxe Property</u></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#333333" style="padding:0;Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;background-color:#333333">
+               <table cellspacing="0" width="100%" cellpadding="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="o" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:19.2px;letter-spacing:0;color:#d3bda2;font-size:16px"><strong>Hour Our Premier Service Benefits Your Home</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;letter-spacing:0;color:#333333;font-size:10px"><strong>We manage a curated collection of premium and luxury homes in 30A and other premier markets.</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#333333" style="Margin:0;padding-bottom:20px;padding-right:150px;padding-left:150px;padding-top:10px;background-color:#333333" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:214px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:164px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" alt="" width="35" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="w" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#d3bda2;font-size:11px"><strong>Elite Guest</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#d3bda2;font-size:11px"><strong>Matchmaking</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">We rigorously screen and match guests so your home is occupied by respectful, high-value travelers who treat it like their own.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:50px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:167px" valign="top"><![endif]-->
+               <table cellspacing="0" align="left" cellpadding="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:167px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="q" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#d3bda2;font-size:11px"><strong>Premium</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#d3bda2;font-size:11px"><strong>Home Protection</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">We prioritize your home’s long term value with detailed inspections, proactive maintenance coordination, and $10,000 in damage protection per reservation.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:50px"></td><td style="width:169px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="right" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:169px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" alt="" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bb" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#d3bda2;font-size:11px"><strong>Tailored Management</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#d3bda2;font-size:11px"><strong>for Your Home</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">Your home and goals are unique. We tailor pricing, marketing, and owner use to your specific property, rather than forcing it into a generic template.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td bgcolor="#ffffff" align="left" style="padding:0;Margin:0;padding-top:25px;padding-right:10px;padding-left:10px;background-color:#ffffff" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:880px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="bh" style="padding:0;Margin:0;padding-bottom:15px"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:19.2px;letter-spacing:0;color:#333333;font-size:16px"><strong>Everything Your Luxury Home Needs, Handled</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true" style="Margin:0;padding-bottom:20px;padding-right:150px;padding-left:150px;padding-top:10px"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:214px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:164px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" alt="" width="35" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="z" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Real Data,</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Not Guesswork</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">We use anonymized performance data from comparable homes we manage in your market, combined with third-party short-term rental market data. This gives you projections grounded in what similar homes actually earn, not in generic rules of thumb.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:50px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:167px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:167px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="u" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Market-Specific,</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Not Nationwide Averages</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Every projection incorporates local demand patterns, seasonality, events, and rate trends for your specific neighborhood. We adjust for your home’s location, size, and profile instead of applying nationwide averages that ignore local realities.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:50px"></td><td style="width:169px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="right" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:169px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" alt="" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="be" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Luxury-Focused</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>approach</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Our LocalLuxe program focuses on high-value guests, premium pricing, and protecting your home’s long-term value, not just filling nights. We care about who stays in your home, how they treat it, and how that impacts your asset over time.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true" style="Margin:0;padding-bottom:25px;padding-right:150px;padding-left:150px;padding-top:10px"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:214px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:164px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" alt="" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="y" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Real Data,</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Not Guesswork</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">We use anonymized performance data from comparable homes we manage in your market, combined with third-party short-term rental market data. This gives you projections grounded in what similar homes actually earn, not in generic rules of thumb.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:50px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:167px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:167px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="t" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Market-Specific,</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Not Nationwide Averages</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Every projection incorporates local demand patterns, seasonality, events, and rate trends for your specific neighborhood. We adjust for your home’s location, size, and profile instead of applying nationwide averages that ignore local realities.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:50px"></td><td style="width:169px" valign="top"><![endif]-->
+               <table align="right" cellpadding="0" cellspacing="0" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:169px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bd" style="padding:0;Margin:0;padding-top:5px;padding-left:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>Luxury-Focused</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px"><strong>approach</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px">Our LocalLuxe program focuses on high-value guests, premium pricing, and protecting your home’s long-term value, not just filling nights. We care about who stays in your home, how they treat it, and how that impacts your asset over time.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" background="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_84651pm.png" style="Margin:0;padding-right:20px;padding-left:20px;padding-top:100px;padding-bottom:100px;background-image:url(https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_84651pm.png);background-repeat:no-repeat;background-position:center;background-size:1015px auto" data-custom-paddings-d-t="true" data-custom-paddings-d-b="true">
+               <table width="100%" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/quote_icon.png" alt="" width="49" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="center" class="a" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#ffffff;font-size:14px">“LocalVR has everything those large companies did plus more&nbsp;</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#ffffff;font-size:14px">ommunication, customer service, and care for our home.”</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#ffffff;font-size:14px">- Judy</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#ffffff" style="padding:0;Margin:0;padding-top:5px;padding-right:10px;padding-left:10px;background-color:#ffffff" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:880px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" bgcolor="#ffffff" class="bg" style="padding:0;Margin:0;padding-top:20px;padding-bottom:15px"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:19.2px;letter-spacing:0;color:#333333;font-size:16px"><strong>From Projection to Bookings in Three Simple Steps</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#ffffff" style="Margin:0;padding-bottom:20px;padding-right:150px;padding-left:150px;padding-top:10px;background-color:#ffffff" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:156px" valign="top"><![endif]-->
+               <table cellspacing="0" align="left" cellpadding="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:126px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered18.png" alt="" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="x" style="padding:0;Margin:0;padding-top:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px;text-align:center"><strong>Review Your</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px;text-align:center"><strong>Plan</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px;text-align:center">We walk through your projection, assumptions, and your goals for the home so you understand exactly how we arrived at the numbers.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:30px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:76px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="di" style="padding:0;Margin:0;width:46px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:65px;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered19.png" alt="" width="36" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:30px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:159px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:129px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered20.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="s" style="padding:0;Margin:0;padding-top:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px;text-align:center"><strong>Customize Your Strategy</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px;text-align:center">We tailor pricing, guest profile, marketing approach, and owner use around your home and your preferences.</p></td>
+                     </tr>
+                   </table></td>
+                  <td class="ck" style="padding:0;Margin:0;width:30px"></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:46px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:46px">
+                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:65px;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered19.png" alt="" width="36" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:30px"></td><td style="width:133px" valign="top"><![endif]-->
+               <table cellspacing="0" align="right" cellpadding="0" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" class="di" style="padding:0;Margin:0;width:133px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img alt="" width="35" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered21.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bc" style="padding:0;Margin:0;padding-top:5px"><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px;text-align:center"><strong>Locally Supported</strong></p><p class="r" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px;text-align:center"><strong>Launch</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#333333;font-size:10px;text-align:center">We tailor pricing, guest profile, marketing approach, and owner use around your home and your preferences.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#f7f4f0" style="Margin:0;padding-top:30px;padding-right:110px;padding-bottom:30px;padding-left:110px;background-color:#f7f4f0" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true"><!--[if mso]><table style="width:680px" cellpadding="0" cellspacing="0"><tr><td style="width:311px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="left" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:311px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_85628pm.png" alt="" width="311" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:50px"></td><td style="width:319px" valign="top"><![endif]-->
+               <table align="right" cellpadding="0" cellspacing="0" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:319px">
+                   <table cellspacing="0" role="none" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr class="cj">
+                      <td align="center" height="10" style="padding:0;Margin:0;font-size:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#333333" style="padding:0;Margin:0;padding-top:20px;padding-right:20px;padding-left:20px;background-color:#333333" data-custom-paddings-d-b="true">
+               <table width="100%" cellpadding="0" cellspacing="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:860px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" class="j" style="padding:0;Margin:0"><p class="k" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;letter-spacing:0;color:#d3bda2;font-size:16px"><strong>FAQS</strong></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#333333" style="Margin:0;padding-top:25px;padding-right:100px;padding-bottom:40px;padding-left:100px;background-color:#333333" data-custom-paddings-d-l="true" data-custom-paddings-d-t="true" data-custom-paddings-d-r="true" data-custom-paddings-d-b="true"><!--[if mso]><table style="width:700px" cellpadding="0" cellspacing="0"><tr><td style="width:338px" valign="top"><![endif]-->
+               <table align="left" cellpadding="0" cellspacing="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:338px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" alt="" width="338" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="i" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px"><strong>How accurate are these projections?</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">Our projections are based on actual performance from comparable homes we manage, plus third-party market data. They are intended to set realistic expectations, not to guarantee a specific outcome. Your actual results will depend on factors like home condition, pricing decisions, regulations, and owner use.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:338px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img width="338" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" alt="" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="f" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px"><strong>What fees do you charge and how are you paid?</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">We charge a management fee as a percentage of rental revenue and may charge for certain optional services. We do not get paid unless you earn rental revenue, which keeps our incentives aligned with yours. During your revenue review, we will walk through the exact fee structure for your home.</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:338px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img alt="" width="338" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="e" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px"><strong>How do you protect my home from wear and tear?</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">We use detailed inspections, guest screening, clear house rules, and proactive maintenance coordination to reduce avoidable damage. In addition, we include $10,000 in damage protection for qualified reservations to help cover issues that do occur.</p></td>
+                     </tr>
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" alt="" width="338" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:20px"></td><td style="width:342px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="right" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:342px">
+                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" alt="" width="342" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="h" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px"><strong>Can I still use my home whenever I want?</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">Yes. You control your owner stays and blackout dates. We will advise you on how different levels of owner use may impact your revenue so you can make informed choices.</p></td>
+                     </tr>
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img alt="" width="342" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="g" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px"><strong>How quickly can we go live if I decide to move forward?</strong></p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;letter-spacing:0;color:#ffffff;font-size:10px">Most homes can go live within a few weeks, depending on photography, onboarding, and any required permitting. During your revenue review, we can outline a realistic timeline for your specific property.</p></td>
+                     </tr>
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><img alt="" width="342" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#ffffff" style="padding:0;Margin:0;padding-top:20px;padding-right:110px;padding-left:110px;background-color:#ffffff" data-custom-paddings-d-l="true" data-custom-paddings-d-r="true"><!--[if mso]><table style="width:680px" cellpadding="0" cellspacing="0"><tr><td style="width:328px" valign="top"><![endif]-->
+               <table cellspacing="0" align="left" cellpadding="0" class="cq" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:left">
+                 <tr>
+                  <td align="left" class="dk" style="padding:0;Margin:0;width:328px">
+                   <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" style="padding:0;Margin:0;padding-bottom:10px;font-size:0"><img alt="" width="200" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/logo02.png" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:328px">
+                   <table cellpadding="0" width="100%" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" class="bz" style="padding:0;Margin:0;padding-top:5px;padding-bottom:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><img src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/99521615454511536_mhn.png" align="left" height="22" class="img-3406" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0" alt=""><span class="d" style="font-size:10px">(850) 641-1001</span></p></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bx" style="padding:0;Margin:0;padding-top:5px;padding-bottom:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><img height="22" align="left" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/99521615454511536_mhn.png" class="img-7853" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0" alt=""><span class="d" style="font-size:10px">(850) 641-1001</span></p></td>
+                     </tr>
+                     <tr>
+                      <td align="left" class="bv" style="padding:0;Margin:0;padding-top:5px;padding-bottom:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><img height="22" align="left" src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/99521615454511536_mhn.png" class="img-2433" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none;margin:0" alt=""><span class="d" style="font-size:10px">(850) 641-1001</span></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:20px"></td><td style="width:332px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" align="right" class="cr" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:332px">
+                   <table cellspacing="0" role="presentation" width="100%" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px">
+                     <tr>
+                      <td align="left" class="c" style="padding:0;Margin:0;padding-top:65px"><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;letter-spacing:0;color:#333333;font-size:10px;text-align:right">Success Stories</p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;letter-spacing:0;color:#333333;font-size:10px;text-align:right">Market Insights</p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;letter-spacing:0;color:#333333;font-size:10px;text-align:right">Privacy Policy</p><p class="d" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;letter-spacing:0;color:#333333;font-size:10px;text-align:right">Terms and Conditions</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+           </table></td>
+         </tr>
+       </table></td>
+     </tr>
+   </table>
+  </div>
+ </body>
+</html>
