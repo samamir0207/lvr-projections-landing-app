@@ -1,0 +1,361 @@
+
+High level goal
+I have a working template-driven “ProjectionPage” in this repo. I want to turn it into a full system where:
+A Google Sheet projection calculator sends JSON to this app to create a projection page per property.
+
+
+Each projection has a unique URL the salesperson can send to a homeowner.
+
+
+We track behavior on that page for sales follow up and marketing analytics.
+
+
+Each salesperson (AE) has their own version of the page with their headshot, contact info, and routing for form submissions.
+
+
+You should keep the current design and component structure, but extend the app with APIs, routing, and analytics so it can support this flow at scale.
+
+Architecture overview
+Template
+
+
+The ProjectionPage component is already template-driven and uses a ProjectionData object.
+
+
+There is a getProjectionBySlug(slug) helper (in shared/localvrData.ts or similar) that returns ProjectionData.
+
+
+Data ingestion from Google Sheets
+
+
+A Google Apps Script will run inside the projection calculator sheet.
+
+
+That script will assemble a ProjectionData JSON payload for a given property and call a REST endpoint in this Replit app, for example:
+
+ POST /api/projections
+
+
+The payload will include:
+
+
+meta.slug (unique slug for the projection)
+
+
+meta.homeownerFirstName
+
+
+property block (address, city, state, market, bedrooms, bathrooms, squareFeet)
+
+
+projections block (low, expected, high, disclaimer)
+
+
+monthlyRevenue block
+
+
+seasonality block
+
+
+trust and other supporting sections
+
+
+cta / accountExecutive info (aeId, name, title, email, phone, headshotUrl, calendlyUrl)
+
+
+On POST /api/projections, the server should:
+
+
+Validate the payload against the ProjectionData schema.
+
+
+Store it in some persistent storage keyed by slug (for now you can use a simple in-memory or file-based store; later we may use a DB).
+
+
+Return JSON with the public URL, for example:
+
+ { "ok": true, "publicUrl": "https://<my-domain>/<aeSlug>/<projectionSlug>" }
+
+
+The Google Sheet will store that public URL so the salesperson can drop it into their emails.
+
+
+Routing and per-AE pages
+
+
+Every salesperson will have their own base path, for example:
+
+
+/:aeSlug/:projectionSlug
+
+
+aeSlug could be something like kaci-wolkers or zack-ward.
+
+
+projectionSlug is the property slug from ProjectionData.meta.slug.
+
+
+When a request comes in:
+
+
+Parse aeSlug and projectionSlug from the URL.
+
+
+Look up the corresponding ProjectionData.
+
+
+If needed, cross-check that the AE in the slug matches data.cta.aeId or data.cta.aeEmail.
+
+
+Render the ProjectionPage with that ProjectionData.
+
+
+If the slug is not found or the AE does not match, render a not-found page.
+
+
+
+Tracking and analytics goals
+When a homeowner clicks the link and lands on the projection page, I want to track:
+Basic click / view
+
+
+When the page loads, log:
+
+
+projection slug
+
+
+AE identifier
+
+
+any URL parameters, especially:
+
+
+lid (Salesforce LeadId or Contact Id)
+
+
+src (source, for example email)
+
+
+campaign (Salesforce / marketing campaign name or id)
+
+
+This should be sent to:
+
+
+Google Tag Manager / GA4 via dataLayer
+
+
+A simple internal logging endpoint, for example POST /api/events, so we can later see “who viewed what and when.”
+
+
+Time on page
+
+
+Implement a simple client-side timer that:
+
+
+Fires an event after N seconds on the page (for example 30 seconds), and
+
+
+Optionally fires another event when the user leaves or closes the tab (using beforeunload or visibilitychange).
+
+
+These events should be pushed to dataLayer and optionally to the same /api/events endpoint with:
+
+
+eventType: "projection_time_on_page"
+
+
+durationSeconds: measured duration
+
+
+slug, aeSlug, lid, campaign.
+
+
+Interactions on page
+
+ Track at least:
+
+
+Clicks on the primary CTA buttons, for example:
+
+
+“Review my projection with [AE]”
+
+
+“Schedule my revenue review”
+
+
+Clicks on secondary actions:
+
+
+Expand/collapse FAQ items
+
+
+Share link or download PDF (if present)
+
+
+Any owner-use scenario toggles or similar interactive elements.
+
+
+For each such action:
+
+
+Push a structured event to dataLayer and to /api/events, for example:
+
+
+dataLayer.push({
+  event: "projection_interaction",
+  action: "cta_click",
+  label: "hero_primary_cta",
+  slug,
+  aeSlug,
+  lid,
+  campaign
+});
+
+
+
+
+Form submission
+
+
+The form on the page should include hidden fields:
+
+
+slug
+
+
+aeId or aeEmail
+
+
+leadId (lid from the URL if present)
+
+
+campaign
+
+
+On submit:
+
+
+Send the form data to a server endpoint, for example POST /api/contact.
+
+
+The server should:
+
+
+Email the AE on the page (data.cta.aeEmail) with the form details.
+
+
+Optionally log the submission event for analytics with the same /api/events system.
+
+
+On the client, fire a dataLayer event "projection_form_submit" with the slug, aeSlug, lid, campaign.
+
+
+Salesforce notification when link is opened
+
+ This part is mostly on the Salesforce / Account Engagement side, but the Replit app should support it with URL parameters and logging:
+
+
+The links in Salesforce emails will look like:
+
+ https://<my-domain>/<aeSlug>/<projectionSlug>?lid=<LeadId>&src=email&campaign=<CampaignId>
+
+
+Account Engagement (Pardot) custom redirects will track the click and create a Salesforce Task when the redirect is clicked. That automation will be set up in Salesforce, not in this repo.
+
+
+The app should simply:
+
+
+Preserve these URL parameters.
+
+
+Include them in dataLayer events and /api/events payloads.
+
+
+No direct Salesforce integration is needed from this app.
+
+
+
+Implementation detail requests
+Google Tag Manager integration
+
+
+Add the GTM container snippet to the main HTML template so all projection pages load GTM.
+
+
+On page load, push a base event:
+
+
+dataLayer.push({
+  event: "projection_page_view",
+  slug,
+  aeSlug,
+  lid,
+  campaign
+});
+
+
+
+
+All other events (time on page, interactions, form submits) should also use dataLayer.
+
+
+Event logging endpoint
+
+
+Add a simple endpoint, for example POST /api/events, that accepts a JSON payload like:
+
+
+{
+  "event": "projection_page_view",
+  "slug": "...",
+  "aeSlug": "...",
+  "lid": "...",
+  "campaign": "...",
+  "meta": { "durationSeconds": 45, "action": "cta_click", "label": "hero_primary_cta" }
+}
+
+
+
+
+For now, you can log these events to the console or write them to a simple file or in-memory store with a timestamp. Later we can plug this into a proper database or analytics pipeline.
+
+
+Per-AE landing pages
+
+
+Add a concept of aeSlug in the data model and routing.
+
+
+Ensure the ProjectionData object contains a stable AE identifier (for example aeId and aeSlug).
+
+
+Derive the full path as /:aeSlug/:projectionSlug and always render AE-specific content from data.cta.
+
+
+
+The main things I need you to do:
+Wire POST /api/projections to accept ProjectionData JSON from Google Sheets and store it keyed by property slug.
+
+
+Set up routing so /:aeSlug/:projectionSlug resolves the correct ProjectionData and renders ProjectionPage.
+
+
+Add Google Tag Manager and a small client-side analytics layer that:
+
+
+Pushes structured events to dataLayer, and
+
+
+Optionally posts those events to /api/events for server-side logging.
+
+
+Ensure form submissions send an email to the AE and include hidden fields for slug, aeId, and leadId.
+
+
+Keep the existing visual design exactly as it is. The changes should be about data flow, routing, and analytics, not layout.
+
