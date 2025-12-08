@@ -393,89 +393,89 @@ export default function LandingPage() {
         </section>
 
         {/* Portfolio Section */}
-        <section className="bg-[#f7f4f0] px-5 pt-5" data-testid="section-portfolio-header">
+        <section className="bg-[#f7f4f0] px-5 pt-10" data-testid="section-portfolio-header">
           <div className="text-center">
-            <p className="text-[16px] font-bold text-[#333333] leading-[19.2px]">
+            <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
               See Homes Like Yours in Our Collection
             </p>
-            <p className="text-[10px] font-bold text-[#333333] leading-[12px]">
+            <p className="text-[13px] text-[#333333] leading-[16px] mt-2">
               We manage a curated collection of premium and luxury homes across the Emerald Coast.
             </p>
           </div>
         </section>
 
         {/* Property Cards */}
-        <section className="bg-[#f7f4f0] px-5 md:px-[150px] py-5" data-testid="section-portfolio-cards">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <section className="bg-[#f7f4f0] px-5 md:px-[100px] py-8" data-testid="section-portfolio-cards">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Property 1 */}
-            <div className="bg-white p-4">
+            <div className="bg-white p-5 rounded-lg shadow-sm">
               <img 
                 src={property1Image}
                 alt="8BR Escape with Pool, Hot Tub and Game Room"
-                className="w-full h-auto"
+                className="w-full h-auto rounded"
               />
-              <div className="mt-3">
-                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
+              <div className="mt-4">
+                <p className="text-[14px] font-bold text-[#333333] leading-[18px]">
                   8BR Escape with Pool, Hot Tub and Game Room
                 </p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
+                <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-3">
                   Destin, FL<br />8 bedrooms | 8.5 bathrooms
                 </p>
                 <a 
                   href="https://stay.golocalvr.com/property/67546fef23c1900012d5832c"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
+                  className="text-[13px] text-[#d3bda2] font-medium leading-[18px] mt-3 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
               </div>
             </div>
             
-            {/* Property 2 (was Property 3) */}
-            <div className="bg-white p-4">
+            {/* Property 2 */}
+            <div className="bg-white p-5 rounded-lg shadow-sm">
               <img 
                 src={property3Image}
                 alt="New 30A Retreat Beach Access"
-                className="w-full h-auto"
+                className="w-full h-auto rounded"
               />
-              <div className="mt-3">
-                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
+              <div className="mt-4">
+                <p className="text-[14px] font-bold text-[#333333] leading-[18px]">
                   New 30A Retreat Beach Access Hot Tub & Guest Suite
                 </p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
+                <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-3">
                   Seacrest Beach, FL<br />6 bedrooms | 6.5 bathrooms
                 </p>
                 <a 
                   href="https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
+                  className="text-[13px] text-[#d3bda2] font-medium leading-[18px] mt-3 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
               </div>
             </div>
             
-            {/* Property 3 (was Property 2) */}
-            <div className="bg-white p-4">
+            {/* Property 3 */}
+            <div className="bg-white p-5 rounded-lg shadow-sm">
               <img 
                 src={property2Image}
                 alt="Gulf Coast Retreat with Pool"
-                className="w-full h-auto"
+                className="w-full h-auto rounded"
               />
-              <div className="mt-3">
-                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
+              <div className="mt-4">
+                <p className="text-[14px] font-bold text-[#333333] leading-[18px]">
                   Gulf Coast Retreat with Pool &lt; 1 Mile to Beach
                 </p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
+                <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-3">
                   Blue Mountain Beach, FL<br />4 bedrooms | 4 bathrooms
                 </p>
                 <a 
                   href="https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
+                  className="text-[13px] text-[#d3bda2] font-medium leading-[18px] mt-3 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
@@ -484,109 +484,96 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Premier Service Benefits */}
-        <section className="bg-[#333333] px-5 pt-5" data-testid="section-benefits-header">
-          <div className="text-center">
-            <p className="text-[16px] font-bold text-[#d3bda2] leading-[19.2px]">
+        {/* Premier Service Benefits - Cream Background */}
+        <section className="bg-[#f7f4f0] px-5 pt-12 pb-8" data-testid="section-benefits-header">
+          <div className="text-center mb-8">
+            <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
               How Our Premier Service Benefits Your Home
             </p>
           </div>
-        </section>
-
-        {/* Benefits Grid */}
-        <section className="bg-[#333333] px-5 md:px-[150px] py-5" data-testid="section-benefits-grid">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-left">
-              <div className="w-[35px] h-[35px] flex items-center justify-center">
-                <UserCheck className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
+          
+          {/* Benefits Grid */}
+          <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-benefits-grid">
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#f7f4f0] flex items-center justify-center">
+                <UserCheck className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Elite Guest Matchmaking</p>
-                <p className="text-[10px] text-white leading-[15px] mt-1">
-                  We rigorously screen and match guests so your home is occupied by respectful, high-value travelers who treat it like their own.
-                </p>
-              </div>
+              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Elite Guest Matchmaking</p>
+              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+                We rigorously screen and match guests so your home is occupied by respectful, high-value travelers who treat it like their own.
+              </p>
             </div>
-            <div className="text-left">
-              <div className="w-[35px] h-[35px] flex items-center justify-center">
-                <ShieldCheck className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#f7f4f0] flex items-center justify-center">
+                <ShieldCheck className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Premium Home Protection</p>
-                <p className="text-[10px] text-white leading-[15px] mt-1">
-                  We prioritize your home's long-term value with detailed inspections, proactive maintenance coordination, and $10,000 in damage protection per reservation.
-                </p>
-              </div>
+              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Premium Home Protection</p>
+              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+                We prioritize your home's long-term value with detailed inspections, proactive maintenance coordination, and $10,000 in damage protection per reservation.
+              </p>
             </div>
-            <div className="text-left">
-              <div className="w-[35px] h-[35px] flex items-center justify-center">
-                <SlidersHorizontal className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#f7f4f0] flex items-center justify-center">
+                <SlidersHorizontal className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Tailored Management for Your Home</p>
-                <p className="text-[10px] text-white leading-[15px] mt-1">
-                  Your home and goals are unique. We tailor pricing, marketing, and owner use to your specific property, rather than forcing it into a generic template.
-                </p>
-              </div>
+              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Tailored Management for Your Home</p>
+              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+                Your home and goals are unique. We tailor pricing, marketing, and owner use to your specific property, rather than forcing it into a generic template.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Testimonial Carousel Section */}
-        <section 
-          className="relative bg-cover bg-center py-[80px] px-5"
-          style={{ backgroundImage: 'url(https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_84651pm.png)' }}
-          data-testid="section-testimonial"
-        >
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40" />
-          
-          <div className="relative max-w-[600px] mx-auto">
-            {/* Quote icon */}
-            <div className="text-center mb-6">
-              <span className="text-[60px] text-[#d3bda2] leading-none font-serif">"</span>
-            </div>
-            
-            {/* Testimonial content */}
-            <div className="text-center min-h-[120px] flex flex-col justify-center">
-              <p className="text-[16px] text-white leading-[24px] italic mb-4">
-                {testimonials[currentTestimonial].quote}
-              </p>
-              <p className="text-[14px] text-[#d3bda2] font-bold">
-                - {testimonials[currentTestimonial].name}
-              </p>
-            </div>
-            
-            {/* Navigation dots */}
-            <div className="flex justify-center items-center gap-4 mt-8">
-              <button 
-                onClick={() => setCurrentTestimonial((prev) => prev === 0 ? testimonials.length - 1 : prev - 1)}
-                className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors"
-                data-testid="button-testimonial-prev"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              
-              <div className="flex gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === currentTestimonial ? 'bg-[#d3bda2]' : 'bg-white/40'
-                    }`}
-                    data-testid={`button-testimonial-dot-${index}`}
-                  />
-                ))}
+        {/* Testimonial Carousel Section - Elegant Card Style */}
+        <section className="bg-[#f7f4f0] px-5 pb-12" data-testid="section-testimonial">
+          <div className="max-w-[700px] mx-auto">
+            <div className="bg-[#333333] rounded-lg p-8 md:p-10 text-center">
+              {/* Quote icon */}
+              <div className="mb-4">
+                <span className="text-[50px] text-[#d3bda2] leading-none font-serif">"</span>
               </div>
               
-              <button 
-                onClick={() => setCurrentTestimonial((prev) => prev === testimonials.length - 1 ? 0 : prev + 1)}
-                className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors"
-                data-testid="button-testimonial-next"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+              {/* Testimonial content */}
+              <div className="min-h-[100px] flex flex-col justify-center">
+                <p className="text-[15px] md:text-[16px] text-white leading-[24px] italic mb-4">
+                  {testimonials[currentTestimonial].quote}
+                </p>
+                <p className="text-[14px] text-[#d3bda2] font-bold">
+                  - {testimonials[currentTestimonial].name}
+                </p>
+              </div>
+              
+              {/* Navigation dots */}
+              <div className="flex justify-center items-center gap-4 mt-6">
+                <button 
+                  onClick={() => setCurrentTestimonial((prev) => prev === 0 ? testimonials.length - 1 : prev - 1)}
+                  className="w-8 h-8 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                  data-testid="button-testimonial-prev"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                
+                <div className="flex gap-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                        index === currentTestimonial ? 'bg-[#d3bda2]' : 'bg-white/30'
+                      }`}
+                      data-testid={`button-testimonial-dot-${index}`}
+                    />
+                  ))}
+                </div>
+                
+                <button 
+                  onClick={() => setCurrentTestimonial((prev) => prev === testimonials.length - 1 ? 0 : prev + 1)}
+                  className="w-8 h-8 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                  data-testid="button-testimonial-next"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
             </div>
           </div>
         </section>
