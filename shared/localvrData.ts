@@ -74,7 +74,7 @@ export const localvrData = {
 
   trust: {
     stats: {
-      homeownerSatisfaction: "98%",
+      homeownerSatisfaction: "90%",
       guestReviews: "10,000+",
       higherRevenue: "25%",
       localTeam: true
