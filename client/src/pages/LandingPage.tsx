@@ -317,9 +317,9 @@ export default function LandingPage() {
         </section>
 
         {/* Gold CTA Banner */}
-        <section className="bg-[#d3bda2] p-5" data-testid="section-gold-cta">
+        <section className="bg-[#d3bda2] py-8 px-5" data-testid="section-gold-cta">
           <div className="text-center">
-            <p className="text-[16px] font-bold text-[#333333] leading-[19.2px] mb-4">
+            <p className="text-[18px] font-bold text-[#333333] leading-[24px] mb-5">
               Want a local expert to walk you through these<br />
               numbers and what they mean for your home?
             </p>
@@ -327,7 +327,7 @@ export default function LandingPage() {
               href={cta.scheduleCallUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#333333] text-[#f7f4f0] text-[10px] font-bold py-[10px] px-5 rounded-full leading-[12px]"
+              className="inline-block bg-[#333333] text-[#f7f4f0] text-[14px] font-bold py-3 px-8 rounded-full"
               data-testid="button-gold-cta"
             >
               Review My Projections Now
@@ -391,14 +391,14 @@ export default function LandingPage() {
         <section className="bg-[#f7f4f0] px-5 md:px-[60px] py-10" data-testid="section-portfolio-cards">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Property 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
               <img 
                 src={property1Image}
                 alt="8BR Escape with Pool, Hot Tub and Game Room"
                 className="w-full h-[220px] object-cover rounded-md"
               />
-              <div className="mt-5">
-                <p className="text-[16px] font-bold text-[#333333] leading-[22px]">
+              <div className="mt-5 flex flex-col flex-1">
+                <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
                   8BR Escape with Pool, Hot Tub and Game Room
                 </p>
                 <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
@@ -408,7 +408,7 @@ export default function LandingPage() {
                   href="https://stay.golocalvr.com/property/67546fef23c1900012d5832c"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-4 underline block hover:text-[#333333] transition-colors"
+                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
@@ -416,14 +416,14 @@ export default function LandingPage() {
             </div>
             
             {/* Property 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
               <img 
                 src={property3Image}
                 alt="New 30A Retreat Beach Access"
                 className="w-full h-[220px] object-cover rounded-md"
               />
-              <div className="mt-5">
-                <p className="text-[16px] font-bold text-[#333333] leading-[22px]">
+              <div className="mt-5 flex flex-col flex-1">
+                <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
                   New 30A Retreat Beach Access Hot Tub & Guest Suite
                 </p>
                 <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
@@ -433,7 +433,7 @@ export default function LandingPage() {
                   href="https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-4 underline block hover:text-[#333333] transition-colors"
+                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
@@ -441,14 +441,14 @@ export default function LandingPage() {
             </div>
             
             {/* Property 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
               <img 
                 src={property2Image}
                 alt="Gulf Coast Retreat with Pool"
                 className="w-full h-[220px] object-cover rounded-md"
               />
-              <div className="mt-5">
-                <p className="text-[16px] font-bold text-[#333333] leading-[22px]">
+              <div className="mt-5 flex flex-col flex-1">
+                <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
                   Gulf Coast Retreat with Pool &lt; 1 Mile to Beach
                 </p>
                 <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
@@ -458,7 +458,7 @@ export default function LandingPage() {
                   href="https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-4 underline block hover:text-[#333333] transition-colors"
+                  className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
                 >
                   View Property
                 </a>
@@ -556,63 +556,6 @@ export default function LandingPage() {
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Three Steps Section */}
-        <section className="bg-white px-5 pt-5" data-testid="section-steps-header">
-          <div className="text-center py-4">
-            <p className="text-[16px] font-bold text-[#333333] leading-[19.2px]">
-              From Projection to Bookings in Three Simple Steps
-            </p>
-          </div>
-        </section>
-
-        {/* Steps Grid */}
-        <section className="bg-white px-5 md:px-[150px] pb-5" data-testid="section-steps-grid">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            <div className="text-center">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered18.png" 
-                alt="" 
-                className="w-[35px] mx-auto"
-              />
-              <div className="mt-2">
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Review Your</p>
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Plan</p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-1">
-                  We walk through your projection, assumptions, and your goals for the home.
-                </p>
-              </div>
-            </div>
-            <div className="text-center">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered20.png" 
-                alt="" 
-                className="w-[35px] mx-auto"
-              />
-              <div className="mt-2">
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Customize Your</p>
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Strategy</p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-1">
-                  We tailor pricing, guest profile, marketing approach, and owner use around your home.
-                </p>
-              </div>
-            </div>
-            <div className="text-center">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered21.png" 
-                alt="" 
-                className="w-[35px] mx-auto"
-              />
-              <div className="mt-2">
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Locally Supported</p>
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Launch</p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-1">
-                  Your dedicated local team handles setup, listing, and guest management.
-                </p>
               </div>
             </div>
           </div>
