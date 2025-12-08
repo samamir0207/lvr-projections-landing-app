@@ -11,6 +11,8 @@ function generateSlug(address: string): string {
 
 export const KACI_30A_DEFAULTS: MarketDefaults = {
   cta: {
+    aeId: "kaci-wolkers-001",
+    aeSlug: "kaci-wolkers",
     scheduleCallUrl: "https://calendly.com/kaci-wolkers",
     aeName: "Kaci Wolkers",
     aeTitle: "Account Executive, LocalVR 30A",

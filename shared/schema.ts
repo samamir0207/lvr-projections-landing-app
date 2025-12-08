@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, jsonb, timestamp, serial } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -16,6 +16,44 @@ export const insertUserSchema = createInsertSchema(users).pick({
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+
+export const projections = pgTable("projections", {
+  id: serial("id").primaryKey(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  aeSlug: varchar("ae_slug", { length: 255 }).notNull(),
+  data: jsonb("data").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertProjectionSchema = createInsertSchema(projections).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertProjection = z.infer<typeof insertProjectionSchema>;
+export type Projection = typeof projections.$inferSelect;
+
+export const analyticsEvents = pgTable("analytics_events", {
+  id: serial("id").primaryKey(),
+  event: varchar("event", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }),
+  aeSlug: varchar("ae_slug", { length: 255 }),
+  lid: varchar("lid", { length: 255 }),
+  campaign: varchar("campaign", { length: 255 }),
+  src: varchar("src", { length: 255 }),
+  meta: jsonb("meta"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertEventSchema = createInsertSchema(analyticsEvents).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertEvent = z.infer<typeof insertEventSchema>;
+export type AnalyticsEvent = typeof analyticsEvents.$inferSelect;
 
 export interface ProjectionMeta {
   slug: string;
@@ -95,6 +133,8 @@ export interface TrustSection {
 }
 
 export interface CTAInfo {
+  aeId?: string;
+  aeSlug: string;
   scheduleCallUrl: string;
   aeName: string;
   aeTitle: string;
