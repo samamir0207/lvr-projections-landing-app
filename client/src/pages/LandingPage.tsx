@@ -222,50 +222,13 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Two Column Layout: Left info + Right chart/table */}
-          <div className="flex flex-col md:flex-row gap-8 bg-white rounded-lg p-6 shadow-sm">
-            {/* Left Column - Title and Icons */}
-            <div className="md:w-[200px] flex-shrink-0 flex flex-col">
-              <p className="text-[18px] font-bold text-[#333333] leading-[26px] mb-6">
-                How This Breaks Down
-              </p>
-              
-              <div className="flex flex-col justify-between flex-1 gap-6">
-                <div className="flex items-start gap-3">
-                  <img 
-                    src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
-                    alt="" 
-                    className="w-[24px] h-auto flex-shrink-0 mt-0.5"
-                  />
-                  <p className="text-[12px] text-[#333333] leading-[18px]">
-                    Built from more than a decade of performance data in your local market.
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <img 
-                    src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
-                    alt="" 
-                    className="w-[24px] h-auto flex-shrink-0 mt-0.5"
-                  />
-                  <p className="text-[12px] text-[#333333] leading-[18px]">
-                    Powered by LocalVR's proprietary Local Pricing algorithm.
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <img 
-                    src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
-                    alt="" 
-                    className="w-[24px] h-auto flex-shrink-0 mt-0.5"
-                  />
-                  <p className="text-[12px] text-[#333333] leading-[18px]">
-                    Seasonal demand patterns for peak, shoulder, and off-peak periods.
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Chart and Table Section */}
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <p className="text-[20px] font-bold text-[#333333] leading-[28px] mb-6 text-center">
+              How This Breaks Down
+            </p>
             
-            {/* Right Column - Chart and Table */}
-            <div className="flex-1" data-testid="section-chart">
+            <div data-testid="section-chart">
               {/* Bar Chart */}
               <div className="h-[280px] mb-8">
                 <Bar data={chartData} options={chartOptions as any} />
@@ -350,27 +313,27 @@ export default function LandingPage() {
         </section>
 
         {/* Why You Can Trust Section */}
-        <section className="bg-white px-5 pt-5" data-testid="section-trust-header">
+        <section className="bg-white px-5 pt-8" data-testid="section-trust-header">
           <div className="text-center">
-            <p className="text-[16px] font-bold text-[#333333] leading-[24px]">
+            <p className="text-[22px] font-bold text-[#333333] leading-[30px]">
               Why You Can Trust These Projections
             </p>
           </div>
         </section>
 
         {/* Trust Pillars */}
-        <section className="bg-white px-5 md:px-[150px] py-5" data-testid="section-trust-pillars">
+        <section className="bg-white px-5 md:px-[100px] py-8" data-testid="section-trust-pillars">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-left">
               <img 
                 src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
                 alt="" 
-                className="w-[35px] h-auto"
+                className="w-[40px] h-auto"
               />
-              <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Real Data,</p>
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Not Guesswork</p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-1">
+              <div className="mt-3 pl-1">
+                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Real Data,</p>
+                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Not Guesswork</p>
+                <p className="text-[12px] text-[#333333] leading-[18px] mt-2">
                   We use anonymized performance data from comparable homes we manage in your market, combined with third-party short-term rental market data.
                 </p>
               </div>
@@ -379,12 +342,12 @@ export default function LandingPage() {
               <img 
                 src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
                 alt="" 
-                className="w-[35px] h-auto"
+                className="w-[40px] h-auto"
               />
-              <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Market-Specific,</p>
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Not Nationwide Averages</p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-1">
+              <div className="mt-3 pl-1">
+                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Market-Specific,</p>
+                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Not Nationwide Averages</p>
+                <p className="text-[12px] text-[#333333] leading-[18px] mt-2">
                   Every projection incorporates local demand patterns, seasonality, events, and rate trends for your specific neighborhood.
                 </p>
               </div>
@@ -393,12 +356,12 @@ export default function LandingPage() {
               <img 
                 src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
                 alt="" 
-                className="w-[35px] h-auto"
+                className="w-[40px] h-auto"
               />
-              <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Luxury-Focused</p>
-                <p className="text-[11px] font-bold text-[#333333] leading-[16.5px]">Approach</p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-1">
+              <div className="mt-3 pl-1">
+                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Luxury-Focused</p>
+                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Approach</p>
+                <p className="text-[12px] text-[#333333] leading-[18px] mt-2">
                   Our LocalLuxe program focuses on high-value guests, premium pricing, and protecting your home's long-term value.
                 </p>
               </div>
