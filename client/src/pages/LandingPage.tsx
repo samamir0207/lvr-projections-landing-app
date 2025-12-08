@@ -4,6 +4,7 @@ import aeHeadshot from "@assets/generated_images/kaci_wolkers_professional_heads
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
 import property2Image from "@assets/14_1765164174413.jpg";
 import property3Image from "@assets/IMG_2398_(1)_1765164502296.jpg";
+import formImage from "@assets/104_(1)_1765166534372.jpg";
 import { UserCheck, ShieldCheck, SlidersHorizontal, ChevronLeft, ChevronRight, TrendingUp, MapPin, Gem } from "lucide-react";
 import {
   Chart as ChartJS,
@@ -501,7 +502,7 @@ export default function LandingPage() {
         </section>
 
         {/* Premier Service Benefits - Cream Background */}
-        <section className="bg-[#f7f4f0] px-5 pt-12 pb-8" data-testid="section-benefits-header">
+        <section className="bg-[#f7f4f0] px-5 pt-6 pb-8" data-testid="section-benefits-header">
           <div className="text-center mb-8">
             <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
               How Our Premier Service Benefits Your Home
@@ -541,8 +542,11 @@ export default function LandingPage() {
         </section>
 
         {/* Testimonial Carousel Section - Elegant Card Style */}
-        <section className="bg-[#f7f4f0] px-5 pb-12" data-testid="section-testimonial">
+        <section className="bg-[#f7f4f0] px-5 pt-4 pb-12" data-testid="section-testimonial">
           <div className="max-w-[700px] mx-auto">
+            <p className="text-[20px] font-bold text-[#333333] leading-[24px] text-center mb-6">
+              Hear What Our Homeowners Have to Say
+            </p>
             <div className="bg-[#333333] rounded-lg p-8 md:p-10 text-center">
               {/* Quote icon */}
               <div className="mb-4">
@@ -597,11 +601,11 @@ export default function LandingPage() {
         {/* Contact Form Section */}
         <section className="bg-[#f7f4f0] px-5 md:px-[60px] py-12" data-testid="section-contact-form">
           <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-stretch gap-10">
-            {/* Beach Image */}
+            {/* Home Image */}
             <div className="w-full md:w-1/2">
               <img 
-                src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=600&h=800&fit=crop"
-                alt="Beachfront vacation rental"
+                src={formImage}
+                alt="Luxury vacation rental with pool"
                 className="w-full h-full object-cover rounded-lg shadow-md min-h-[400px]"
               />
             </div>
