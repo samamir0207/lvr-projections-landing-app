@@ -1,4 +1,12 @@
-export const localvrData = {
+import type { ProjectionData } from "./schema";
+
+const grandePointeData: ProjectionData = {
+  meta: {
+    slug: "174-grande-pointe-cir-rosemary-beach-fl",
+    homeownerFirstName: "Allison",
+    homeownerFullName: "Allison Smith"
+  },
+
   property: {
     internalId: "LVR-30A-RE1281",
     address: "174 Grande Pointe Cir, Rosemary Beach, FL 32461",
@@ -130,8 +138,8 @@ export const localvrData = {
   ],
 
   aiNarrativePlaceholders: {
-    summary: "Based on our comprehensive market analysis and proprietary Local Pricing™ algorithm, your property at 174 Grande Pointe Cir is positioned in one of the most desirable vacation rental markets in the Southeast. The combination of your property's premium location in Rosemary Beach, its 4-bedroom configuration, and current market dynamics suggests strong revenue potential year-round with particular strength during peak summer months.",
-    insights: "Our data reveals several key factors driving revenue potential for your property. The 30A market experiences exceptional demand during summer months (June-July), where occupancy rates consistently reach near-full capacity. Your property's proximity to the beach and high-end amenities align perfectly with the luxury traveler segment that dominates this market. Additionally, the winter season shows steady shoulder demand, providing year-round income stability that many coastal markets lack.",
+    summary: "Based on our comprehensive market analysis and proprietary Local Pricing™ algorithm, your property is positioned in one of the most desirable vacation rental markets in the Southeast. The combination of your property's premium location, bedroom configuration, and current market dynamics suggests strong revenue potential year-round with particular strength during peak summer months.",
+    insights: "Our data reveals several key factors driving revenue potential for your property. The market experiences exceptional demand during summer months (June-July), where occupancy rates consistently reach near-full capacity. Your property's proximity to the beach and high-end amenities align perfectly with the luxury traveler segment that dominates this market. Additionally, the winter season shows steady shoulder demand, providing year-round income stability that many coastal markets lack.",
     optimizationTips: "To maximize your revenue potential, we recommend focusing on three strategic areas: First, maintaining premium presentation standards to justify higher ADR during peak periods. Second, implementing dynamic pricing adjustments during shoulder seasons to capture additional bookings while maintaining strong margins. Third, leveraging our three-tier inspection and hotel-grade housekeeping standards to maintain consistently high guest ratings, which directly correlate with booking conversion rates and allow for premium pricing year-round."
   },
 
@@ -158,6 +166,75 @@ export const localvrData = {
     aeName: "Kaci Wolkers",
     aeTitle: "Account Executive, LocalVR 30A",
     aePhone: "(850) 641-1001",
-    aeEmail: "kaci.wolkers@golocalvr.com"
-  }
+    aeEmail: "kaci.wolkers@golocalvr.com",
+    aeHeadshotUrl: "/assets/ae-headshot.png"
+  },
+
+  testimonials: [
+    {
+      quote: "Switching to LocalVR was the best decision we've made. Their local team is responsive, proactive, and truly cares about our home.",
+      name: "Marc"
+    },
+    {
+      quote: "The revenue projections were spot-on. We exceeded our expectations in the first year.",
+      name: "Beth"
+    },
+    {
+      quote: "Professional management with a personal touch. They treat our property like it's their own.",
+      name: "Lucy"
+    }
+  ],
+
+  benefits: [
+    {
+      title: "Elite Guest Matchmaking",
+      description: "Three-level guest vetting ensures only qualified, respectful guests stay in your home.",
+      icon: "users"
+    },
+    {
+      title: "Premium Home Protection",
+      description: "Three-tier inspection system and $10,000 damage protection for qualified reservations.",
+      icon: "shield"
+    },
+    {
+      title: "Tailored Management",
+      description: "Dedicated local team with 1:10 ratio of home care experts to properties managed.",
+      icon: "home"
+    }
+  ],
+
+  comparableProperties: [
+    {
+      image: "property1",
+      bedrooms: 4,
+      bathrooms: 4,
+      revenue: 125000
+    },
+    {
+      image: "property2",
+      bedrooms: 4,
+      bathrooms: 3,
+      revenue: 115000
+    },
+    {
+      image: "property3",
+      bedrooms: 5,
+      bathrooms: 4,
+      revenue: 140000
+    }
+  ]
 };
+
+const projectionsMap: Record<string, ProjectionData> = {
+  [grandePointeData.meta.slug]: grandePointeData
+};
+
+export function getProjectionBySlug(slug: string): ProjectionData | null {
+  return projectionsMap[slug] || null;
+}
+
+export function getDefaultProjection(): ProjectionData {
+  return grandePointeData;
+}
+
+export const localvrData = grandePointeData;
