@@ -140,7 +140,7 @@ export default function LandingPage() {
                 <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
               </div>
               <p className="text-[13px] text-[#333333] leading-[20px] mt-2">
-                per year in rental revenue under professional management.
+                per year in rental revenue under LocalVR's professional management.
               </p>
             </div>
           </div>
