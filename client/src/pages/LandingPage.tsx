@@ -205,32 +205,34 @@ export default function LandingPage() {
 
         {/* Combined Projected Earnings & Breakdown Section */}
         <section className="bg-[#f7f4f0] px-5 md:px-8 py-10" data-testid="section-projection-breakdown">
-          {/* Header with Property Info and Revenue Range */}
-          <div className="text-center mb-10">
-            <p className="text-[22px] font-bold text-[#333333] leading-[30px]">
-              Your Projected Earnings for
-            </p>
-            <p className="text-[20px] font-bold italic text-[#d3bda2] leading-[28px] mt-2" data-testid="text-property-address">
-              {property.address.split(',')[0]}
-            </p>
-            <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-1" data-testid="text-property-details">
-              {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms | {property.squareFeet.toLocaleString()} sq ft
-            </p>
-          </div>
-
-          {/* Chart and Table Section */}
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            {/* Revenue Estimate Header */}
-            <div className="text-center mb-6">
+          {/* Unified Projections Card */}
+          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+            {/* Card Header with Property Info */}
+            <div className="text-center py-8 px-6 border-b border-[#e5e5e5]">
+              <p className="text-[22px] font-bold text-[#333333] leading-[30px]">
+                Your Projected Earnings for
+              </p>
+              <p className="text-[20px] font-bold italic text-[#d3bda2] leading-[28px] mt-2" data-testid="text-property-address">
+                {property.address.split(',')[0]}
+              </p>
+              <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-1" data-testid="text-property-details">
+                {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms | {property.squareFeet.toLocaleString()} sq ft
+              </p>
+            </div>
+            
+            {/* Revenue Estimate Highlight */}
+            <div className="text-center py-6 px-6 bg-[#f7f4f0]/50">
+              <p className="text-[13px] text-[#333333] mb-2">Estimated Annual Revenue</p>
               <div className="inline-flex items-center gap-3">
-                <span className="text-[13px] text-[#333333]">Estimated annual revenue:</span>
-                <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
-                <span className="text-[14px] text-[#333333]/60">to</span>
-                <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
+                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
+                <span className="text-[16px] text-[#333333]/60">to</span>
+                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
               </div>
             </div>
             
-            <div data-testid="section-chart">
+            {/* Chart and Table Content */}
+            <div className="p-6">
+              <div data-testid="section-chart">
               {/* Bar Chart */}
               <div className="h-[280px] mb-8">
                 <Bar data={chartData} options={chartOptions as any} />
@@ -291,6 +293,7 @@ export default function LandingPage() {
               <p className="text-[9px] text-[#333333]/60 leading-[14px] mt-6 text-center">
                 Projections are estimates based on historical performance in comparable homes and current market conditions. Actual performance may vary due to home condition, regulations, owner use, pricing decisions, and broader market trends. This is not a financial guarantee.
               </p>
+              </div>
             </div>
           </div>
         </section>
