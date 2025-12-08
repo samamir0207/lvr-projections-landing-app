@@ -727,7 +727,7 @@ export default function LandingPage() {
                       className="w-full bg-[#333333] text-white text-[14px] font-bold py-3 px-6 rounded-full hover:bg-[#444444] transition-colors"
                       data-testid="button-submit-form"
                     >
-                      Submit Request
+                      Submit
                     </button>
                   </form>
                 )}
@@ -737,68 +737,40 @@ export default function LandingPage() {
         </section>
 
         {/* FAQs Section */}
-        <section className="bg-[#333333] px-5 pt-5" data-testid="section-faqs-header">
+        <section className="bg-[#333333] px-5 pt-8" data-testid="section-faqs-header">
           <div className="text-center">
-            <p className="text-[16px] font-bold text-[#d3bda2] leading-[24px]">
-              FAQS
+            <p className="text-[22px] font-bold text-[#d3bda2] leading-[28px]">
+              FAQ's
             </p>
           </div>
         </section>
 
         {/* FAQ Grid */}
-        <section className="bg-[#333333] px-5 md:px-[100px] py-6 pb-10" data-testid="section-faqs">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" 
-                alt="" 
-                className="w-full"
-              />
-              <div className="py-2 px-3">
-                <p className="text-[10px] font-bold text-white leading-[15px]">How accurate are these projections?</p>
-                <p className="text-[10px] text-white leading-[15px] mt-1">
-                  Our projections are based on actual performance from comparable homes we manage, plus third-party market data. They are intended to set realistic expectations, not to guarantee a specific outcome.
-                </p>
-              </div>
+        <section className="bg-[#333333] px-5 md:px-[100px] py-8 pb-12" data-testid="section-faqs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="py-3 px-4">
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">How accurate are these projections?</p>
+              <p className="text-[14px] text-white/90 leading-[20px]">
+                Our projections are based on actual performance from comparable homes we manage, plus third-party market data. They are intended to set realistic expectations, not to guarantee a specific outcome.
+              </p>
             </div>
-            <div>
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" 
-                alt="" 
-                className="w-full"
-              />
-              <div className="py-2 px-3">
-                <p className="text-[10px] font-bold text-white leading-[15px]">What fees do you charge?</p>
-                <p className="text-[10px] text-white leading-[15px] mt-1">
-                  We charge a management fee as a percentage of rental revenue. We do not get paid unless you earn rental revenue, which keeps our incentives aligned with yours.
-                </p>
-              </div>
+            <div className="py-3 px-4">
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">What fees do you charge?</p>
+              <p className="text-[14px] text-white/90 leading-[20px]">
+                We charge a management fee as a percentage of rental revenue. We do not get paid unless you earn rental revenue, which keeps our incentives aligned with yours.
+              </p>
             </div>
-            <div>
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" 
-                alt="" 
-                className="w-full"
-              />
-              <div className="py-2 px-3">
-                <p className="text-[10px] font-bold text-white leading-[15px]">How do you protect my home?</p>
-                <p className="text-[10px] text-white leading-[15px] mt-1">
-                  We use detailed inspections, guest screening, clear house rules, and proactive maintenance. We include $10,000 in damage protection for qualified reservations.
-                </p>
-              </div>
+            <div className="py-3 px-4">
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">How do you protect my home?</p>
+              <p className="text-[14px] text-white/90 leading-[20px]">
+                We use detailed inspections, guest screening, clear house rules, and proactive maintenance. We include $10,000 in damage protection for qualified reservations.
+              </p>
             </div>
-            <div>
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered.png" 
-                alt="" 
-                className="w-full"
-              />
-              <div className="py-2 px-3">
-                <p className="text-[10px] font-bold text-white leading-[15px]">Can I still use my home?</p>
-                <p className="text-[10px] text-white leading-[15px] mt-1">
-                  Absolutely. We work with you to block dates for personal use. Many of our homeowners use their properties regularly while still earning strong rental income.
-                </p>
-              </div>
+            <div className="py-3 px-4">
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">Can I still use my home?</p>
+              <p className="text-[14px] text-white/90 leading-[20px]">
+                Absolutely. We work with you to block dates for personal use. Many of our homeowners use their properties regularly while still earning strong rental income.
+              </p>
             </div>
           </div>
         </section>
