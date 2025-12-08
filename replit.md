@@ -95,6 +95,10 @@ Kaci's contact info, testimonials, comparable properties, and 30A branding are a
 - LandingPage accepts optional `data: ProjectionData` prop
 - Falls back to default projection if no data provided
 
+**Frontend Routes:**
+- `/` - Default landing page with placeholder data
+- `/:aeSlug/:slug` - Dynamic projection page that fetches data from API
+
 ### Backend Architecture
 
 **Server Framework:**
@@ -103,21 +107,45 @@ Kaci's contact info, testimonials, comparable properties, and 30A branding are a
 - Development mode includes Vite middleware for HMR (Hot Module Replacement)
 - Production mode serves pre-built static assets from `dist/public`
 
-**API Structure:**
-- Route registration system in `server/routes.ts` (currently minimal)
-- `/api` prefix convention for all API routes
-- HTTP server creation using Node's native `http` module
+**API Endpoints:**
+- `POST /api/projections` - Creates or updates a projection from Google Sheets, returns `{ ok: true, publicUrl, slug, aeSlug }`
+- `GET /api/projections/:aeSlug/:slug` - Returns projection data for dynamic rendering
+- `POST /api/events` - Logs analytics events to database
+- `POST /api/contact` - Submits contact form and logs to database
 
 **Storage Layer:**
-- In-memory storage implementation (`MemStorage`) for development
-- Interface-based storage design (`IStorage`) for future database integration
+- PostgreSQL database with Drizzle ORM
+- Neon serverless driver with WebSocket support (`ws` package)
+- `DatabaseStorage` class implements `IStorage` interface
+
+**Database Schema:**
+- `projections` table: id, slug, aeSlug, data (JSONB), createdAt, updatedAt
+- `analytics_events` table: id, event, slug, aeSlug, lid, campaign, src, meta (JSONB), timestamp
+
+### Analytics & Tracking
+
+**Google Tag Manager Integration:**
+- GTM container placeholder in `client/index.html`
+- Replace `GTM-XXXXXXX` with actual container ID
+
+**Event Tracking (`client/src/lib/analytics.ts`):**
+- `initPageView()` - Tracks page views with URL parameters
+- `trackCTAClick(ctaId)` - Tracks CTA button clicks
+- `trackFormSubmit()` - Tracks contact form submissions
+- `trackTimeOnPage()` - Tracks time spent on page
+
+**Tracked Events:**
+- `projection_page_view` - Fired on page load
+- `projection_cta_click` - Fired on CTA button clicks
+- `projection_form_submit` - Fired on form submission
+- `projection_time_on_page` - Fired on page unload
 
 ### External Dependencies
 
-**Database (Configured but Not Active):**
+**Database:**
 - Drizzle ORM v0.39.1 for type-safe database queries
 - @neondatabase/serverless v0.10.4 for Postgres connection
-- PostgreSQL dialect configured in `drizzle.config.ts`
+- `ws` package for WebSocket support in Node.js
 
 **UI & Component Libraries:**
 - @radix-ui/* packages (v1.x) for accessible UI primitives
@@ -127,15 +155,50 @@ Kaci's contact info, testimonials, comparable properties, and 30A branding are a
 
 **Third-Party Services:**
 - Calendly integration for booking calls (referenced in CTA URLs)
+- Google Tag Manager for analytics (placeholder configured)
 
 **Asset Management:**
 - Static assets stored in `attached_assets/` directory
 - Property images referenced via `@assets` alias
 - AE headshots stored in attached_assets
 
+## Google Sheets Integration
+
+To create a projection from Google Sheets, POST to `/api/projections`:
+
+```bash
+curl -X POST https://your-domain.replit.app/api/projections \
+  -H "Content-Type: application/json" \
+  -d '{
+    "meta": { "slug": "property-slug", "homeownerFirstName": "John", "homeownerFullName": "John Smith" },
+    "property": { ... },
+    "projections": { ... },
+    ...
+  }'
+```
+
+Response:
+```json
+{
+  "ok": true,
+  "publicUrl": "https://your-domain.replit.app/kaci-wolkers/property-slug",
+  "slug": "property-slug",
+  "aeSlug": "kaci-wolkers"
+}
+```
+
 ## Recent Changes
 
-- **Dec 8, 2025**: Converted landing page to template-driven architecture
+- **Dec 8, 2025**: Added database storage, API endpoints, and analytics tracking
+  - Created PostgreSQL database with projections and analytics_events tables
+  - Implemented POST /api/projections for Google Sheets integration
+  - Added dynamic routing with /:aeSlug/:slug pattern
+  - Integrated Google Tag Manager with client-side analytics module
+  - Implemented comprehensive event tracking (page views, CTA clicks, form submissions, time on page)
+  - Added WebSocket configuration for Neon database connection
+  - Built contact form with hidden tracking fields (slug, aeId, leadId, campaign)
+
+- **Dec 8, 2025 (earlier)**: Converted landing page to template-driven architecture
   - Added ProjectionData interface with all data blocks
   - Implemented getProjectionBySlug() for multi-property support
   - LandingPage now accepts data prop for complete customization
