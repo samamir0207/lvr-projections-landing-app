@@ -146,60 +146,58 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* How This Breaks Down */}
-        <section className="bg-white px-5 pt-5" data-testid="section-breakdown">
-          <div className="text-center">
-            <p className="text-[16px] font-bold text-[#333333] leading-[24px]">
-              How this projection breaks down
-            </p>
-          </div>
-        </section>
-
-        {/* Three Icons Section */}
-        <section className="bg-white px-5 md:px-[150px] py-5" data-testid="section-breakdown-icons">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
-                alt="" 
-                className="w-[35px] h-auto"
-              />
-              <p className="text-[10px] text-[#333333] leading-[15px] mt-2 pl-1">
-                Built from more than a decade of performance data in your specific local rental market.
+        {/* How This Breaks Down - Side by Side Layout */}
+        <section className="bg-white px-5 md:px-10 py-8" data-testid="section-breakdown">
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Left Column - Title and Icons */}
+            <div className="md:w-[280px] flex-shrink-0">
+              <p className="text-[20px] font-bold text-[#333333] leading-[28px] mb-6">
+                How This Projection Breaks Down
               </p>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-3">
+                  <img 
+                    src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
+                    alt="" 
+                    className="w-[30px] h-auto flex-shrink-0"
+                  />
+                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                    Built from more than a decade of performance data in your specific local rental market.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <img 
+                    src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
+                    alt="" 
+                    className="w-[30px] h-auto flex-shrink-0"
+                  />
+                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                    Powered by LocalVR's proprietary Local Pricing algorithm for dynamic rate optimization.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <img 
+                    src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
+                    alt="" 
+                    className="w-[30px] h-auto flex-shrink-0"
+                  />
+                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                    Seasonal demand patterns analyzed for peak, shoulder, and off-peak periods.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="text-left">
+            
+            {/* Right Column - Chart */}
+            <div className="flex-1" data-testid="section-chart">
               <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
-                alt="" 
-                className="w-[35px] h-auto"
+                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_92903am.png" 
+                alt="Revenue Chart"
+                className="w-full h-auto"
+                data-testid="img-chart"
               />
-              <p className="text-[10px] text-[#333333] leading-[15px] mt-2 pl-1">
-                Built from more than a decade of performance data in your specific local rental market.
-              </p>
             </div>
-            <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
-                alt="" 
-                className="w-[35px] h-auto"
-              />
-              <p className="text-[10px] text-[#333333] leading-[15px] mt-2 pl-1">
-                Built from more than a decade of performance data in your specific local rental market.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Revenue Chart Image */}
-        <section className="bg-white" data-testid="section-chart">
-          <div className="text-center pb-5">
-            <img 
-              src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_92903am.png" 
-              alt="Revenue Chart"
-              className="max-w-full h-auto mx-auto"
-              data-testid="img-chart"
-            />
           </div>
         </section>
 
