@@ -12,34 +12,62 @@ Preferred communication style: Simple, everyday language.
 
 ## Template System
 
-### ProjectionData Interface
+### Two-Layer Data Architecture
 
-The application uses a strongly-typed `ProjectionData` interface defined in `shared/schema.ts` that includes:
+The template uses a two-layer data system to separate fixed Kaci/30A content from dynamic property data:
 
-- **meta**: Slug, homeowner first name, homeowner full name
-- **property**: Address, bedrooms, bathrooms, square feet, city, state, market
-- **projections**: Expected, low, and high revenue estimates with disclaimer
-- **monthlyRevenue**: Array of monthly low/high revenue data
-- **seasonalBreakdown**: Seasonal performance metrics
-- **trust**: Company stats and value pillars
-- **cta**: Account executive info (name, title, phone, email, Calendly URL)
-- **testimonials**: Array of homeowner testimonials
-- **benefits**: Service benefits with icons
-- **comparableProperties**: Similar properties in the portfolio
+**Fixed Content (KACI_30A_DEFAULTS)** - Never changes between projections:
+- Kaci's AE info (name, title, phone, email, Calendly URL)
+- Trust stats and value pillars
+- Testimonials from happy homeowners
+- Service benefits
+- Comparable property cards (30A portfolio)
+- Seasonality patterns for 30A market
+- AI narrative placeholders
+
+**Dynamic Content (PropertyProjectionInput)** - Changes per homeowner:
+- Homeowner first name and full name
+- Property address, bedrooms, bathrooms, square feet, city, state
+- Revenue projections (expected, low, high)
+- Monthly revenue breakdown
+- Seasonal breakdown specific to the property
 
 ### Data Loading
 
 - `shared/localvrData.ts` exports:
+  - `createProjection(input)`: Creates full ProjectionData by merging dynamic input with Kaci's fixed defaults
   - `getProjectionBySlug(slug)`: Returns ProjectionData by URL slug
   - `getDefaultProjection()`: Returns default sample data
-  - `localvrData`: Direct access to sample data
+  - `getAllProjections()`: Returns all available projections
+  - `KACI_30A_DEFAULTS`: Direct access to fixed defaults (for reference)
 
 ### Adding New Properties
 
-To add a new property projection:
-1. Create a new ProjectionData object with all required fields
-2. Add it to the `projectionsMap` in `shared/localvrData.ts`
-3. The page will automatically render with the new data when accessed
+To add a new property projection, use the `createProjection()` helper:
+
+```typescript
+const newProjection = createProjection({
+  homeownerFirstName: "Sarah",
+  homeownerFullName: "Sarah Johnson",
+  property: {
+    address: "456 Beachside Dr, Seacrest Beach, FL 32461",
+    bedrooms: 5,
+    bathrooms: 5,
+    squareFeet: 3200,
+    city: "Seacrest Beach",
+    state: "FL"
+  },
+  projections: {
+    expectedRevenue: 145000,
+    highRevenue: 175000,
+    lowRevenue: 115000
+  },
+  monthlyRevenue: [...],  // 12 months of data
+  seasonalBreakdown: [...]  // 5 seasons of data
+});
+```
+
+Kaci's contact info, testimonials, comparable properties, and 30A branding are automatically included.
 
 ## System Architecture
 
