@@ -30,7 +30,7 @@ export default function LandingPage() {
               <p className="text-[18px] font-bold text-[#333333] leading-[27px]" data-testid="text-headline">
                 Your Custom Rental Projections Are Ready
               </p>
-              <p className="text-[10px] font-bold text-[#333333] leading-[15px]" data-testid="text-subheadline">
+              <p className="text-[14px] font-bold text-[#333333] leading-[21px]" data-testid="text-subheadline">
                 Prepared for you by your local expert {cta.aeName.split(' ')[0]}, using real performance data from homes like yours.
               </p>
             </div>
