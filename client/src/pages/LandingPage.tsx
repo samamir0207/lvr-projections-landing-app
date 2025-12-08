@@ -233,12 +233,12 @@ export default function LandingPage() {
         <section className="bg-white px-5 md:px-8 py-10" data-testid="section-breakdown">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Left Column - Title and Icons */}
-            <div className="md:w-[220px] flex-shrink-0">
-              <p className="text-[22px] font-bold text-[#333333] leading-[30px] mb-8">
+            <div className="md:w-[220px] flex-shrink-0 flex flex-col">
+              <p className="text-[22px] font-bold text-[#333333] leading-[30px] mb-6">
                 How This Projection Breaks Down
               </p>
               
-              <div className="space-y-8">
+              <div className="flex flex-col justify-between flex-1">
                 <div className="flex items-start gap-4">
                   <img 
                     src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
@@ -321,7 +321,7 @@ export default function LandingPage() {
                     <tr>
                       <td className="py-3 pr-2 font-bold text-[#333333]">Average Daily Rate</td>
                       {seasonalBreakdown.map((season) => (
-                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                        <td key={season.key} className="text-center py-3 px-2 text-[#333333] whitespace-nowrap">
                           ${season.adrMin.toLocaleString()} - ${season.adrMax.toLocaleString()}
                         </td>
                       ))}
