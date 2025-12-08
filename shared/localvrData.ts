@@ -177,97 +177,97 @@ export function createProjection(input: PropertyProjectionInput): ProjectionData
   };
 }
 
-const allisonProjection = createProjection({
-  homeownerFirstName: "Allison",
-  homeownerFullName: "Allison Smith",
+const templatePlaceholder = createProjection({
+  homeownerFirstName: "[First Name]",
+  homeownerFullName: "[Homeowner Full Name]",
   property: {
-    internalId: "LVR-30A-RE1281",
-    address: "174 Grande Pointe Cir, Rosemary Beach, FL 32461",
-    bedrooms: 4,
-    bathrooms: 4,
-    squareFeet: 2600,
-    city: "Rosemary Beach",
-    state: "FL"
+    internalId: "[Property ID]",
+    address: "[Property Address]",
+    bedrooms: 0,
+    bathrooms: 0,
+    squareFeet: 0,
+    city: "[City]",
+    state: "[ST]"
   },
   projections: {
-    expectedRevenue: 111849,
-    highRevenue: 134219,
-    lowRevenue: 89479
+    expectedRevenue: 0,
+    highRevenue: 0,
+    lowRevenue: 0
   },
   monthlyRevenue: [
-    { month: "Jan", low: 9000, high: 20000 },
-    { month: "Feb", low: 10000, high: 22000 },
-    { month: "Mar", low: 7000, high: 18000 },
-    { month: "Apr", low: 4000, high: 7000 },
-    { month: "May", low: 2000, high: 5000 },
-    { month: "Jun", low: 8000, high: 10000 },
-    { month: "Jul", low: 10000, high: 17000 },
-    { month: "Aug", low: 9000, high: 11000 },
-    { month: "Sep", low: 6000, high: 9000 },
-    { month: "Oct", low: 5000, high: 10000 },
-    { month: "Nov", low: 7000, high: 11000 },
-    { month: "Dec", low: 8000, high: 16000 }
+    { month: "Jan", low: 0, high: 0 },
+    { month: "Feb", low: 0, high: 0 },
+    { month: "Mar", low: 0, high: 0 },
+    { month: "Apr", low: 0, high: 0 },
+    { month: "May", low: 0, high: 0 },
+    { month: "Jun", low: 0, high: 0 },
+    { month: "Jul", low: 0, high: 0 },
+    { month: "Aug", low: 0, high: 0 },
+    { month: "Sep", low: 0, high: 0 },
+    { month: "Oct", low: 0, high: 0 },
+    { month: "Nov", low: 0, high: 0 },
+    { month: "Dec", low: 0, high: 0 }
   ],
   seasonalBreakdown: [
     {
       key: "peak_days",
       label: "Peak Days",
       subtitle: "NYE, Memorial Day, 4th of July, Christmas",
-      daysBookedMin: 13,
-      daysBookedMax: 16,
-      daysAvailable: 16,
-      occupancyMinPct: 80,
-      occupancyMaxPct: 100,
-      adrMin: 700,
-      adrMax: 1050
+      daysBookedMin: 0,
+      daysBookedMax: 0,
+      daysAvailable: 0,
+      occupancyMinPct: 0,
+      occupancyMaxPct: 0,
+      adrMin: 0,
+      adrMax: 0
     },
     {
       key: "winter_season",
       label: "Winter Season",
       subtitle: "Dec 1–Feb 28",
-      daysBookedMin: 9,
-      daysBookedMax: 14,
-      daysAvailable: 79,
-      occupancyMinPct: 11,
-      occupancyMaxPct: 17,
-      adrMin: 300,
-      adrMax: 450
+      daysBookedMin: 0,
+      daysBookedMax: 0,
+      daysAvailable: 0,
+      occupancyMinPct: 0,
+      occupancyMaxPct: 0,
+      adrMin: 0,
+      adrMax: 0
     },
     {
       key: "high_demand",
       label: "High Demand",
       subtitle: "Spring Break, May 20–Aug 15, Labor Day, Thanksgiving",
-      daysBookedMin: 56,
-      daysBookedMax: 84,
-      daysAvailable: 98,
-      occupancyMinPct: 57,
-      occupancyMaxPct: 86,
-      adrMin: 540,
-      adrMax: 810
+      daysBookedMin: 0,
+      daysBookedMax: 0,
+      daysAvailable: 0,
+      occupancyMinPct: 0,
+      occupancyMaxPct: 0,
+      adrMin: 0,
+      adrMax: 0
     },
     {
       key: "high_shoulder",
       label: "High Shoulder",
       subtitle: "Mar 1–May 19",
-      daysBookedMin: 33,
-      daysBookedMax: 49,
-      daysAvailable: 82,
-      occupancyMinPct: 40,
-      occupancyMaxPct: 60,
-      adrMin: 440,
-      adrMax: 660
+      daysBookedMin: 0,
+      daysBookedMax: 0,
+      daysAvailable: 0,
+      occupancyMinPct: 0,
+      occupancyMaxPct: 0,
+      adrMin: 0,
+      adrMax: 0
     },
     {
       key: "low_shoulder",
       label: "Low Shoulder",
       subtitle: "Aug 16–Nov 30",
-      daysBookedMin: 31,
-      daysBookedMax: 46,
-      daysAvailable: 90,
-      occupancyMinPct: 34,
-      occupancyMaxPct: 51,
-      adrMin: 320,
-      adrMax: 480
+      daysBookedMin: 0,
+      daysBookedMax: 0,
+      daysAvailable: 0,
+      occupancyMinPct: 0,
+      occupancyMaxPct: 0,
+      adrMin: 0,
+      adrMax: 0
     }
   ]
 });
@@ -368,7 +368,7 @@ const sarahProjection = createProjection({
 });
 
 const projectionsMap: Record<string, ProjectionData> = {
-  [allisonProjection.meta.slug]: allisonProjection,
+  [templatePlaceholder.meta.slug]: templatePlaceholder,
   [sarahProjection.meta.slug]: sarahProjection
 };
 
@@ -377,11 +377,11 @@ export function getProjectionBySlug(slug: string): ProjectionData | null {
 }
 
 export function getDefaultProjection(): ProjectionData {
-  return allisonProjection;
+  return templatePlaceholder;
 }
 
 export function getAllProjections(): ProjectionData[] {
   return Object.values(projectionsMap);
 }
 
-export const localvrData = allisonProjection;
+export const localvrData = templatePlaceholder;
