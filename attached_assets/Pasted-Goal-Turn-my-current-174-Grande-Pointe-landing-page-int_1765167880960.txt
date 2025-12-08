@@ -1,0 +1,132 @@
+Goal  
+Turn my current 174 Grande Pointe landing page into a reusable “ProjectionPage” template that is driven 100% by JSON data, not hardcoded address, market, or numbers.
+
+Context  
+The repo has:
+
+- data.json (root) with all the projection data
+- client/src/main.tsx
+- client/src/App.tsx
+- client/src/pages/LandingPage.tsx
+- client/src/components/HeroSection.tsx
+- client/src/components/ProjectionSummary.tsx
+- client/src/components/MonthlyRevenueChart.tsx
+- client/src/components/SeasonalityTable.tsx
+- server/storage.ts
+- shared/schema.ts
+- shared/localvrData.ts (if present)
+
+Right now all the copy and numbers are specific to 174 Grande Pointe in 30A. I want that page to stay the same visually, but I want the code to become a generic template that can render any property whose data is in JSON.
+
+Step 1: Update data.json schema for template use
+
+1) Add a meta block for personalization and slug:
+
+"meta": {
+  "slug": "174-grande-pointe-cir-rosemary-beach-fl",
+  "homeownerFirstName": "Allison",
+  "homeownerFullName": "Allison Smith"
+}
+
+2) Keep the existing property, projections, seasonality, monthlyRevenue, trust, and cta blocks as they are now. Do NOT hardcode 174-specific text anywhere in the components. All dynamic content should come from this JSON.
+
+3) Ensure cta contains AE info:
+
+"cta": {
+  "scheduleCallUrl": "...",
+  "aeName": "...",
+  "aeTitle": "...",
+  "aePhone": "...",
+  "aeEmail": "...",
+  "aeHeadshotUrl": "..."
+}
+
+Step 2: Define a ProjectionData type and central loader
+
+1) In shared/schema.ts, define a ProjectionData interface that matches data.json, including:
+
+- meta: { slug, homeownerFirstName, homeownerFullName }
+- property: { address, city, state, market, bedrooms, bathrooms, squareFeet, etc. }
+- projections: { expectedAnnualRevenue, lowAnnualRevenue, highAnnualRevenue, disclaimer }
+- monthlyRevenue: whatever structure data.json uses now
+- seasonality: whatever structure data.json uses now
+- trust: stats and pillars
+- cta: AE info as above
+
+2) In shared/localvrData.ts (or create this file if it does not exist):
+
+- Import the JSON for 174 as sample data.
+- Export a function like:
+
+export function getProjectionBySlug(slug: string): ProjectionData | null {
+  // For now, only support 174 by matching meta.slug.
+  // Later I will add more properties.
+}
+
+For now, hardcode the mapping: if slug equals the meta.slug, return the imported data.
+
+Step 3: Refactor the React side into a template
+
+1) Create a ProjectionPage component that takes a single prop:
+
+type ProjectionPageProps = { data: ProjectionData };
+
+function ProjectionPage({ data }: ProjectionPageProps) {
+  // Use data.meta, data.property, data.projections, data.monthlyRevenue,
+  // data.seasonality, data.trust, and data.cta to render the whole page.
+}
+
+2) Update the existing components to consume data instead of hardcoded strings:
+
+- HeroSection.tsx:
+  - Accept props like { data: ProjectionData } or a narrower subset.
+  - Use data.meta.homeownerFirstName for the headline, for example:
+    "{homeownerFirstName}, Your Custom Rental Projections Are Ready"
+  - Use data.cta fields for AE name, title, email, phone, headshot, and Calendly link.
+  - Use data.property for the property snapshot (BR, BA, sq ft, city, market).
+
+- ProjectionSummary.tsx:
+  - Use data.projections.lowAnnualRevenue, expectedAnnualRevenue, and highAnnualRevenue.
+  - Do not hardcode any specific dollar values.
+
+- MonthlyRevenueChart.tsx:
+  - Use data.monthlyRevenue only.
+  - Remove any hardcoded month values or amounts.
+  - The chart should iterate over whatever shape monthlyRevenue has in data.json.
+
+- SeasonalityTable.tsx:
+  - Use data.seasonality only.
+  - Remove any hardcoded season names, ranges, or ADRs.
+  - The table should iterate the seasonality structure in data.json.
+
+3) LandingPage.tsx should now be a thin wrapper:
+
+- It receives a ProjectionData object (from props or a hook) and passes it down to ProjectionPage.
+- For now, import the 174 data directly and call <ProjectionPage data={projectionData} />.
+
+4) App.tsx and main.tsx:
+
+- Make sure the app renders the LandingPage with the sample data for now.
+- Later I will wire in routing by slug and server-side loading; for this pass, the main requirement is that nothing is hardcoded and all dynamic values come from ProjectionData.
+
+Step 4: Clean up hardcoded 174 references
+
+Search the entire client codebase for:
+
+- "174 Grande"
+- "Grande Pointe"
+- "Inlet Beach"
+- "Allison"
+- Any of the specific projection numbers
+
+Remove all of these literals from TSX files. They should only appear inside data.json. The components must read from the ProjectionData prop instead.
+
+End result
+
+- data.json holds example data for 174.
+- shared/schema.ts defines ProjectionData.
+- shared/localvrData.ts can return ProjectionData by slug (for now only 174).
+- ProjectionPage is a pure template: it gets data: ProjectionData and renders the page.
+- HeroSection, ProjectionSummary, MonthlyRevenueChart, and SeasonalityTable read only from data props, never from hardcoded strings.
+
+Please implement these changes and show me the updated ProjectionData interface and the ProjectionPage component so I can verify everything is template-driven.
