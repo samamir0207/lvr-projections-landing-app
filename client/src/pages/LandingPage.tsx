@@ -81,7 +81,7 @@ export default function LandingPage() {
 
         {/* Stats Bar */}
         <section className="bg-[#333333] px-5 py-8" data-testid="section-stats">
-          <div className="flex flex-wrap justify-center items-start w-full">
+          <div className="flex flex-wrap justify-center items-start w-full pl-8">
             <div className="text-center px-6 md:px-10">
               <p className="text-[20px] font-bold text-[#d3bda2] leading-[28px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
               <p className="text-[12px] font-bold text-white leading-[16px]">Homeowner</p>
