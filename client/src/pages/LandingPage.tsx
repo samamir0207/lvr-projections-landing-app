@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { localvrData } from "@shared/localvrData";
 import aeHeadshot from "@assets/generated_images/kaci_wolkers_professional_headshot.png";
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
 import property2Image from "@assets/14_1765164174413.jpg";
 import property3Image from "@assets/IMG_2398_(1)_1765164502296.jpg";
+import { UserCheck, ShieldCheck, SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,7 +25,23 @@ ChartJS.register(
   Legend
 );
 
+const testimonials = [
+  {
+    quote: "Switching to LocalVR was the best decision we've made. Their local team is responsive, proactive, and truly cares about our home.",
+    name: "Marc"
+  },
+  {
+    quote: "You weren't one of the big companies. You were growing, but still small enough to feel personal.",
+    name: "Beth"
+  },
+  {
+    quote: "I'm very impressed with LocalVR's ability to generate revenue. They have exceeded my expectations and I not only cover the mortgage and expenses, but I am cash-flowing significantly more on this property than I would with other property managers.",
+    name: "Lucy"
+  }
+];
+
 export default function LandingPage() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const { property, projections, trust, cta, monthlyRevenue, seasonalBreakdown } = localvrData;
 
   const formatCurrency = (value: number) => {
@@ -479,64 +497,97 @@ export default function LandingPage() {
         <section className="bg-[#333333] px-5 md:px-[150px] py-5" data-testid="section-benefits-grid">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
-                alt="" 
-                className="w-[35px] h-auto"
-              />
+              <div className="w-[35px] h-[35px] flex items-center justify-center">
+                <UserCheck className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
+              </div>
               <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Dynamic Pricing</p>
+                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Elite Guest Matchmaking</p>
                 <p className="text-[10px] text-white leading-[15px] mt-1">
-                  Our Local Pricing algorithm adjusts rates in real-time based on demand, events, and market conditions.
+                  We rigorously screen and match guests so your home is occupied by respectful, high-value travelers who treat it like their own.
                 </p>
               </div>
             </div>
             <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
-                alt="" 
-                className="w-[35px] h-auto"
-              />
+              <div className="w-[35px] h-[35px] flex items-center justify-center">
+                <ShieldCheck className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
+              </div>
               <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Guest Screening</p>
+                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Premium Home Protection</p>
                 <p className="text-[10px] text-white leading-[15px] mt-1">
-                  Three-level vetting process ensures only quality guests stay in your home.
+                  We prioritize your home's long-term value with detailed inspections, proactive maintenance coordination, and $10,000 in damage protection per reservation.
                 </p>
               </div>
             </div>
             <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
-                alt="" 
-                className="w-[35px] h-auto"
-              />
+              <div className="w-[35px] h-[35px] flex items-center justify-center">
+                <SlidersHorizontal className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
+              </div>
               <div className="mt-2 pl-1">
-                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">24/7 Support</p>
+                <p className="text-[11px] font-bold text-[#d3bda2] leading-[16.5px]">Tailored Management for Your Home</p>
                 <p className="text-[10px] text-white leading-[15px] mt-1">
-                  Round-the-clock guest support and owner communication for peace of mind.
+                  Your home and goals are unique. We tailor pricing, marketing, and owner use to your specific property, rather than forcing it into a generic template.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Testimonial Section */}
+        {/* Testimonial Carousel Section */}
         <section 
-          className="bg-cover bg-center py-[100px] px-5"
+          className="relative bg-cover bg-center py-[80px] px-5"
           style={{ backgroundImage: 'url(https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_84651pm.png)' }}
           data-testid="section-testimonial"
         >
-          <div className="text-center">
-            <img 
-              src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/quote_icon.png" 
-              alt="" 
-              className="w-[49px] mx-auto mb-4"
-            />
-            <p className="text-[14px] text-white leading-[21px]">
-              "LocalVR has everything those large companies did plus more<br />
-              communication, customer service, and care for our home."
-            </p>
-            <p className="text-[14px] text-white leading-[21px]">- Judy</p>
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40" />
+          
+          <div className="relative max-w-[600px] mx-auto">
+            {/* Quote icon */}
+            <div className="text-center mb-6">
+              <span className="text-[60px] text-[#d3bda2] leading-none font-serif">"</span>
+            </div>
+            
+            {/* Testimonial content */}
+            <div className="text-center min-h-[120px] flex flex-col justify-center">
+              <p className="text-[16px] text-white leading-[24px] italic mb-4">
+                {testimonials[currentTestimonial].quote}
+              </p>
+              <p className="text-[14px] text-[#d3bda2] font-bold">
+                - {testimonials[currentTestimonial].name}
+              </p>
+            </div>
+            
+            {/* Navigation dots */}
+            <div className="flex justify-center items-center gap-4 mt-8">
+              <button 
+                onClick={() => setCurrentTestimonial((prev) => prev === 0 ? testimonials.length - 1 : prev - 1)}
+                className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                data-testid="button-testimonial-prev"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === currentTestimonial ? 'bg-[#d3bda2]' : 'bg-white/40'
+                    }`}
+                    data-testid={`button-testimonial-dot-${index}`}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={() => setCurrentTestimonial((prev) => prev === testimonials.length - 1 ? 0 : prev + 1)}
+                className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                data-testid="button-testimonial-next"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </section>
 
