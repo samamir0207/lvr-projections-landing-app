@@ -4,7 +4,7 @@ import aeHeadshot from "@assets/generated_images/kaci_wolkers_professional_heads
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
 import property2Image from "@assets/14_1765164174413.jpg";
 import property3Image from "@assets/IMG_2398_(1)_1765164502296.jpg";
-import { UserCheck, ShieldCheck, SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
+import { UserCheck, ShieldCheck, SlidersHorizontal, ChevronLeft, ChevronRight, TrendingUp, MapPin, Gem } from "lucide-react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -336,58 +336,41 @@ export default function LandingPage() {
         </section>
 
         {/* Why You Can Trust Section */}
-        <section className="bg-white px-5 pt-8" data-testid="section-trust-header">
-          <div className="text-center">
-            <p className="text-[22px] font-bold text-[#333333] leading-[30px]">
+        <section className="bg-white px-5 pt-12 pb-8" data-testid="section-trust-header">
+          <div className="text-center mb-8">
+            <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
               Why You Can Trust These Projections
             </p>
           </div>
-        </section>
-
-        {/* Trust Pillars */}
-        <section className="bg-white px-5 md:px-[100px] py-8" data-testid="section-trust-pillars">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
-                alt="" 
-                className="w-[40px] h-auto"
-              />
-              <div className="mt-3 pl-1">
-                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Real Data,</p>
-                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Not Guesswork</p>
-                <p className="text-[12px] text-[#333333] leading-[18px] mt-2">
-                  We use anonymized performance data from comparable homes we manage in your market, combined with third-party short-term rental market data.
-                </p>
+          
+          {/* Trust Pillars */}
+          <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-trust-pillars">
+            <div className="bg-[#f7f4f0] p-6 rounded-lg text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
+                <TrendingUp className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
+              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Real Data, Not Guesswork</p>
+              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+                We use anonymized performance data from comparable homes we manage in your market, combined with third-party short-term rental market data.
+              </p>
             </div>
-            <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
-                alt="" 
-                className="w-[40px] h-auto"
-              />
-              <div className="mt-3 pl-1">
-                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Market-Specific,</p>
-                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Not Nationwide Averages</p>
-                <p className="text-[12px] text-[#333333] leading-[18px] mt-2">
-                  Every projection incorporates local demand patterns, seasonality, events, and rate trends for your specific neighborhood.
-                </p>
+            <div className="bg-[#f7f4f0] p-6 rounded-lg text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
+                <MapPin className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
+              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Market-Specific, Not Nationwide Averages</p>
+              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+                Every projection incorporates local demand patterns, seasonality, events, and rate trends for your specific neighborhood.
+              </p>
             </div>
-            <div className="text-left">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
-                alt="" 
-                className="w-[40px] h-auto"
-              />
-              <div className="mt-3 pl-1">
-                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Luxury-Focused</p>
-                <p className="text-[14px] font-bold text-[#333333] leading-[20px]">Approach</p>
-                <p className="text-[12px] text-[#333333] leading-[18px] mt-2">
-                  Our LocalLuxe program focuses on high-value guests, premium pricing, and protecting your home's long-term value.
-                </p>
+            <div className="bg-[#f7f4f0] p-6 rounded-lg text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
+                <Gem className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
+              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Luxury-Focused Approach</p>
+              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+                Our LocalLuxe program focuses on high-value guests, premium pricing, and protecting your home's long-term value.
+              </p>
             </div>
           </div>
         </section>
