@@ -1,5 +1,8 @@
 import { localvrData } from "@shared/localvrData";
 import aeHeadshot from "@assets/generated_images/kaci_wolkers_professional_headshot.png";
+import property1Image from "@assets/17_(1)_1765163999447.jpg";
+import property2Image from "@assets/14_1765164174413.jpg";
+import property3Image from "@assets/IMG_2398_(1)_1765164502296.jpg";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -224,10 +227,6 @@ export default function LandingPage() {
 
           {/* Chart and Table Section */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
-            <p className="text-[20px] font-bold text-[#333333] leading-[28px] mb-6 text-center">
-              How This Breaks Down
-            </p>
-            
             <div data-testid="section-chart">
               {/* Bar Chart */}
               <div className="h-[280px] mb-8">
@@ -384,26 +383,80 @@ export default function LandingPage() {
         {/* Property Cards */}
         <section className="bg-[#f7f4f0] px-5 md:px-[150px] py-5" data-testid="section-portfolio-cards">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white p-4">
-                <img 
-                  src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a_recovered07.jpg" 
-                  alt="Property"
-                  className="w-full h-auto"
-                />
-                <div className="mt-3">
-                  <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
-                    South Lake Escape | Indoor Pool + Movie Theater
-                  </p>
-                  <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
-                    South Lake Tahoe, CA<br />13 bedrooms | 15 bathrooms
-                  </p>
-                  <p className="text-[10px] text-[#333333] leading-[15px] mt-2 underline">
-                    View Luxe Property
-                  </p>
-                </div>
+            {/* Property 1 */}
+            <div className="bg-white p-4">
+              <img 
+                src={property1Image}
+                alt="8BR Escape with Pool, Hot Tub and Game Room"
+                className="w-full h-auto"
+              />
+              <div className="mt-3">
+                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
+                  8BR Escape with Pool, Hot Tub and Game Room
+                </p>
+                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
+                  Destin, FL<br />8 bedrooms | 8.5 bathrooms
+                </p>
+                <a 
+                  href="https://stay.golocalvr.com/property/67546fef23c1900012d5832c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
+                >
+                  View Property
+                </a>
               </div>
-            ))}
+            </div>
+            
+            {/* Property 2 */}
+            <div className="bg-white p-4">
+              <img 
+                src={property2Image}
+                alt="Gulf Coast Retreat with Pool"
+                className="w-full h-auto"
+              />
+              <div className="mt-3">
+                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
+                  Gulf Coast Retreat with Pool &lt; 1 Mile to Beach
+                </p>
+                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
+                  Blue Mountain Beach, FL<br />4 bedrooms | 4 bathrooms
+                </p>
+                <a 
+                  href="https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
+                >
+                  View Property
+                </a>
+              </div>
+            </div>
+            
+            {/* Property 3 */}
+            <div className="bg-white p-4">
+              <img 
+                src={property3Image}
+                alt="New 30A Retreat Beach Access"
+                className="w-full h-auto"
+              />
+              <div className="mt-3">
+                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
+                  New 30A Retreat Beach Access Hot Tub & Guest Suite
+                </p>
+                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
+                  Seacrest Beach, FL<br />6 bedrooms | 6.5 bathrooms
+                </p>
+                <a 
+                  href="https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
+                >
+                  View Property
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
