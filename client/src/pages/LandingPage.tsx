@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { localvrData } from "@shared/localvrData";
-import aeHeadshot from "@assets/generated_images/kaci_wolkers_professional_headshot.png";
+import aeHeadshot from "@assets/NEW-HIRE-30a-EDIT-11-10-2025a_1765166969752.png";
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
 import property2Image from "@assets/14_1765164174413.jpg";
 import property3Image from "@assets/IMG_2398_(1)_1765164502296.jpg";
@@ -176,26 +176,26 @@ export default function LandingPage() {
         </section>
 
         {/* AE Contact Section */}
-        <section className="bg-[#f7f4f0] px-5 py-5" data-testid="section-ae-contact">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-5">
+        <section className="bg-[#f7f4f0] px-5 py-6" data-testid="section-ae-contact">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex-shrink-0">
               <img 
                 src={aeHeadshot}
                 alt={cta.aeName}
-                className="w-[119px] h-[119px] object-cover rounded-full"
+                className="w-[160px] h-[160px] object-cover rounded-full"
                 data-testid="img-ae-headshot"
               />
             </div>
             <div className="text-center md:text-left">
-              <p className="text-[14px] font-bold text-[#333333] leading-[21px]" data-testid="text-ae-name">
+              <p className="text-[22px] font-bold text-[#333333] leading-[28px]" data-testid="text-ae-name">
                 {cta.aeName}
               </p>
-              <p className="text-[10px] font-bold italic text-[#333333] leading-[15px]" data-testid="text-ae-title">
+              <p className="text-[16px] font-bold italic text-[#333333] leading-[22px]" data-testid="text-ae-title">
                 {cta.aeTitle}
               </p>
-              <div className="mt-2 space-y-1">
-                <p className="text-[10px] text-[#333333] flex items-center justify-center md:justify-start gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="mt-3 space-y-2">
+                <p className="text-[15px] text-[#333333] flex items-center justify-center md:justify-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[20px] w-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
                     <path d="M12 18h.01"/>
                   </svg>
@@ -203,10 +203,10 @@ export default function LandingPage() {
                 </p>
                 <a 
                   href={`mailto:${cta.aeEmail}`}
-                  className="text-[10px] text-[#333333] flex items-center justify-center md:justify-start gap-2 hover:underline"
+                  className="text-[15px] text-[#333333] flex items-center justify-center md:justify-start gap-3 hover:underline"
                   data-testid="link-ae-email"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[20px] w-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect width="20" height="16" x="2" y="4" rx="2"/>
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                   </svg>
