@@ -118,23 +118,29 @@ export default function LandingPage() {
         </section>
 
         {/* Projected Earnings Section */}
-        <section className="bg-[#f7f4f0] px-5 pt-5" data-testid="section-projection-intro">
-          <div className="text-center py-5">
-            <p className="text-[16px] font-bold text-[#333333] leading-[19.2px]">
+        <section className="bg-[#f7f4f0] px-5 py-10" data-testid="section-projection-intro">
+          <div className="text-center max-w-[600px] mx-auto">
+            <p className="text-[20px] font-bold text-[#333333] leading-[28px]">
               Your Projected Earnings for
             </p>
-            <p className="text-[14px] font-bold italic text-[#d3bda2] leading-[16.8px] mt-1" data-testid="text-property-address">
+            <p className="text-[18px] font-bold italic text-[#d3bda2] leading-[24px] mt-2" data-testid="text-property-address">
               {property.address.split(',')[0]}
             </p>
-            <p className="text-[10px] font-bold text-[#333333] leading-[12px]" data-testid="text-property-details">
-              {property.bedrooms}BR | {property.bathrooms}BA | {property.squareFeet.toLocaleString()} sq ft | {property.market}
+            <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-1" data-testid="text-property-details">
+              {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms | {property.squareFeet.toLocaleString()} sq ft
             </p>
-            <div className="mt-4">
-              <p className="text-[10px] text-[#333333] leading-[15px]">
+            
+            <div className="mt-8 bg-white rounded-lg p-6 shadow-sm">
+              <p className="text-[13px] text-[#333333] leading-[20px]">
                 Based on our revenue experts' analysis, we estimate your home can earn
               </p>
-              <p className="text-[10px] text-[#333333] leading-[15px]" data-testid="text-revenue-range">
-                {formatCurrency(projections.lowRevenue)} to {formatCurrency(projections.highRevenue)} per year in rental revenue under professional management.
+              <div className="mt-4 flex items-center justify-center gap-3">
+                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
+                <span className="text-[16px] text-[#333333]/60">to</span>
+                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
+              </div>
+              <p className="text-[13px] text-[#333333] leading-[20px] mt-2">
+                per year in rental revenue under professional management.
               </p>
             </div>
           </div>
