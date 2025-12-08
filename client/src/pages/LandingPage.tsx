@@ -221,11 +221,11 @@ export default function LandingPage() {
             </div>
             
             {/* Revenue Estimate Highlight */}
-            <div className="text-center py-6 px-6 bg-[#f7f4f0]/50">
-              <p className="text-[13px] text-[#333333] mb-2">Estimated Annual Revenue</p>
+            <div className="text-center py-6 px-6 bg-[#333333]">
+              <p className="text-[13px] text-white/80 mb-2">Estimated Annual Revenue</p>
               <div className="inline-flex items-center gap-3">
                 <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
-                <span className="text-[16px] text-[#333333]/60">to</span>
+                <span className="text-[16px] text-white/60">to</span>
                 <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
               </div>
             </div>
