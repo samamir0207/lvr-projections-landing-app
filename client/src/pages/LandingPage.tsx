@@ -244,9 +244,7 @@ export default function LandingPage() {
         <section className="bg-[#333333] px-5 pb-6 pt-2" data-testid="section-primary-cta">
           <div className="flex justify-center">
             <a 
-              href={cta.scheduleCallUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact-form"
               className="inline-block bg-[#d3bda2] text-[#333333] text-[12px] font-bold py-[12px] px-6 rounded-full leading-[14px]"
               data-testid="button-primary-cta"
             >
@@ -358,9 +356,7 @@ export default function LandingPage() {
               numbers and what they mean for your home?
             </p>
             <a 
-              href={cta.scheduleCallUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact-form"
               className="inline-block bg-[#333333] text-[#f7f4f0] text-[14px] font-bold py-3 px-8 rounded-full"
               data-testid="button-gold-cta"
             >
@@ -599,7 +595,7 @@ export default function LandingPage() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="bg-[#f7f4f0] px-5 md:px-[60px] py-12" data-testid="section-contact-form">
+        <section id="contact-form" className="bg-[#f7f4f0] px-5 md:px-[60px] py-12" data-testid="section-contact-form">
           <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-stretch gap-10">
             {/* Home Image */}
             <div className="w-full md:w-1/2">
@@ -776,27 +772,25 @@ export default function LandingPage() {
         </section>
 
         {/* Final CTA Footer */}
-        <section className="bg-[#f7f4f0] px-5 py-8" data-testid="section-footer">
+        <section className="bg-[#f7f4f0] px-5 py-10" data-testid="section-footer">
           <div className="text-center">
             <img 
               src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/logo02.png" 
               alt="LocalVR Logo" 
-              className="mx-auto w-[150px] mb-4"
+              className="mx-auto w-[150px] mb-5"
             />
-            <p className="text-[10px] text-[#333333] leading-[15px] mb-4">
+            <p className="text-[14px] text-[#333333] leading-[20px] mb-5">
               {cta.aeName} | {cta.aeTitle}<br />
               {cta.aePhone} | {cta.aeEmail}
             </p>
             <a 
-              href={cta.scheduleCallUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-[#d3bda2] text-[#333333] text-[10px] font-bold py-[10px] px-5 rounded-full leading-[12px]"
+              href="#contact-form"
+              className="inline-block bg-[#d3bda2] text-[#333333] text-[14px] font-bold py-3 px-6 rounded-full"
               data-testid="button-footer-cta"
             >
-              Schedule Your Revenue Review Call
+              Schedule My Revenue Review Call Now
             </a>
-            <p className="text-[8px] text-[#333333] leading-[12px] mt-6">
+            <p className="text-[11px] text-[#333333] leading-[16px] mt-8">
               © 2025 LocalVR. All rights reserved.
             </p>
           </div>
