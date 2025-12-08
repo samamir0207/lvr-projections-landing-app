@@ -314,7 +314,7 @@ export default function LandingPage() {
                       <td className="py-3 pr-2 font-bold text-[#333333]">Occupancy</td>
                       {seasonalBreakdown.map((season) => (
                         <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
-                          {Math.round(season.occupancyMin * 100)}% - {Math.round(season.occupancyMax * 100)}%
+                          {season.occupancyMinPct}% - {season.occupancyMaxPct}%
                         </td>
                       ))}
                     </tr>
