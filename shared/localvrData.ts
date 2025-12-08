@@ -51,20 +51,83 @@ export const localvrData = {
     }
   },
 
-  monthlyRevenue: {
-    jan: 1784,
-    feb: 3463,
-    mar: 10767,
-    apr: 9704,
-    may: 13610,
-    jun: 19261,
-    jul: 22669,
-    aug: 9491,
-    sep: 6376,
-    oct: 6751,
-    nov: 3563,
-    dec: 4409
-  },
+  monthlyRevenue: [
+    { month: "Jan", low: 9000, high: 20000 },
+    { month: "Feb", low: 10000, high: 22000 },
+    { month: "Mar", low: 7000, high: 18000 },
+    { month: "Apr", low: 4000, high: 7000 },
+    { month: "May", low: 2000, high: 5000 },
+    { month: "Jun", low: 8000, high: 10000 },
+    { month: "Jul", low: 10000, high: 17000 },
+    { month: "Aug", low: 9000, high: 11000 },
+    { month: "Sep", low: 6000, high: 9000 },
+    { month: "Oct", low: 5000, high: 10000 },
+    { month: "Nov", low: 7000, high: 11000 },
+    { month: "Dec", low: 8000, high: 16000 }
+  ],
+
+  seasonalBreakdown: [
+    {
+      key: "peak",
+      label: "Peak Days",
+      subtitle: "Christmas, NYE, Sundance",
+      daysBookedMin: 13,
+      daysBookedMax: 16,
+      daysAvailable: 16,
+      occupancyMin: 0.80,
+      occupancyMax: 1.00,
+      adrMin: 760,
+      adrMax: 1140
+    },
+    {
+      key: "winter",
+      label: "Winter",
+      subtitle: "Christmas, NYE, Sundance",
+      daysBookedMin: 13,
+      daysBookedMax: 16,
+      daysAvailable: 16,
+      occupancyMin: 0.80,
+      occupancyMax: 1.00,
+      adrMin: 760,
+      adrMax: 1140
+    },
+    {
+      key: "summer",
+      label: "Summer",
+      subtitle: "Christmas, NYE, Sundance",
+      daysBookedMin: 13,
+      daysBookedMax: 16,
+      daysAvailable: 16,
+      occupancyMin: 0.80,
+      occupancyMax: 1.00,
+      adrMin: 760,
+      adrMax: 1140
+    },
+    {
+      key: "high_shoulder",
+      label: "High Shoulder",
+      subtitle: "Christmas, NYE, Sundance",
+      daysBookedMin: 13,
+      daysBookedMax: 16,
+      daysAvailable: 16,
+      occupancyMin: 0.80,
+      occupancyMax: 1.00,
+      adrMin: 760,
+      adrMax: 1140
+    },
+    {
+      key: "low_shoulder",
+      label: "Low Shoulder",
+      subtitle: "Christmas, NYE, Sundance",
+      daysBookedMin: 13,
+      daysBookedMax: 16,
+      daysAvailable: 16,
+      occupancyMin: 0.80,
+      occupancyMax: 1.00,
+      adrMin: 760,
+      adrMax: 1140
+    }
+  ],
 
   aiNarrativePlaceholders: {
     summary: "Based on our comprehensive market analysis and proprietary Local Pricing™ algorithm, your property at 174 Grande Pointe Cir is positioned in one of the most desirable vacation rental markets in the Southeast. The combination of your property's premium location in Rosemary Beach, its 4-bedroom configuration, and current market dynamics suggests strong revenue potential year-round with particular strength during peak summer months.",

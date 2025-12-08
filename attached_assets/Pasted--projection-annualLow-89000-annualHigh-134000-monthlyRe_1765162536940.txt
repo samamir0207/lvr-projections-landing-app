@@ -1,0 +1,96 @@
+{
+  "projection": {
+    "annualLow": 89000,
+    "annualHigh": 134000,
+
+    "monthlyRevenue": [
+      { "month": "Jan", "low": 9000,  "high": 20000 },
+      { "month": "Feb", "low": 10000, "high": 22000 },
+      { "month": "Mar", "low": 7000,  "high": 18000 },
+      { "month": "Apr", "low": 4000,  "high": 7000  },
+      { "month": "May", "low": 2000,  "high": 5000  },
+      { "month": "Jun", "low": 8000,  "high": 10000 },
+      { "month": "Jul", "low": 10000, "high": 17000 },
+      { "month": "Aug", "low": 9000,  "high": 11000 },
+      { "month": "Sept","low": 6000,  "high": 9000  },
+      { "month": "Oct", "low": 5000,  "high": 10000 },
+      { "month": "Nov", "low": 7000,  "high": 11000 },
+      { "month": "Dec", "low": 8000,  "high": 16000 }
+    ]
+  },
+
+  "seasonalBreakdown": {
+    "columns": [
+      {
+        "key": "peak",
+        "label": "Peak Days",
+        "subtitle": "Christmas, NYE, Sundance",
+        "stats": {
+          "daysBookedMin": 13,
+          "daysBookedMax": 16,
+          "daysAvailable": 16,
+          "occupancyMin": 0.80,
+          "occupancyMax": 1.00,
+          "adrMin": 760,
+          "adrMax": 1140
+        }
+      },
+      {
+        "key": "winter",
+        "label": "Winter",
+        "subtitle": "Christmas, NYE, Sundance",
+        "stats": {
+          "daysBookedMin": 13,
+          "daysBookedMax": 16,
+          "daysAvailable": 16,
+          "occupancyMin": 0.80,
+          "occupancyMax": 1.00,
+          "adrMin": 760,
+          "adrMax": 1140
+        }
+      },
+      {
+        "key": "summer",
+        "label": "Summer",
+        "subtitle": "Christmas, NYE, Sundance",
+        "stats": {
+          "daysBookedMin": 13,
+          "daysBookedMax": 16,
+          "daysAvailable": 16,
+          "occupancyMin": 0.80,
+          "occupancyMax": 1.00,
+          "adrMin": 760,
+          "adrMax": 1140
+        }
+      },
+      {
+        "key": "high_shoulder",
+        "label": "High Shoulder",
+        "subtitle": "Christmas, NYE, Sundance",
+        "stats": {
+          "daysBookedMin": 13,
+          "daysBookedMax": 16,
+          "daysAvailable": 16,
+          "occupancyMin": 0.80,
+          "occupancyMax": 1.00,
+          "adrMin": 760,
+          "adrMax": 1140
+        }
+      },
+      {
+        "key": "low_shoulder",
+        "label": "Low Shoulder",
+        "subtitle": "Christmas, NYE, Sundance",
+        "stats": {
+          "daysBookedMin": 13,
+          "daysBookedMax": 16,
+          "daysAvailable": 16,
+          "occupancyMin": 0.80,
+          "occupancyMax": 1.00,
+          "adrMin": 760,
+          "adrMax": 1140
+        }
+      }
+    ]
+  }
+}

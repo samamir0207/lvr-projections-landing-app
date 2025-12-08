@@ -1,8 +1,27 @@
 import { localvrData } from "@shared/localvrData";
 import aeHeadshot from "@assets/generated_images/kaci_wolkers_professional_headshot.png";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function LandingPage() {
-  const { property, projections, trust, cta } = localvrData;
+  const { property, projections, trust, cta, monthlyRevenue, seasonalBreakdown } = localvrData;
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -11,6 +30,70 @@ export default function LandingPage() {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
+  };
+
+  const chartData = {
+    labels: monthlyRevenue.map(m => m.month),
+    datasets: [
+      {
+        label: 'Low Estimate',
+        data: monthlyRevenue.map(m => m.low),
+        backgroundColor: '#d3bda2',
+        borderRadius: 2,
+      },
+      {
+        label: 'High Estimate',
+        data: monthlyRevenue.map(m => m.high),
+        backgroundColor: '#333333',
+        borderRadius: 2,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context: { dataset: { label: string }; parsed: { y: number } }) {
+            return `${context.dataset.label}: ${formatCurrency(context.parsed.y)}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: '#333333',
+          font: {
+            size: 11,
+          }
+        }
+      },
+      y: {
+        grid: {
+          color: '#e5e5e5',
+          drawBorder: false,
+        },
+        ticks: {
+          color: '#333333',
+          font: {
+            size: 11,
+          },
+          callback: function(value: number) {
+            return '$' + (value / 1000) + 'k';
+          }
+        },
+        max: 25000,
+      }
+    }
   };
 
   return (
@@ -147,56 +230,110 @@ export default function LandingPage() {
         </section>
 
         {/* How This Breaks Down - Side by Side Layout */}
-        <section className="bg-white px-5 md:px-10 py-8" data-testid="section-breakdown">
+        <section className="bg-white px-5 md:px-8 py-10" data-testid="section-breakdown">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Left Column - Title and Icons */}
-            <div className="md:w-[280px] flex-shrink-0">
-              <p className="text-[20px] font-bold text-[#333333] leading-[28px] mb-6">
+            <div className="md:w-[220px] flex-shrink-0">
+              <p className="text-[22px] font-bold text-[#333333] leading-[30px] mb-8">
                 How This Projection Breaks Down
               </p>
               
-              <div className="space-y-6">
-                <div className="flex items-start gap-3">
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
                   <img 
                     src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a06.png" 
                     alt="" 
-                    className="w-[30px] h-auto flex-shrink-0"
+                    className="w-[28px] h-auto flex-shrink-0 mt-1"
                   />
-                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                  <p className="text-[13px] text-[#333333] leading-[20px]">
                     Built from more than a decade of performance data in your specific local rental market.
                   </p>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-4">
                   <img 
                     src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a04.png" 
                     alt="" 
-                    className="w-[30px] h-auto flex-shrink-0"
+                    className="w-[28px] h-auto flex-shrink-0 mt-1"
                   />
-                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                  <p className="text-[13px] text-[#333333] leading-[20px]">
                     Powered by LocalVR's proprietary Local Pricing algorithm for dynamic rate optimization.
                   </p>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-4">
                   <img 
                     src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/rental_projection_ready_page_1262025a05.png" 
                     alt="" 
-                    className="w-[30px] h-auto flex-shrink-0"
+                    className="w-[28px] h-auto flex-shrink-0 mt-1"
                   />
-                  <p className="text-[12px] text-[#333333] leading-[18px]">
+                  <p className="text-[13px] text-[#333333] leading-[20px]">
                     Seasonal demand patterns analyzed for peak, shoulder, and off-peak periods.
                   </p>
                 </div>
               </div>
             </div>
             
-            {/* Right Column - Chart */}
+            {/* Right Column - Chart and Table */}
             <div className="flex-1" data-testid="section-chart">
-              <img 
-                src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/screenshot_20251207_at_92903am.png" 
-                alt="Revenue Chart"
-                className="w-full h-auto"
-                data-testid="img-chart"
-              />
+              {/* Bar Chart */}
+              <div className="h-[280px] mb-8">
+                <Bar data={chartData} options={chartOptions as any} />
+              </div>
+              
+              {/* Seasonal Breakdown Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-[11px]" data-testid="table-seasonal">
+                  <thead>
+                    <tr className="border-b border-[#333333]">
+                      <th className="text-left py-2 pr-2 font-bold text-[#333333]"></th>
+                      {seasonalBreakdown.map((season) => (
+                        <th key={season.key} className="text-center py-2 px-2 font-bold text-[#333333]">
+                          <div>{season.label}</div>
+                          <div className="font-normal text-[10px] text-[#333333]/60 italic">{season.subtitle}</div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-[#e5e5e5]">
+                      <td className="py-3 pr-2 font-bold text-[#333333]">Days Booked</td>
+                      {seasonalBreakdown.map((season) => (
+                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                          {season.daysBookedMin}-{season.daysBookedMax}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr className="border-b border-[#e5e5e5]">
+                      <td className="py-3 pr-2 font-bold text-[#333333]">Days Available</td>
+                      {seasonalBreakdown.map((season) => (
+                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                          {season.daysAvailable}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr className="border-b border-[#e5e5e5]">
+                      <td className="py-3 pr-2 font-bold text-[#333333]">Occupancy</td>
+                      {seasonalBreakdown.map((season) => (
+                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                          {Math.round(season.occupancyMin * 100)}% - {Math.round(season.occupancyMax * 100)}%
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="py-3 pr-2 font-bold text-[#333333]">Average Daily Rate</td>
+                      {seasonalBreakdown.map((season) => (
+                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                          ${season.adrMin.toLocaleString()} - ${season.adrMax.toLocaleString()}
+                        </td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              {/* Disclaimer */}
+              <p className="text-[9px] text-[#333333]/60 leading-[14px] mt-6 text-center">
+                Projections are estimates based on historical performance in comparable homes and current market conditions. Actual performance may vary due to home condition, regulations, owner use, pricing decisions, and broader market trends. This is not a financial guarantee.
+              </p>
             </div>
           </div>
         </section>
