@@ -378,7 +378,7 @@ export default function LandingPage() {
               See Homes Like Yours in Our Collection
             </p>
             <p className="text-[10px] font-bold text-[#333333] leading-[12px]">
-              We manage a curated collection of premium and luxury homes in 30A and other premier markets.
+              We manage a curated collection of premium and luxury homes across the Emerald Coast.
             </p>
           </div>
         </section>
@@ -411,32 +411,7 @@ export default function LandingPage() {
               </div>
             </div>
             
-            {/* Property 2 */}
-            <div className="bg-white p-4">
-              <img 
-                src={property2Image}
-                alt="Gulf Coast Retreat with Pool"
-                className="w-full h-auto"
-              />
-              <div className="mt-3">
-                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
-                  Gulf Coast Retreat with Pool &lt; 1 Mile to Beach
-                </p>
-                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
-                  Blue Mountain Beach, FL<br />4 bedrooms | 4 bathrooms
-                </p>
-                <a 
-                  href="https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
-                >
-                  View Property
-                </a>
-              </div>
-            </div>
-            
-            {/* Property 3 */}
+            {/* Property 2 (was Property 3) */}
             <div className="bg-white p-4">
               <img 
                 src={property3Image}
@@ -452,6 +427,31 @@ export default function LandingPage() {
                 </p>
                 <a 
                   href="https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
+                >
+                  View Property
+                </a>
+              </div>
+            </div>
+            
+            {/* Property 3 (was Property 2) */}
+            <div className="bg-white p-4">
+              <img 
+                src={property2Image}
+                alt="Gulf Coast Retreat with Pool"
+                className="w-full h-auto"
+              />
+              <div className="mt-3">
+                <p className="text-[10px] font-bold text-[#333333] leading-[15px]">
+                  Gulf Coast Retreat with Pool &lt; 1 Mile to Beach
+                </p>
+                <p className="text-[10px] text-[#333333] leading-[15px] mt-2">
+                  Blue Mountain Beach, FL<br />4 bedrooms | 4 bathrooms
+                </p>
+                <a 
+                  href="https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] text-[#333333] leading-[15px] mt-2 underline block"
