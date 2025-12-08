@@ -216,17 +216,20 @@ export default function LandingPage() {
             <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-1" data-testid="text-property-details">
               {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms | {property.squareFeet.toLocaleString()} sq ft
             </p>
-            
-            <div className="mt-6 inline-flex items-center gap-3 bg-white rounded-full px-8 py-4 shadow-sm">
-              <span className="text-[13px] text-[#333333]">Estimated annual revenue:</span>
-              <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
-              <span className="text-[14px] text-[#333333]/60">to</span>
-              <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
-            </div>
           </div>
 
           {/* Chart and Table Section */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
+            {/* Revenue Estimate Header */}
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center gap-3">
+                <span className="text-[13px] text-[#333333]">Estimated annual revenue:</span>
+                <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
+                <span className="text-[14px] text-[#333333]/60">to</span>
+                <span className="text-[24px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
+              </div>
+            </div>
+            
             <div data-testid="section-chart">
               {/* Bar Chart */}
               <div className="h-[280px] mb-8">
