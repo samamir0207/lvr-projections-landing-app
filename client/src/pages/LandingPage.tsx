@@ -264,21 +264,21 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         <section className="bg-[#333333] px-5 py-8" data-testid="section-stats">
           <div className="flex flex-wrap justify-center items-start w-full pl-8">
             <div className="text-center px-6 md:px-10">
-              <p className="text-[20px] font-bold text-[#d3bda2] leading-[28px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
-              <p className="text-[12px] font-bold text-white leading-[16px]">Homeowner</p>
-              <p className="text-[12px] font-bold text-white leading-[16px]">Retention</p>
+              <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
+              <p className="text-[14px] font-bold text-white leading-[20px]">Homeowner</p>
+              <p className="text-[14px] font-bold text-white leading-[20px]">Retention</p>
             </div>
-            <div className="hidden md:block w-[1px] h-[60px] bg-[#d3bda2]/50"></div>
+            <div className="hidden md:block w-[1px] h-[70px] bg-[#d3bda2]/50"></div>
             <div className="text-center px-6 md:px-10">
-              <p className="text-[20px] font-bold text-[#d3bda2] leading-[28px]">10+ Years</p>
-              <p className="text-[12px] font-bold text-white leading-[16px]">Managing High-End</p>
-              <p className="text-[12px] font-bold text-white leading-[16px]">Vacation Rentals</p>
+              <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">10+ Years</p>
+              <p className="text-[14px] font-bold text-white leading-[20px]">Managing High-End</p>
+              <p className="text-[14px] font-bold text-white leading-[20px]">Vacation Rentals</p>
             </div>
-            <div className="hidden md:block w-[1px] h-[60px] bg-[#d3bda2]/50"></div>
+            <div className="hidden md:block w-[1px] h-[70px] bg-[#d3bda2]/50"></div>
             <div className="text-center px-6 md:px-10">
-              <p className="text-[20px] font-bold text-[#d3bda2] leading-[28px]">1:10 Ratio</p>
-              <p className="text-[12px] font-bold text-white leading-[16px]">Home Care Experts to</p>
-              <p className="text-[12px] font-bold text-white leading-[16px]">Properties Managed</p>
+              <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">1:10 Ratio</p>
+              <p className="text-[14px] font-bold text-white leading-[20px]">Home Care Experts to</p>
+              <p className="text-[14px] font-bold text-white leading-[20px]">Properties Managed</p>
             </div>
           </div>
         </section>

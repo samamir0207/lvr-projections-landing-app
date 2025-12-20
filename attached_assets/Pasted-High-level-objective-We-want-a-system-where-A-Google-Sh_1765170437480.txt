@@ -1,0 +1,406 @@
+High level objective
+We want a system where:
+A Google Sheet projection calculator generates ProjectionData for a specific property and Lead.
+
+
+Apps Script sends that data as JSON to Replit, which creates or updates a projection landing page.
+
+
+Replit returns and stores a tracking URL that is written back to Salesforce on the Lead record.
+
+
+AEs send normal Salesforce emails that include that tracking URL.
+
+
+When the homeowner clicks the link, Replit logs the click, creates a Salesforce Task for the Lead owner, and redirects to the projection landing page.
+
+
+The projection page uses Google Tag Manager for analytics and sends form submissions to the AE and optionally to Salesforce.
+
+
+The Replit app already has a template driven ProjectionPage that accepts a ProjectionData object. This plan is about wiring that template into GSheets, Salesforce, and GTM.
+
+1. Data model that Replit will use
+Use a ProjectionData type with at least these blocks:
+type ProjectionData = {
+  meta: {
+    slug: string;                 // property slug, unique per projection
+    homeownerFirstName: string;   // for personalization
+    homeownerFullName?: string;
+    leadId: string;               // Salesforce Lead Id, required
+  };
+  property: {
+    address: string;
+    city: string;
+    state: string;
+    market: string;
+    bedrooms: number;
+    bathrooms: number;
+    squareFeet?: number;
+  };
+  projections: {
+    lowAnnualRevenue: number;
+    expectedAnnualRevenue: number;
+    highAnnualRevenue: number;
+    disclaimer: string;
+  };
+  monthlyRevenue: any;            // keep whatever structure exists now
+  seasonality: any;               // keep existing structure
+  trust: any;                     // existing trust metrics and pillars
+  cta: {
+    aeSlug: string;               // for URL path, for example "kaci-wolkers"
+    aeId?: string;                // Salesforce User Id if known
+    aeName: string;
+    aeTitle: string;
+    aePhone: string;
+    aeEmail: string;
+    aeHeadshotUrl: string;
+    aeCalendlyUrl?: string;
+  };
+  // any other existing fields can remain
+};
+I will have Google Sheets and Apps Script build JSON that matches this structure and send it to Replit.
+
+2. API endpoint: 
+POST /api/projections
+Purpose: Receive a ProjectionData object from Google Sheets and store or update a projection.
+Input
+POST /api/projections with JSON body of type ProjectionData.
+Replit responsibilities
+Validate the JSON against the ProjectionData schema.
+
+
+Store the data in persistent storage keyed by (aeSlug, slug). For example:
+
+
+Key: projection:${aeSlug}:${slug}
+
+
+Value: the JSON string
+
+
+Construct URLs:
+
+
+publicUrl for the page itself:
+
+
+https://projections.golocalvr.com/{aeSlug}/{slug}
+
+
+
+
+trackingUrl for use in Salesforce emails:
+
+
+https://projections.golocalvr.com/t?lid={leadId}&slug={slug}&ae={aeSlug}
+
+
+
+
+Call Salesforce REST API to update the Lead:
+
+
+Assume I will provide:
+
+
+SALESFORCE_INSTANCE_URL
+
+
+SALESFORCE_AUTH_TOKEN or a way to get one
+
+
+Perform:
+
+
+PATCH /services/data/vXX.X/sobjects/Lead/{leadId}
+
+with body:
+
+
+{
+  "Projection_URL__c": "https://projections.golocalvr.com/t?lid=...&slug=...&ae=..."
+}
+
+
+
+
+This populates a custom field Projection_URL__c on the Lead.
+
+
+Respond to the Sheet with:
+
+
+{
+  "ok": true,
+  "publicUrl": "https://projections.golocalvr.com/{aeSlug}/{slug}",
+  "trackingUrl": "https://projections.golocalvr.com/t?lid=...&slug=...&ae=..."
+}
+I will handle the Apps Script that calls this endpoint and writes publicUrl and trackingUrl into the spreadsheet.
+
+3. Routing for projection pages
+Set up a route:
+GET /:aeSlug/:projectionSlug
+Replit responsibilities
+Look up the stored ProjectionData using aeSlug and projectionSlug.
+
+
+If not found, render a 404 page.
+
+
+If found, render the existing ProjectionPage component with data: ProjectionData.
+
+
+Include any query parameters (lid, src, campaign) when pushing analytics events.
+
+
+Example behavior:
+Route: /kaci-wolkers/174-grande-pointe-cir?lid=00Q5g0000123AbC&src=sf_email
+
+
+Replit loads ProjectionData for aeSlug="kaci-wolkers", slug="174-grande-pointe-cir" and renders the React app.
+
+
+
+4. Tracking redirect: 
+GET /t
+This endpoint will handle click tracking and Salesforce Task creation whenever a homeowner clicks the email link.
+URL pattern
+GET /t?lid=<LeadId>&slug=<projectionSlug>&ae=<aeSlug>
+Replit responsibilities
+Parse lid, slug, ae from the query string.
+
+
+Log a “click” event in server logs or in a simple event store, including timestamp and IP.
+
+
+Fetch the Lead from Salesforce to get OwnerId and any other context:
+
+
+GET /services/data/vXX.X/sobjects/Lead/{lid}
+
+
+
+
+Create a Salesforce Task:
+
+
+POST /services/data/vXX.X/sobjects/Task
+
+Example body:
+
+
+{
+  "WhoId": "{lid}",
+  "Subject": "Projection link clicked – follow up",
+  "Description": "Lead clicked projection link for slug {slug}.",
+  "ActivityDate": "<today's date>",
+  "Status": "Not Started",
+  "OwnerId": "<Lead.OwnerId from prior call>"
+}
+
+
+
+
+Redirect the browser to the real projection page:
+
+
+302 Location: /{aeSlug}/{slug}?lid={lid}&src=sf_email
+After this, the user is on the projection page and Salesforce has a new Task for the Lead owner.
+
+5. Google Tag Manager and analytics integration
+The projection page should send structured events to GTM and optionally to a server side event log.
+Replit responsibilities
+Add the GTM container snippet to the React app so it runs on all projection pages. I will provide GTM_CONTAINER_ID.
+
+
+On page load, push an event into dataLayer using the query parameters and projection data. For example in the React entry for ProjectionPage:
+
+
+dataLayer.push({
+  event: "projection_page_view",
+  slug: projectionSlug,
+  aeSlug,
+  lid: urlParam("lid") || null,
+  src: urlParam("src") || "unknown"
+});
+
+
+
+
+Implement a small client side tracking module that:
+
+
+Starts a timer on mount.
+
+
+When the user has been on the page for a threshold (for example 30 seconds), pushes:
+
+
+dataLayer.push({
+  event: "projection_time_on_page",
+  slug,
+  aeSlug,
+  lid,
+  durationSeconds: 30
+});
+
+
+
+
+On unmount or visibilitychange, push a final projection_time_on_page event with the total time visible.
+
+
+For key interactions, push events as well:
+
+
+Hero primary CTA click, scroll to projections, FAQ expands, share or download actions, etc.
+
+
+Example:
+
+
+dataLayer.push({
+  event: "projection_interaction",
+  action: "cta_click",
+  label: "hero_primary_cta",
+  slug,
+  aeSlug,
+  lid
+});
+No changes are required server side for these analytics events, as GTM and GA4 will consume the dataLayer events.
+
+6. Form submission handling
+There is a form on the projection page to request a call or ask questions.
+Form contents
+Visible fields: name, email, phone, message, any other fields you already have.
+
+
+Hidden fields:
+
+
+projectionSlug (from ProjectionData.meta.slug)
+
+
+aeEmail or aeId (from ProjectionData.cta)
+
+
+lid (from URL)
+
+
+aeSlug
+
+
+Endpoint
+POST /api/contact
+Replit responsibilities
+Validate the form body.
+
+
+Look up the associated ProjectionData by projectionSlug for context.
+
+
+Send an email to the AE on the page using data.cta.aeEmail. The email should include:
+
+
+Homeowner name, email, phone, message.
+
+
+Property address, city, market.
+
+
+Projection range.
+
+
+Link back to the projection page.
+
+
+LeadId if available.
+
+
+Optionally call Salesforce REST API to create a Task for this Lead describing the form submission. For example:
+
+
+{
+  "WhoId": "{lid}",
+  "Subject": "Projection landing page form submitted",
+  "Description": "Homeowner submitted the projection page form for slug {slug}. Message: {message}",
+  "ActivityDate": "<today's date>",
+  "Status": "Not Started",
+  "OwnerId": "<Lead.OwnerId>"
+}
+
+
+
+
+Log the submission event in any internal event store if you implement one.
+
+
+Respond to the client with success. On the client, push:
+
+
+dataLayer.push({
+  event: "projection_form_submit",
+  slug,
+  aeSlug,
+  lid
+});
+I will configure the actual email delivery service, you can assume access to an SMTP or email API.
+
+7. Google Sheets side, for context
+You do not need to build this in Replit, but this is how I will call your APIs.
+There is a projection calculator Google Sheet.
+
+
+A bound Apps Script will:
+
+
+Pull all the numeric and text values from the relevant tabs for a given row.
+
+
+Pull the Salesforce Lead Id and AE info.
+
+
+Construct a ProjectionData object as JSON.
+
+
+Call POST /api/projections with that JSON.
+
+
+Receive publicUrl and trackingUrl.
+
+
+Write publicUrl and trackingUrl back into the Sheet.
+
+
+You are responsible for updating Salesforce Projection_URL__c from inside POST /api/projections, so AEs can use that field directly in their standard Salesforce emails.
+
+
+
+8. Salesforce side, for context
+Again, not built in Replit, but you should know how your URLs are used.
+On the Lead object there is a custom URL field Projection_URL__c.
+
+
+A standard Salesforce email template references {{!Lead.Projection_URL__c}} as the “View your custom projections” link.
+
+
+The AE sends emails normally from the Lead record.
+
+
+When the homeowner clicks that link:
+
+
+They hit GET /t?lid=...&slug=...&ae=....
+
+
+You log the click and create a Task.
+
+
+You redirect them to /{aeSlug}/{slug}?lid=...&src=sf_email.
+
+
+This gives full click tracking and Salesforce Tasks without Account Engagement.
+
+
+

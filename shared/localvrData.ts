@@ -148,7 +148,8 @@ export function createProjection(input: PropertyProjectionInput): ProjectionData
     meta: {
       slug: generateSlug(input.property.address),
       homeownerFirstName: input.homeownerFirstName,
-      homeownerFullName: input.homeownerFullName
+      homeownerFullName: input.homeownerFullName,
+      leadId: input.leadId || ''
     },
     property: {
       internalId: input.property.internalId || `LVR-30A-${Date.now()}`,

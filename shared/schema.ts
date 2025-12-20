@@ -59,6 +59,7 @@ export interface ProjectionMeta {
   slug: string;
   homeownerFirstName: string;
   homeownerFullName: string;
+  leadId: string;
 }
 
 export interface PropertyInfo {
@@ -181,6 +182,7 @@ export interface ProjectionData {
 export interface PropertyProjectionInput {
   homeownerFirstName: string;
   homeownerFullName: string;
+  leadId?: string;
   property: {
     internalId?: string;
     address: string;
