@@ -340,11 +340,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           propertyCity: projectionData.property.city,
           propertyMarket: projectionData.property.market,
           projectionLow: projectionData.projections.lowRevenue,
+          projectionExpected: projectionData.projections.expectedRevenue,
           projectionHigh: projectionData.projections.highRevenue,
           projectionPageUrl: `${baseUrl}/${formData.aeSlug}/${formData.slug}`,
           leadId: formData.leadId
         });
         emailPayload.to = formData.aeEmail;
+        emailPayload.replyTo = formData.aeEmail;
         
         sendEmail(emailPayload).catch(err => {
           console.error('[Email] Failed to send notification:', err);
