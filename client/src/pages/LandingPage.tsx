@@ -153,7 +153,18 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
+        display: true,
+        position: 'top' as const,
+        align: 'end' as const,
+        labels: {
+          usePointStyle: true,
+          pointStyle: 'rect',
+          padding: 20,
+          font: {
+            size: 11,
+          },
+          color: '#333333',
+        },
       },
       tooltip: {
         callbacks: {
