@@ -218,7 +218,7 @@ export async function createTask(
 export async function createClickTrackingTask(
   leadId: string,
   slug: string
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; taskId?: string; error?: string }> {
   const lead = await getLeadOwner(leadId);
   
   if (!lead) {

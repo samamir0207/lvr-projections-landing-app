@@ -218,15 +218,77 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const minDaysForTask = 0.0007; // TEMPORARY: ~1 minute for testing (change back to 14)
           
           if (daysSinceCreation >= minDaysForTask) {
-            console.log(`[Tracking] Projection is ${Math.floor(daysSinceCreation)} days old (>= ${minDaysForTask}), creating Salesforce Task`);
-            createClickTrackingTask(leadId, projectionSlug).catch(err => {
-              console.error('[Tracking] Failed to create Salesforce Task:', err);
-            });
+            console.log(`[Tracking] Projection is ${daysSinceCreation.toFixed(4)} days old (>= ${minDaysForTask}), creating Salesforce Task`);
+            
+            try {
+              const sfResult = await createClickTrackingTask(leadId, projectionSlug);
+              
+              await storage.logEvent({
+                event: "salesforce_task_attempt",
+                slug: projectionSlug,
+                aeSlug: aeSlug,
+                lid: leadId,
+                campaign: null,
+                src: "tracking_click",
+                meta: {
+                  success: sfResult.ok,
+                  error: sfResult.error || null,
+                  taskId: sfResult.taskId || null,
+                  daysSinceCreation: daysSinceCreation.toFixed(4)
+                }
+              });
+              
+              console.log(`[Tracking] Salesforce Task result:`, sfResult);
+            } catch (err) {
+              const errorMsg = err instanceof Error ? err.message : String(err);
+              console.error('[Tracking] Failed to create Salesforce Task:', errorMsg);
+              
+              await storage.logEvent({
+                event: "salesforce_task_attempt",
+                slug: projectionSlug,
+                aeSlug: aeSlug,
+                lid: leadId,
+                campaign: null,
+                src: "tracking_click",
+                meta: {
+                  success: false,
+                  error: errorMsg,
+                  exception: true
+                }
+              });
+            }
           } else {
-            console.log(`[Tracking] Projection is only ${Math.floor(daysSinceCreation)} days old (< ${minDaysForTask}), skipping Salesforce Task`);
+            console.log(`[Tracking] Projection is only ${daysSinceCreation.toFixed(4)} days old (< ${minDaysForTask}), skipping Salesforce Task`);
+            
+            await storage.logEvent({
+              event: "salesforce_task_skipped",
+              slug: projectionSlug,
+              aeSlug: aeSlug,
+              lid: leadId,
+              campaign: null,
+              src: "tracking_click",
+              meta: {
+                reason: "projection_too_new",
+                daysSinceCreation: daysSinceCreation.toFixed(4),
+                minDaysForTask
+              }
+            });
           }
         } else {
           console.log(`[Tracking] Could not determine projection age, skipping Salesforce Task`);
+          
+          await storage.logEvent({
+            event: "salesforce_task_skipped",
+            slug: projectionSlug,
+            aeSlug: aeSlug,
+            lid: leadId,
+            campaign: null,
+            src: "tracking_click",
+            meta: {
+              reason: "no_projection_found",
+              projectionExists: !!projection
+            }
+          });
         }
       } else {
         console.log(`[Tracking] AE preview detected, skipping Salesforce Task`);
