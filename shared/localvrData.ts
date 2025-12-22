@@ -17,6 +17,216 @@ export function getAeHeadshotUrl(email: string): string {
   return AE_HEADSHOTS[normalizedEmail] || "/assets/ae-headshot-default.png";
 }
 
+// Market-specific comparable properties
+// Market codes: 30A, BC (Breckenridge), PC (Park City), TE (Telluride), VA (Vail), BS (Big Sky), LT (Lake Tahoe)
+export const MARKET_COMPARABLE_PROPERTIES: Record<string, Array<{
+  image: string;
+  title: string;
+  location: string;
+  bedrooms: number;
+  bathrooms: string;
+  propertyUrl: string;
+}>> = {
+  "30A": [
+    {
+      image: "/assets/comp-30a-1.jpg",
+      title: "8BR Escape with Pool, Hot Tub and Game Room",
+      location: "Destin, FL",
+      bedrooms: 8,
+      bathrooms: "8.5",
+      propertyUrl: "https://stay.golocalvr.com/property/67546fef23c1900012d5832c"
+    },
+    {
+      image: "/assets/comp-30a-2.jpg",
+      title: "New 30A Retreat Beach Access Hot Tub & Guest Suite",
+      location: "Seacrest Beach, FL",
+      bedrooms: 6,
+      bathrooms: "6.5",
+      propertyUrl: "https://stay.golocalvr.com/property/67fff22502fdee0013294d94"
+    },
+    {
+      image: "/assets/comp-30a-3.jpg",
+      title: "Gulf Coast Retreat with Pool < 1 Mile to Beach",
+      location: "Blue Mountain Beach, FL",
+      bedrooms: 4,
+      bathrooms: "4",
+      propertyUrl: "https://stay.golocalvr.com/property/674e3ee2acd0240012a693d3"
+    }
+  ],
+  "BC": [
+    {
+      image: "/assets/comp-bc-1.png",
+      title: "5BR Luxury Escape: Hot Tub, Views, Private Shuttle",
+      location: "Breckenridge, CO",
+      bedrooms: 5,
+      bathrooms: "5",
+      propertyUrl: "https://stay.golocalvr.com/property/6661f3c746ad150010fc8edc"
+    },
+    {
+      image: "/assets/comp-bc-2.jpg",
+      title: "Stunning Shock Hill Mansion - Steps To Gondola!",
+      location: "Breckenridge, CO",
+      bedrooms: 5,
+      bathrooms: "5.5",
+      propertyUrl: "https://stay.golocalvr.com/property/6661e34ef2b26900116533d8"
+    },
+    {
+      image: "/assets/comp-bc-3.png",
+      title: "Gorgeous Home w/ Fire Pit, Walk to Ski Lifts!",
+      location: "Breckenridge, CO",
+      bedrooms: 6,
+      bathrooms: "6.5",
+      propertyUrl: "https://stay.golocalvr.com/property/6662217da72f680032ef1d1c"
+    }
+  ],
+  "PC": [
+    {
+      image: "/assets/comp-pc-1.png",
+      title: "Luxury Mountain Retreat with Hot Tub in Park City",
+      location: "Park City, UT",
+      bedrooms: 5,
+      bathrooms: "6.5",
+      propertyUrl: "https://stay.golocalvr.com/property/6644e2246fc9e3002905c240"
+    },
+    {
+      image: "/assets/comp-pc-2.png",
+      title: "Luxe Park City Estate | Hot Tub, Pickleball, Views",
+      location: "Park City, UT",
+      bedrooms: 6,
+      bathrooms: "6.5",
+      propertyUrl: "https://stay.golocalvr.com/property/69050c591c02610011fcf03d"
+    },
+    {
+      image: "/assets/comp-pc-3.jpg",
+      title: "Sleek Park City Main St Rental: Steps to Ski Lift",
+      location: "Park City, UT",
+      bedrooms: 3,
+      bathrooms: "3",
+      propertyUrl: "https://stay.golocalvr.com/property/6334cead5d216a0033e0e6e3"
+    }
+  ],
+  "TE": [
+    {
+      image: "/assets/comp-te-1.png",
+      title: "Spacious Telluride Retreat w/ Private Hot Tub",
+      location: "Mountain Village, CO",
+      bedrooms: 6,
+      bathrooms: "5.5",
+      propertyUrl: "https://stay.golocalvr.com/property/67deb52b3ac88100122e9375"
+    },
+    {
+      image: "/assets/comp-te-2.png",
+      title: "Luxury Telluride Retreat – Hot Tub & Mountain View",
+      location: "Mountain Village, CO",
+      bedrooms: 4,
+      bathrooms: "5",
+      propertyUrl: "https://stay.golocalvr.com/property/67cf5619fd70ba00122251f2"
+    },
+    {
+      image: "/assets/comp-te-3.png",
+      title: "Scenic Mountain Village Stay | Hot Tub + Gym",
+      location: "Mountain Village, CO",
+      bedrooms: 4,
+      bathrooms: "4.5",
+      propertyUrl: "https://stay.golocalvr.com/property/665a01f26748540013691c9d"
+    }
+  ],
+  "VA": [
+    {
+      image: "/assets/comp-va-1.jpg",
+      title: "West Vail Retreat | Steps to Ski + Private Hot Tub",
+      location: "Vail, CO",
+      bedrooms: 5,
+      bathrooms: "6",
+      propertyUrl: "https://stay.golocalvr.com/property/68c98924d8b9670033712e13"
+    },
+    {
+      image: "/assets/comp-va-2.png",
+      title: "Cascade Village 4BR | Hot Tub + Shuttle Access",
+      location: "Vail, CO",
+      bedrooms: 4,
+      bathrooms: "4.5",
+      propertyUrl: "https://stay.golocalvr.com/property/6811197fcc5def000f53acd5"
+    },
+    {
+      image: "/assets/comp-va-3.jpg",
+      title: "Central Vail Stay | Cozy Interior + Deck Views",
+      location: "Vail, CO",
+      bedrooms: 4,
+      bathrooms: "3.5",
+      propertyUrl: "https://stay.golocalvr.com/property/68814063f75806002080676d"
+    }
+  ],
+  "BS": [
+    {
+      image: "/assets/comp-bs-1.jpg",
+      title: "Big Sky Chalet | Private Hot Tub + Mountain Views",
+      location: "Big Sky, MT",
+      bedrooms: 4,
+      bathrooms: "3.5",
+      propertyUrl: "https://stay.golocalvr.com/property/689a4d7a7ca5980010f2ac0c"
+    },
+    {
+      image: "/assets/comp-bs-2.jpg",
+      title: "Big Sky Haven | Hot Tub + Fireplace + Views",
+      location: "Big Sky, MT",
+      bedrooms: 5,
+      bathrooms: "5.5",
+      propertyUrl: "https://stay.golocalvr.com/property/6900f7cc29d3600011b91c82"
+    },
+    {
+      image: "/assets/comp-bs-3.jpg",
+      title: "Moonlight Basin Retreat | Ski-In/Out + Patio",
+      location: "Big Sky, MT",
+      bedrooms: 2,
+      bathrooms: "2",
+      propertyUrl: "https://stay.golocalvr.com/property/68ddaba9d0b5d10011e34b96"
+    }
+  ],
+  "LT": [
+    {
+      image: "/assets/comp-lt-1.png",
+      title: "Luxury Tahoe Vacation Rental w/HotTub & Lake Views",
+      location: "Tahoe Vista, CA",
+      bedrooms: 6,
+      bathrooms: "4.5",
+      propertyUrl: "https://stay.golocalvr.com/property/666b0d8a0a087400135fa303"
+    },
+    {
+      image: "/assets/comp-lt-2.jpg",
+      title: "Luxurious 7BR - Walk to Beach & Bus Stop!",
+      location: "Carnelian Bay, CA",
+      bedrooms: 7,
+      bathrooms: "4",
+      propertyUrl: "https://stay.golocalvr.com/property/662aa1119af4b100595cdca5"
+    },
+    {
+      image: "/assets/comp-lt-3.png",
+      title: "Creekside Retreat with Hot Tub & 3min to Slopes",
+      location: "Olympic Valley, CA",
+      bedrooms: 5,
+      bathrooms: "6",
+      propertyUrl: "https://stay.golocalvr.com/property/661443a95778af00129d4734"
+    }
+  ]
+};
+
+// Extract market code from LVR ID (e.g., "LVR-30A-12345" -> "30A")
+export function getMarketCodeFromLvrId(lvrId: string): string {
+  if (!lvrId) return "30A";
+  const parts = lvrId.split("-");
+  if (parts.length >= 2 && parts[0] === "LVR") {
+    return parts[1].toUpperCase();
+  }
+  return "30A";
+}
+
+// Get comparable properties for a market, with fallback to 30A
+export function getComparablePropertiesForMarket(marketCode: string) {
+  const normalized = marketCode.toUpperCase();
+  return MARKET_COMPARABLE_PROPERTIES[normalized] || MARKET_COMPARABLE_PROPERTIES["30A"];
+}
+
 function generateSlug(address: string): string {
   return address
     .toLowerCase()
@@ -161,6 +371,11 @@ export const KACI_30A_DEFAULTS: MarketDefaults = {
 export function createProjection(input: PropertyProjectionInput): ProjectionData {
   const defaults = KACI_30A_DEFAULTS;
   
+  // Extract market code from LVR ID for market-specific content
+  const lvrId = input.property.internalId || "";
+  const marketCode = getMarketCodeFromLvrId(lvrId);
+  const marketComparables = getComparablePropertiesForMarket(marketCode);
+  
   return {
     meta: {
       slug: generateSlug(input.property.address),
@@ -193,7 +408,7 @@ export function createProjection(input: PropertyProjectionInput): ProjectionData
     cta: defaults.cta,
     testimonials: defaults.testimonials,
     benefits: defaults.benefits,
-    comparableProperties: defaults.comparableProperties
+    comparableProperties: marketComparables
   };
 }
 
