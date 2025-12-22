@@ -189,6 +189,12 @@ Response:
 
 ## Recent Changes
 
+- **Dec 22, 2025**: Improved Salesforce task creation logic for tracking links
+  - Added `viewer=ae` parameter support: AE preview links don't create Salesforce tasks
+  - Added 14-day age threshold: Tasks only created when projection is 14+ days old (indicates organic interest)
+  - AE preview clicks logged as separate `projection_ae_preview` event for analytics
+  - Google Sheets Apps Script now generates both Lead URL (for homeowner) and Preview URL (for AE)
+
 - **Dec 8, 2025**: Added database storage, API endpoints, and analytics tracking
   - Created PostgreSQL database with projections and analytics_events tables
   - Implemented POST /api/projections for Google Sheets integration
