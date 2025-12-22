@@ -5,6 +5,7 @@ import type { ProjectionData, PropertyProjectionInput, MarketDefaults } from "./
 export const AE_HEADSHOTS: Record<string, string> = {
   "kaci.wolkers@golocalvr.com": "/assets/ae-headshot-kaci-wolkers.png",
   "tyler.ramey@golocalvr.com": "/assets/ae-headshot-tyler-ramey.png",
+  "kyle.ouellette@golocalvr.com": "/assets/ae-headshot-kyle-ouellette.png",
 };
 
 // Get headshot URL for an AE by email, with fallback to default
