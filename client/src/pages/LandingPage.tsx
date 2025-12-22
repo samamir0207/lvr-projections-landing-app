@@ -127,7 +127,17 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
       currency: 'USD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(value);
+    }).format(Math.round(value));
+  };
+
+  const formatRevenueRounded = (value: number) => {
+    const rounded = Math.round(value / 1000) * 1000;
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(rounded);
   };
 
   const chartData = {
@@ -329,9 +339,9 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             <div className="text-center py-6 px-6 bg-[#333333]">
               <p className="text-[13px] text-white/80 mb-2">Estimated Annual Revenue</p>
               <div className="inline-flex items-center gap-3">
-                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatCurrency(projections.lowRevenue)}</span>
+                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatRevenueRounded(projections.lowRevenue)}</span>
                 <span className="text-[16px] text-white/60">to</span>
-                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatCurrency(projections.highRevenue)}</span>
+                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatRevenueRounded(projections.highRevenue)}</span>
               </div>
             </div>
             
@@ -378,7 +388,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                       <td className="py-3 pr-2 font-bold text-[#333333]">Occupancy</td>
                       {seasonalBreakdown.map((season) => (
                         <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
-                          {season.occupancyMinPct}% - {season.occupancyMaxPct}%
+                          {Math.round(season.occupancyMinPct)}% - {Math.round(season.occupancyMaxPct)}%
                         </td>
                       ))}
                     </tr>
@@ -386,7 +396,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                       <td className="py-3 pr-2 font-bold text-[#333333]">Average Daily Rate</td>
                       {seasonalBreakdown.map((season) => (
                         <td key={season.key} className="text-center py-3 px-2 text-[#333333] whitespace-nowrap">
-                          ${season.adrMin.toLocaleString()} - ${season.adrMax.toLocaleString()}
+                          ${Math.round(season.adrMin).toLocaleString()} - ${Math.round(season.adrMax).toLocaleString()}
                         </td>
                       ))}
                     </tr>

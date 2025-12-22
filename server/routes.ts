@@ -401,8 +401,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           projectionPageUrl: `${baseUrl}/${formData.aeSlug}/${formData.slug}`,
           leadId: formData.leadId
         });
-        emailPayload.to = formData.aeEmail;
-        emailPayload.replyTo = formData.aeEmail;
+        // TESTING: Override recipient to sam@golocalvr.com (TODO: revert after testing)
+        emailPayload.to = 'sam@golocalvr.com';
+        emailPayload.replyTo = formData.email;
         
         sendEmail(emailPayload).catch(err => {
           console.error('[Email] Failed to send notification:', err);
