@@ -497,8 +497,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           projectionPageUrl: `${baseUrl}/${projectionData.cta.aeSlug}/${formData.slug}`,
           leadId: formData.leadId
         });
+        emailPayload.to = formData.aeEmail;  // Send to the AE's email
         emailPayload.replyTo = formData.email;
         
+        console.log(`[Email] Sending form submission notification to AE: ${formData.aeEmail}`);
         sendEmail(emailPayload).catch(err => {
           console.error('[Email] Failed to send notification:', err);
         });
