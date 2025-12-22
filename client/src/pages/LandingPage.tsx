@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { getDefaultProjection } from "@shared/localvrData";
 import type { ProjectionData } from "@shared/schema";
 import { initializeTracking, trackCTAClick, trackFormSubmit, trackInteraction } from "@/lib/analytics";
-import aeHeadshot from "@assets/NEW-HIRE-30a-EDIT-11-10-2025a_1765166969752.png";
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
 import property2Image from "@assets/14_1765164174413.jpg";
 import property3Image from "@assets/IMG_2398_(1)_1765164502296.jpg";
@@ -244,7 +243,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex-shrink-0">
               <img 
-                src={aeHeadshot}
+                src={cta.aeHeadshotUrl || "/assets/ae-headshot-default.png"}
                 alt={cta.aeName}
                 className="w-[160px] h-[160px] object-cover rounded-full"
                 data-testid="img-ae-headshot"

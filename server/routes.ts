@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import type { ProjectionData, InsertEvent } from "@shared/schema";
-import { KACI_30A_DEFAULTS } from "@shared/localvrData";
+import { KACI_30A_DEFAULTS, getAeHeadshotUrl } from "@shared/localvrData";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask, testSalesforceConnection } from "./salesforce";
 import { buildFormSubmissionEmail, sendEmail } from "./email";
 
@@ -126,10 +126,12 @@ function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>):
   const seasonalBreakdown = input.seasonalBreakdown || input.seasonality?.seasons || [];
 
   // Normalize CTA - scheduleCallUrl can come as aeCalendarUrl, merge with defaults
+  // Auto-assign headshot based on AE email if not provided
   const cta = {
     ...KACI_30A_DEFAULTS.cta,
     ...input.cta,
-    scheduleCallUrl: input.cta.scheduleCallUrl || input.cta.aeCalendarUrl || KACI_30A_DEFAULTS.cta.scheduleCallUrl
+    scheduleCallUrl: input.cta.scheduleCallUrl || input.cta.aeCalendarUrl || KACI_30A_DEFAULTS.cta.scheduleCallUrl,
+    aeHeadshotUrl: input.cta.aeHeadshotUrl || getAeHeadshotUrl(input.cta.aeEmail)
   };
 
   // Use defaults for optional fields if not provided

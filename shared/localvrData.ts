@@ -1,5 +1,18 @@
 import type { ProjectionData, PropertyProjectionInput, MarketDefaults } from "./schema";
 
+// AE headshot mapping: email -> headshot image path
+// Add new team members here with their headshot paths
+export const AE_HEADSHOTS: Record<string, string> = {
+  "kaci.wolkers@golocalvr.com": "/assets/ae-headshot-kaci-wolkers.png",
+  "tyler.ramey@golocalvr.com": "/assets/ae-headshot-tyler-ramey.png",
+};
+
+// Get headshot URL for an AE by email, with fallback to default
+export function getAeHeadshotUrl(email: string): string {
+  const normalizedEmail = email.toLowerCase().trim();
+  return AE_HEADSHOTS[normalizedEmail] || "/assets/ae-headshot-default.png";
+}
+
 function generateSlug(address: string): string {
   return address
     .toLowerCase()
@@ -18,7 +31,7 @@ export const KACI_30A_DEFAULTS: MarketDefaults = {
     aeTitle: "Account Executive, LocalVR 30A",
     aePhone: "(850) 641-1001",
     aeEmail: "kaci.wolkers@golocalvr.com",
-    aeHeadshotUrl: "/assets/ae-headshot.png"
+    aeHeadshotUrl: "/assets/ae-headshot-kaci-wolkers.png"
   },
 
   trust: {

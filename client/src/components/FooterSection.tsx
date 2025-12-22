@@ -1,23 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail } from "lucide-react";
-import aeHeadshot from "@assets/generated_images/kaci_wolkers_professional_headshot.png";
 
 interface FooterSectionProps {
   aeName: string;
   aeTitle: string;
   aePhone: string;
   aeEmail: string;
+  aeHeadshotUrl?: string;
   ctaUrl: string;
 }
 
-export default function FooterSection({ aeName, aeTitle, aePhone, aeEmail, ctaUrl }: FooterSectionProps) {
+export default function FooterSection({ aeName, aeTitle, aePhone, aeEmail, aeHeadshotUrl, ctaUrl }: FooterSectionProps) {
   return (
     <footer className="py-16 bg-background border-t border-border" data-testid="section-footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="flex items-center gap-6">
             <img 
-              src={aeHeadshot}
+              src={aeHeadshotUrl || "/assets/ae-headshot-default.png"}
               alt={aeName}
               className="w-32 h-32 rounded-full border-2 border-primary object-cover"
               data-testid="img-ae-headshot"
