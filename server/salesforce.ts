@@ -29,14 +29,6 @@ interface TaskPayload {
 
 let cachedToken: { token: string; instanceUrl: string; expiresAt: number } | null = null;
 
-interface SalesforceCredentials {
-  instanceUrl: string;
-  clientId: string;
-  clientSecret: string;
-  username: string;
-  password: string;
-}
-
 function getConfig(): SalesforceConfig | null {
   const instanceUrl = process.env.SALESFORCE_INSTANCE_URL;
   const clientId = process.env.SALESFORCE_CLIENT_ID;
@@ -49,24 +41,10 @@ function getConfig(): SalesforceConfig | null {
   return { instanceUrl, clientId, clientSecret };
 }
 
-function getFullCredentials(): SalesforceCredentials | null {
-  const config = getConfig();
-  if (!config) return null;
-  
-  const username = process.env.SALESFORCE_USERNAME;
-  const password = process.env.SALESFORCE_PASSWORD;
-  
-  if (!username || !password) {
-    return null;
-  }
-  
-  return { ...config, username, password };
-}
-
 async function getAccessToken(): Promise<{ token: string; instanceUrl: string } | null> {
-  const creds = getFullCredentials();
-  if (!creds) {
-    console.log('[Salesforce] Missing credentials for OAuth');
+  const config = getConfig();
+  if (!config) {
+    console.log('[Salesforce] Missing credentials for OAuth (need SALESFORCE_INSTANCE_URL, SALESFORCE_CLIENT_ID, SALESFORCE_CLIENT_SECRET)');
     return null;
   }
   
@@ -75,14 +53,12 @@ async function getAccessToken(): Promise<{ token: string; instanceUrl: string } 
   }
   
   try {
-    const tokenUrl = `${creds.instanceUrl}/services/oauth2/token`;
+    const tokenUrl = `${config.instanceUrl}/services/oauth2/token`;
     
     const params = new URLSearchParams({
-      grant_type: 'password',
-      client_id: creds.clientId,
-      client_secret: creds.clientSecret,
-      username: creds.username,
-      password: creds.password
+      grant_type: 'client_credentials',
+      client_id: config.clientId,
+      client_secret: config.clientSecret
     });
     
     const response = await fetch(tokenUrl, {
@@ -107,7 +83,7 @@ async function getAccessToken(): Promise<{ token: string; instanceUrl: string } 
       expiresAt: Date.now() + (55 * 60 * 1000)
     };
     
-    console.log('[Salesforce] OAuth token obtained successfully, instance:', tokenData.instance_url);
+    console.log('[Salesforce] OAuth token obtained successfully via client_credentials, instance:', tokenData.instance_url);
     return { token: tokenData.access_token, instanceUrl: tokenData.instance_url };
   } catch (error) {
     console.error('[Salesforce] Error getting OAuth token:', error);
@@ -290,34 +266,23 @@ export async function testSalesforceConnection(): Promise<{
   tokenObtained: boolean;
   error?: string;
 }> {
-  const creds = getFullCredentials();
-  if (!creds) {
-    const config = getConfig();
-    if (!config) {
-      return { 
-        ok: false, 
-        configured: false, 
-        tokenObtained: false,
-        error: 'Salesforce credentials not configured (missing SALESFORCE_INSTANCE_URL, SALESFORCE_CLIENT_ID, or SALESFORCE_CLIENT_SECRET)'
-      };
-    }
+  const config = getConfig();
+  if (!config) {
     return { 
       ok: false, 
-      configured: true, 
+      configured: false, 
       tokenObtained: false,
-      error: 'Missing SALESFORCE_USERNAME or SALESFORCE_PASSWORD'
+      error: 'Salesforce credentials not configured (missing SALESFORCE_INSTANCE_URL, SALESFORCE_CLIENT_ID, or SALESFORCE_CLIENT_SECRET)'
     };
   }
   
   try {
-    const tokenUrl = `${creds.instanceUrl}/services/oauth2/token`;
+    const tokenUrl = `${config.instanceUrl}/services/oauth2/token`;
     
     const params = new URLSearchParams({
-      grant_type: 'password',
-      client_id: creds.clientId,
-      client_secret: creds.clientSecret,
-      username: creds.username,
-      password: creds.password
+      grant_type: 'client_credentials',
+      client_id: config.clientId,
+      client_secret: config.clientSecret
     });
     
     const response = await fetch(tokenUrl, {
