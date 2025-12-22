@@ -483,27 +483,27 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* Property Cards */}
-        <section className="bg-[#f7f4f0] px-5 md:px-[60px] py-10" data-testid="section-portfolio-cards">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <section className="bg-[#f7f4f0] px-5 md:px-[40px] py-10" data-testid="section-portfolio-cards">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             {comparableProperties.map((comp, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm flex flex-col">
+              <div key={index} className="bg-white p-7 rounded-lg shadow-sm flex flex-col">
                 <img 
                   src={propertyImages[comp.image] || property1Image}
                   alt={comp.title}
-                  className="w-full h-[220px] object-cover rounded-md"
+                  className="w-full h-[260px] object-cover rounded-md"
                 />
-                <div className="mt-5 flex flex-col flex-1">
-                  <p className="text-[16px] font-bold text-[#333333] leading-[22px] min-h-[44px]">
+                <div className="mt-6 flex flex-col flex-1">
+                  <p className="text-[17px] font-bold text-[#333333] leading-[24px] min-h-[48px]">
                     {comp.title}
                   </p>
-                  <p className="text-[14px] text-[#333333]/70 leading-[20px] mt-3">
+                  <p className="text-[15px] text-[#333333]/70 leading-[22px] mt-3">
                     {comp.location}<br />{comp.bedrooms} bedrooms | {comp.bathrooms} bathrooms
                   </p>
                   <a 
                     href={comp.propertyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[14px] text-[#d3bda2] font-medium leading-[20px] mt-auto pt-4 underline block hover:text-[#333333] transition-colors"
+                    className="text-[15px] text-[#d3bda2] font-medium leading-[22px] mt-auto pt-5 underline block hover:text-[#333333] transition-colors"
                     data-testid={`link-property-${index}`}
                   >
                     View Property
