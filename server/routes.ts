@@ -121,13 +121,7 @@ const contactFormSchema = z.object({
 });
 
 function getBaseUrl(): string {
-  if (process.env.PUBLIC_DOMAIN) {
-    return `https://${process.env.PUBLIC_DOMAIN}`;
-  }
-  if (process.env.REPLIT_DEV_DOMAIN) {
-    return `https://${process.env.REPLIT_DEV_DOMAIN}`;
-  }
-  return 'http://localhost:5000';
+  return 'https://projections.golocalvr.com';
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
