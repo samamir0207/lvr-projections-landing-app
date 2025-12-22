@@ -464,7 +464,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               </div>
               <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Luxury-Focused Approach</p>
               <p className="text-[13px] text-[#333333]/70 leading-[18px]">
-                Our LocalLuxe program focuses on high-value guests, premium pricing, and protecting your home's long-term value.
+                Our luxury program focuses on high-value guests, premium pricing, and protecting your home's long-term value.
               </p>
             </div>
           </div>
