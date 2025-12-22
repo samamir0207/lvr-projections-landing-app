@@ -21,6 +21,7 @@ export interface IStorage {
   
   getProjectionBySlug(slug: string): Promise<ProjectionData | null>;
   getProjectionByAeAndSlug(aeSlug: string, slug: string): Promise<ProjectionData | null>;
+  getProjectionWithMeta(slug: string): Promise<Projection | null>;
   createProjection(slug: string, aeSlug: string, data: ProjectionData): Promise<Projection>;
   updateProjection(slug: string, data: ProjectionData): Promise<Projection | null>;
   
@@ -60,6 +61,11 @@ export class DatabaseStorage implements IStorage {
     }
     
     return projection.data as ProjectionData;
+  }
+
+  async getProjectionWithMeta(slug: string): Promise<Projection | null> {
+    const [projection] = await db.select().from(projections).where(eq(projections.slug, slug));
+    return projection || null;
   }
 
   async createProjection(slug: string, aeSlug: string, data: ProjectionData): Promise<Projection> {
