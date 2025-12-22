@@ -539,7 +539,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               </div>
               <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Premium Home Protection</p>
               <p className="text-[13px] text-[#333333]/70 leading-[18px]">
-                We prioritize your home's long-term value with detailed inspections, proactive maintenance coordination, and $10,000 in damage protection per reservation.
+                We prioritize your home's long-term value with detailed inspections, proactive maintenance coordination, and up to $10,000 in damage protection per reservation.
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
