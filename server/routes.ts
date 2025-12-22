@@ -183,7 +183,7 @@ function getBaseUrl(): string {
 export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/t", async (req: Request, res: Response) => {
     try {
-      const { lid, slug, ae } = req.query;
+      const { lid, slug, ae, viewer } = req.query;
       
       if (!lid || !slug || !ae) {
         return res.status(400).send("Missing required parameters: lid, slug, ae");
@@ -192,25 +192,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const leadId = String(lid);
       const projectionSlug = String(slug);
       const aeSlug = String(ae);
+      const isAePreview = viewer === 'ae';
       
       await storage.logEvent({
-        event: "projection_link_click",
+        event: isAePreview ? "projection_ae_preview" : "projection_link_click",
         slug: projectionSlug,
         aeSlug: aeSlug,
         lid: leadId,
         campaign: null,
-        src: "sf_email",
+        src: isAePreview ? "ae_preview" : "sf_email",
         meta: {
           ip: req.ip,
-          userAgent: req.headers['user-agent']
+          userAgent: req.headers['user-agent'],
+          isAePreview
         }
       });
       
-      console.log(`[Tracking] Click tracked for Lead ${leadId}, slug ${projectionSlug}`);
+      console.log(`[Tracking] ${isAePreview ? 'AE preview' : 'Click tracked'} for Lead ${leadId}, slug ${projectionSlug}`);
       
-      createClickTrackingTask(leadId, projectionSlug).catch(err => {
-        console.error('[Tracking] Failed to create Salesforce Task:', err);
-      });
+      if (!isAePreview) {
+        const projection = await storage.getProjectionWithMeta(projectionSlug);
+        
+        if (projection && projection.createdAt) {
+          const daysSinceCreation = (Date.now() - new Date(projection.createdAt).getTime()) / (1000 * 60 * 60 * 24);
+          const minDaysForTask = 14;
+          
+          if (daysSinceCreation >= minDaysForTask) {
+            console.log(`[Tracking] Projection is ${Math.floor(daysSinceCreation)} days old (>= ${minDaysForTask}), creating Salesforce Task`);
+            createClickTrackingTask(leadId, projectionSlug).catch(err => {
+              console.error('[Tracking] Failed to create Salesforce Task:', err);
+            });
+          } else {
+            console.log(`[Tracking] Projection is only ${Math.floor(daysSinceCreation)} days old (< ${minDaysForTask}), skipping Salesforce Task`);
+          }
+        } else {
+          console.log(`[Tracking] Could not determine projection age, skipping Salesforce Task`);
+        }
+      } else {
+        console.log(`[Tracking] AE preview detected, skipping Salesforce Task`);
+      }
       
       const redirectUrl = `/${aeSlug}/${projectionSlug}?lid=${encodeURIComponent(leadId)}&src=sf_email`;
       return res.redirect(302, redirectUrl);
