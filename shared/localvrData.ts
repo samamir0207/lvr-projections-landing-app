@@ -8,6 +8,7 @@ export const AE_HEADSHOTS: Record<string, string> = {
   "kyle.ouellette@golocalvr.com": "/assets/ae-headshot-kyle-ouellette.png",
   "jonah.jay@golocalvr.com": "/assets/ae-headshot-jonah-jay.png",
   "aaron.davis@golocalvr.com": "/assets/ae-headshot-aaron-davis.png",
+  "kaitlin.brown@golocalvr.com": "/assets/ae-headshot-kaitlin-brown.png",
 };
 
 // Get headshot URL for an AE by email, with fallback to default
