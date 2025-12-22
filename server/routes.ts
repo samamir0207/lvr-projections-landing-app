@@ -215,7 +215,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         if (projection && projection.createdAt) {
           const daysSinceCreation = (Date.now() - new Date(projection.createdAt).getTime()) / (1000 * 60 * 60 * 24);
-          const minDaysForTask = 14;
+          const minDaysForTask = 0.0007; // TEMPORARY: ~1 minute for testing (change back to 14)
           
           if (daysSinceCreation >= minDaysForTask) {
             console.log(`[Tracking] Projection is ${Math.floor(daysSinceCreation)} days old (>= ${minDaysForTask}), creating Salesforce Task`);
