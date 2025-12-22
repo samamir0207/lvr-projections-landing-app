@@ -1,0 +1,336 @@
+/***** CONFIG *****/
+const SHEET_NAME           = 'man-input';
+const DEBUG_SHEET_NAME     = 'debug_log';
+
+// Owner / property info on man-input
+const COL_OWNER_FIRST_NAME = 2;  // B
+const COL_OWNER_LAST_NAME  = 3;  // C
+const COL_ADDRESS          = 4;  // D
+const COL_CITY             = 7;  // G
+const COL_STATE            = 8;  // H
+const COL_BR               = 10; // J
+const COL_BA               = 11; // K
+const COL_SQFT             = 13; // M
+
+// Integration columns on man-input
+const COL_EXPORT_LINK      = 17; // Q
+const COL_LEAD_ID          = 18; // R
+const COL_GENERATE         = 19; // S  "Generate landing page?"
+const COL_PREVIEW_URL      = 20; // T  "Preview URL (AE)"
+const COL_TRACKING_URL     = 21; // U  "Landing Page URL (Lead)"
+
+// AE / template config
+const AE_SLUG              = 'kaci-wolkers';
+const AE_TITLE             = 'Account Executive';
+
+// Replit API endpoint
+const API_BASE             = 'https://projections.golocalvr.com';
+const PROJECTIONS_ENDPOINT = API_BASE + '/api/projections';
+
+
+/**
+ * Installable trigger: when user types YES in column S, generate landing page for that row.
+ */
+function handleGenerateLandingPage(e) {
+  const range = e.range;
+  const sheet = range.getSheet();
+
+  if (sheet.getName() !== SHEET_NAME) return;
+  if (range.getColumn() !== COL_GENERATE || range.getRow() === 1) return;
+
+  const newValue = (e.value || '').toString().trim().toUpperCase();
+  if (newValue !== 'RUN') return;
+
+  const row = range.getRow();
+  logDebug('onEdit_start', `Row ${row}`, { value: newValue });
+
+  // Show the AE that something is happening
+  sheet.getRange(row, COL_GENERATE).setValue('RUNNING');
+
+  try {
+    const ss        = sheet.getParent();
+    const leadId    = sheet.getRange(row, COL_LEAD_ID).getDisplayValue();
+    const exportUrl = sheet.getRange(row, COL_EXPORT_LINK).getDisplayValue();
+
+    logDebug('validate_inputs', `Row ${row}`, { leadId, exportUrl });
+
+    if (!leadId || leadId === '#N/A') {
+      sheet.getRange(row, COL_GENERATE).setValue('ERROR: No Lead ID');
+      logDebug('error_no_lead', `Row ${row}`, {});
+      return;
+    }
+    if (!exportUrl || exportUrl === '#N/A') {
+      sheet.getRange(row, COL_GENERATE).setValue('ERROR: No Export Link');
+      logDebug('error_no_export_link', `Row ${row}`, {});
+      return;
+    }
+
+    const payload = buildProjectionPayload(ss, sheet, row, leadId, exportUrl);
+    logDebug('payload_built', `Row ${row}`, payload.meta);
+
+    const response = UrlFetchApp.fetch(PROJECTIONS_ENDPOINT, {
+      method: 'post',
+      contentType: 'application/json',
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true,
+    });
+
+    const code = response.getResponseCode();
+    const text = response.getContentText();
+
+    logDebug('replit_response', `Row ${row}`, { code, body: text.substring(0, 500) });
+
+    if (code < 200 || code >= 300) {
+      sheet.getRange(row, COL_GENERATE).setValue('ERROR');
+      Logger.log('Replit API error ' + code + ': ' + text);
+      return;
+    }
+
+    const body = JSON.parse(text);
+
+    // Raw URLs from Replit
+    const rawPublicUrl   = body.publicUrl  || '';
+    const rawTrackingUrl = body.trackingUrl || rawPublicUrl || '';
+
+    // Preview URL for AE: same tracking link, but mark viewer=ae
+    const previewUrl  = buildPreviewUrl(rawTrackingUrl);
+    const leadUrl     = rawTrackingUrl;
+
+    sheet.getRange(row, COL_PREVIEW_URL).setValue(previewUrl);
+    sheet.getRange(row, COL_TRACKING_URL).setValue(leadUrl);
+    sheet.getRange(row, COL_GENERATE).setValue('DONE');
+
+    logDebug('success', `Row ${row}`, {
+      publicUrl: rawPublicUrl,
+      trackingUrl: rawTrackingUrl,
+      previewUrl,
+      leadUrl,
+    });
+
+  } catch (err) {
+    sheet.getRange(row, COL_GENERATE).setValue('ERROR');
+    logDebug('exception', `Row ${row}`, { message: err.message, stack: err.stack });
+    Logger.log(err);
+  }
+}
+
+
+/**
+ * Build ProjectionData JSON for a single row.
+ */
+function buildProjectionPayload(ss, calcSheet, row, leadId, exportUrl) {
+  try {
+    // Owner / property info from man-input
+    const ownerFirst = calcSheet.getRange(row, COL_OWNER_FIRST_NAME).getDisplayValue();
+    const ownerLast  = calcSheet.getRange(row, COL_OWNER_LAST_NAME).getDisplayValue();
+    const address    = calcSheet.getRange(row, COL_ADDRESS).getDisplayValue();
+    const city       = calcSheet.getRange(row, COL_CITY).getDisplayValue();
+    const state      = calcSheet.getRange(row, COL_STATE).getDisplayValue();
+    const br         = calcSheet.getRange(row, COL_BR).getValue();
+    const ba         = calcSheet.getRange(row, COL_BA).getValue();
+    const sqft       = calcSheet.getRange(row, COL_SQFT).getValue();
+
+    // Build base slug from address + city + state
+    const fullAddressForSlug = [address, city, state].filter(Boolean).join(' ');
+    const baseSlug           = makeSlugFromAddress(fullAddressForSlug);
+
+    // Add date suffix so each run is unique
+    const today      = new Date();
+    const tz         = Session.getScriptTimeZone();
+    const dateSuffix = Utilities.formatDate(today, tz, 'yyyyMMdd');
+    const slug       = baseSlug + '-' + dateSuffix;
+
+    const aeSlug = AE_SLUG;
+
+    // Open per-property projections workbook from Export Link (Q)
+    const ssId = extractSpreadsheetIdFromUrl(exportUrl);
+    if (!ssId) {
+      logDebug('error_bad_export_url', `Row ${row}`, { exportUrl });
+      throw new Error('Could not parse spreadsheet ID from Export Link');
+    }
+
+    const projSS     = SpreadsheetApp.openById(ssId);
+    const checkSheet = projSS.getSheetByName('check');
+    if (!checkSheet) {
+      logDebug('error_missing_check_tab', `Row ${row}`, { exportUrl, ssId });
+      throw new Error('Missing "check" tab in projection workbook');
+    }
+
+    /***** Annual projections from check tab *****/
+    const expectedAnnual = checkSheet.getRange('J21').getValue();
+    const highAnnual     = checkSheet.getRange('J22').getValue();
+    const lowAnnual      = checkSheet.getRange('J23').getValue();
+
+    const disclaimer =
+      "The projections prepared above are an evaluation of the rental revenue, less cleaning fees, this property has the potential to earn as a year round vacation rental. These projections are based on the historical performance of comparable vacation rental properties. Actual performance can vary from these projections due to factors which LocalVR cannot control including, but not limited to  owner use, the property's condition, regulatory changes, economic trends, and environmental conditions. LocalVR makes no representations or warranties, express or implied, about the accuracy of these projections. These projections should not be the sole factor in any financial decisions.";
+
+    /***** Monthly low / high revenue (Jan–Dec) *****/
+    const monthlyLowValues  = checkSheet.getRange('B52:M52').getValues()[0];
+    const monthlyHighValues = checkSheet.getRange('B53:M53').getValues()[0];
+
+    const monthLabels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    const monthlyRevenue = monthLabels.map((month, i) => ({
+      month,
+      low:  monthlyLowValues[i],
+      high: monthlyHighValues[i],
+    }));
+
+    /***** Seasonality table → seasonalBreakdown (array) *****/
+    const seasonRows = checkSheet.getRange('A29:L33').getValues();
+
+    const seasonalBreakdown = seasonRows.map(rowVals => {
+      const label         = rowVals[0];          // A: Name
+      const daysInSeason  = Number(rowVals[5]);  // F: Days of Season
+      const lowAdr        = rowVals[8];          // I: Low $ / Night
+      const highAdr       = rowVals[9];          // J: High $ / Night
+      const lowOccRaw     = rowVals[10];         // K: Low Occ
+      const highOccRaw    = rowVals[11];         // L: High Occ
+
+      const lowOccFrac  = parsePercentToFraction(lowOccRaw);
+      const highOccFrac = parsePercentToFraction(highOccRaw);
+
+      const daysBookedMin = Math.round(daysInSeason * lowOccFrac);
+      const daysBookedMax = Math.round(daysInSeason * highOccFrac);
+
+      const key = makeSlugFromAddress(label);
+
+      return {
+        key,
+        label,
+        subtitle: '',
+        daysBookedMin,
+        daysBookedMax,
+        daysAvailable:   daysInSeason,
+        occupancyMinPct: lowOccFrac  * 100,
+        occupancyMaxPct: highOccFrac * 100,
+        adrMin: lowAdr,
+        adrMax: highAdr,
+      };
+    });
+
+    /***** AE info from "emails" tab *****/
+    const aeSheet = ss.getSheetByName('emails');
+    if (!aeSheet) {
+      logDebug('error_missing_emails_tab', `Row ${row}`, {});
+      throw new Error('Missing "emails" tab in main workbook');
+    }
+
+    const aeValues = aeSheet.getRange('A2:D2').getValues()[0]; // [email, name, phone, calendarUrl]
+
+    const aeInfo = {
+      email:       aeValues[0],
+      name:        aeValues[1],
+      phone:       aeValues[2],
+      calendarUrl: aeValues[3],
+    };
+
+    const homeownerFull  = [ownerFirst, ownerLast].filter(Boolean).join(' ').trim();
+
+    return {
+      meta: {
+        slug,
+        homeownerFirstName: ownerFirst || '',
+        homeownerFullName:  homeownerFull,
+        leadId,
+      },
+      property: {
+        address,
+        city,
+        state,
+        market: '30A',
+        bedrooms:  br,
+        bathrooms: ba,
+        squareFeet: sqft,
+      },
+      projections: {
+        lowAnnualRevenue:      lowAnnual,
+        expectedAnnualRevenue: expectedAnnual,
+        highAnnualRevenue:     highAnnual,
+        disclaimer,
+      },
+      monthlyRevenue,
+      seasonality: {
+        seasons: seasonalBreakdown,
+      },
+      cta: {
+        aeSlug,
+        aeName:          aeInfo.name,
+        aeTitle:         AE_TITLE,
+        aeEmail:         aeInfo.email,
+        aePhone:         aeInfo.phone,
+        scheduleCallUrl: aeInfo.calendarUrl,
+      },
+    };
+
+  } catch (err) {
+    logDebug('build_payload_error', `Row ${row}`, { message: err.message, stack: err.stack });
+    throw err;
+  }
+}
+
+
+/***** HELPERS *****/
+
+function makeSlugFromAddress(address) {
+  if (!address) return '';
+  return String(address)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+/**
+ * Extract spreadsheet ID from a Google Sheets URL.
+ */
+function extractSpreadsheetIdFromUrl(url) {
+  if (!url) return null;
+  const m = String(url).match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+  return m ? m[1] : null;
+}
+
+/**
+ * Convert values like "80%", 0.8, or 80 into a fraction 0 to 1.
+ */
+function parsePercentToFraction(value) {
+  if (typeof value === 'number') {
+    return value > 1 ? value / 100 : value;
+  }
+  if (!value) return 0;
+  const num = parseFloat(String(value).replace('%', '').trim());
+  if (isNaN(num)) return 0;
+  return num / 100;
+}
+
+/**
+ * Build AE preview URL from trackingUrl by adding viewer=ae.
+ */
+function buildPreviewUrl(trackingUrl) {
+  if (!trackingUrl) return '';
+  // Apps Script doesn't have URL constructor, so manually append
+  if (trackingUrl.indexOf('?') >= 0) {
+    return trackingUrl + '&viewer=ae';
+  } else {
+    return trackingUrl + '?viewer=ae';
+  }
+}
+
+/**
+ * Append a row to debug_log sheet with timestamp, step, message, and JSON data.
+ */
+function logDebug(step, message, data) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(DEBUG_SHEET_NAME);
+    if (!sheet) {
+      sheet = ss.insertSheet(DEBUG_SHEET_NAME);
+      sheet.appendRow(['Timestamp', 'Step', 'Message', 'Data']);
+    }
+    const json = data ? JSON.stringify(data).substring(0, 40000) : '';
+    sheet.appendRow([new Date(), step, message, json]);
+  } catch (e) {
+    Logger.log('logDebug error: ' + e.message);
+  }
+}
