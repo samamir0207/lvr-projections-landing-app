@@ -275,3 +275,68 @@ export async function createFormSubmissionTask(
 export function isSalesforceConfigured(): boolean {
   return getConfig() !== null;
 }
+
+export async function testSalesforceConnection(): Promise<{ 
+  ok: boolean; 
+  configured: boolean;
+  tokenObtained: boolean;
+  error?: string;
+}> {
+  const config = getConfig();
+  if (!config) {
+    return { 
+      ok: false, 
+      configured: false, 
+      tokenObtained: false,
+      error: 'Salesforce credentials not configured (missing SALESFORCE_INSTANCE_URL, SALESFORCE_CLIENT_ID, or SALESFORCE_CLIENT_SECRET)'
+    };
+  }
+  
+  try {
+    const tokenUrl = `${config.instanceUrl}/services/oauth2/token`;
+    
+    const params = new URLSearchParams({
+      grant_type: 'client_credentials',
+      client_id: config.clientId,
+      client_secret: config.clientSecret
+    });
+    
+    const response = await fetch(tokenUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params.toString()
+    });
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      return { 
+        ok: false, 
+        configured: true, 
+        tokenObtained: false,
+        error: `OAuth failed: ${errorText}`
+      };
+    }
+    
+    const tokenData = await response.json() as TokenResponse;
+    
+    cachedToken = {
+      token: tokenData.access_token,
+      expiresAt: Date.now() + (55 * 60 * 1000)
+    };
+    
+    return { 
+      ok: true, 
+      configured: true, 
+      tokenObtained: true 
+    };
+  } catch (error) {
+    return { 
+      ok: false, 
+      configured: true, 
+      tokenObtained: false,
+      error: `Exception: ${error}`
+    };
+  }
+}

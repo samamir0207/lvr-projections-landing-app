@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { z } from "zod";
 import type { ProjectionData, InsertEvent } from "@shared/schema";
 import { KACI_30A_DEFAULTS } from "@shared/localvrData";
-import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask } from "./salesforce";
+import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask, testSalesforceConnection } from "./salesforce";
 import { buildFormSubmissionEmail, sendEmail } from "./email";
 
 // Flexible schema that accepts Apps Script format and transforms it
@@ -321,6 +321,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error fetching projection:", error);
       return res.status(500).json({ ok: false, error: "Internal server error" });
+    }
+  });
+
+  app.get("/api/test-salesforce", async (req: Request, res: Response) => {
+    try {
+      console.log('[Test] Testing Salesforce connection...');
+      const result = await testSalesforceConnection();
+      console.log('[Test] Salesforce test result:', result);
+      return res.json(result);
+    } catch (error) {
+      console.error('[Test] Salesforce test error:', error);
+      return res.status(500).json({ ok: false, error: String(error) });
     }
   });
 
