@@ -481,7 +481,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               See Homes Like Yours in Our Collection
             </p>
             <p className="text-[13px] text-[#333333] leading-[16px] mt-2">
-              We manage a curated collection of premium and luxury homes across the Emerald Coast.
+              We manage a curated collection of premium and luxury vacation rentals in top destinations.
             </p>
           </div>
         </section>
@@ -774,7 +774,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             <div className="py-3 px-4">
               <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">How will you market my luxury home?</p>
               <p className="text-[14px] text-white/90 leading-[20px]">
-                We position your home as a high-end experience, not "just another rental." Your listing gets professional photography, styled copy, and premium placement across top channels like Airbnb, Vrbo, and our direct booking site, plus retargeting, email, and repeat-guest marketing. We also work with luxury travel advisors, realtors, and local partners to keep your home in front of qualified, high-value guests.
+                We position your home as a high-end experience, not just another rental. Your listing gets professional photography, styled copy, and distribution across premium channels—Airbnb Luxe, Vrbo, Marriott Homes & Villas, Capital One Premier Collection, AMEX, and our direct booking site. We also reach qualified guests through luxury travel advisors, realtors, and repeat-guest marketing.
               </p>
             </div>
             <div className="py-3 px-4">
