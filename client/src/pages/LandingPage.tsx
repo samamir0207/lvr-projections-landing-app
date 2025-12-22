@@ -766,27 +766,27 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         <section className="bg-[#333333] px-5 md:px-[100px] py-8 pb-12" data-testid="section-faqs">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">How accurate are these projections?</p>
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">Who is actually taking care of my home locally?</p>
               <p className="text-[14px] text-white/90 leading-[20px]">
-                Our projections are based on actual performance from comparable homes we manage, plus third-party market data. They are intended to set realistic expectations, not to guarantee a specific outcome.
+                Your home is supported by a dedicated local team of Luxury Home Specialists, not a remote call center. On the ground you have full-time inspectors, maintenance coordination, and management based right here in market. They know the neighborhoods, vendors, and seasonal nuances, and they're in and out of your home regularly to make sure it's cared for like a true second home, not a commodity.
               </p>
             </div>
             <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">What fees do you charge?</p>
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">How will you market my luxury home?</p>
               <p className="text-[14px] text-white/90 leading-[20px]">
-                We charge a management fee as a percentage of rental revenue. We do not get paid unless you earn rental revenue, which keeps our incentives aligned with yours.
+                We position your home as a high-end experience, not "just another rental." Your listing gets professional photography, styled copy, and premium placement across top channels like Airbnb, Vrbo, and our direct booking site, plus retargeting, email, and repeat-guest marketing. We also work with luxury travel advisors, realtors, and local partners to keep your home in front of qualified, high-value guests.
               </p>
             </div>
             <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">How do you protect my home?</p>
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">What protection do you provide for my property?</p>
               <p className="text-[14px] text-white/90 leading-[20px]">
-                We use detailed inspections, guest screening, clear house rules, and proactive maintenance. We include $10,000 in damage protection for qualified reservations.
+                Every qualified reservation is backed by up to $1M in liability coverage and up to $10,000 in damage protection, in addition to our strict house rules and screening standards. We layer that with detailed inspections, documented condition reports, and fast response if anything is out of place. The goal is simple: you shouldn't have to trade peace of mind for rental income.
               </p>
             </div>
             <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">Can I still use my home?</p>
+              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">Do you focus on occupancy or on quality bookings?</p>
               <p className="text-[14px] text-white/90 leading-[20px]">
-                Absolutely. We work with you to block dates for personal use. Many of our homeowners use their properties regularly while still earning strong rental income.
+                We focus on profitable, high-quality occupancy, not just filling nights. Our revenue strategy prioritizes longer stays, higher ADR, and guests who value your home and the experience it offers. That means fewer turnovers, less wear and tear, and stronger annual revenue than a "race to the bottom" pricing approach.
               </p>
             </div>
           </div>
