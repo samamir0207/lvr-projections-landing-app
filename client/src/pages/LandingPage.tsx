@@ -406,7 +406,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               
               {/* Disclaimer */}
               <p className="text-[9px] text-[#333333]/60 leading-[14px] mt-6 text-center">
-                Projections are estimates based on historical performance in comparable homes and current market conditions. Actual performance may vary due to home condition, regulations, owner use, pricing decisions, and broader market trends. This is not a financial guarantee.
+                The projections prepared above are an evaluation of the rental revenue, less cleaning fees, this property has the potential to earn as a year round vacation rental. These projections are based on the historical performance of comparable vacation rental properties. Actual performance can vary from these projections due to factors which LocalVR cannot control including, but not limited to, owner use, the property's condition, regulatory changes, economic trends, and environmental conditions. LocalVR makes no representations or warranties, express or implied, about the accuracy of these projections. These projections should not be the sole factor in any financial decisions.
               </p>
               </div>
             </div>
