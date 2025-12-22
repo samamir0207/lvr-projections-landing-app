@@ -27,7 +27,7 @@ interface TaskPayload {
   OwnerId: string;
 }
 
-let cachedToken: { token: string; expiresAt: number } | null = null;
+let cachedToken: { token: string; instanceUrl: string; expiresAt: number } | null = null;
 
 interface SalesforceCredentials {
   instanceUrl: string;
@@ -63,7 +63,7 @@ function getFullCredentials(): SalesforceCredentials | null {
   return { ...config, username, password };
 }
 
-async function getAccessToken(): Promise<string | null> {
+async function getAccessToken(): Promise<{ token: string; instanceUrl: string } | null> {
   const creds = getFullCredentials();
   if (!creds) {
     console.log('[Salesforce] Missing credentials for OAuth');
@@ -71,7 +71,7 @@ async function getAccessToken(): Promise<string | null> {
   }
   
   if (cachedToken && cachedToken.expiresAt > Date.now()) {
-    return cachedToken.token;
+    return { token: cachedToken.token, instanceUrl: cachedToken.instanceUrl };
   }
   
   try {
@@ -103,11 +103,12 @@ async function getAccessToken(): Promise<string | null> {
     
     cachedToken = {
       token: tokenData.access_token,
+      instanceUrl: tokenData.instance_url,
       expiresAt: Date.now() + (55 * 60 * 1000)
     };
     
-    console.log('[Salesforce] OAuth token obtained successfully');
-    return tokenData.access_token;
+    console.log('[Salesforce] OAuth token obtained successfully, instance:', tokenData.instance_url);
+    return { token: tokenData.access_token, instanceUrl: tokenData.instance_url };
   } catch (error) {
     console.error('[Salesforce] Error getting OAuth token:', error);
     return null;
@@ -122,25 +123,19 @@ export async function updateLeadProjectionUrl(
   leadId: string, 
   trackingUrl: string
 ): Promise<{ ok: boolean; error?: string }> {
-  const config = getConfig();
-  if (!config) {
-    console.log('[Salesforce] Skipping Lead update - credentials not configured');
-    return { ok: true };
-  }
-  
-  const accessToken = await getAccessToken();
-  if (!accessToken) {
+  const auth = await getAccessToken();
+  if (!auth) {
     console.log('[Salesforce] Skipping Lead update - could not get access token');
     return { ok: false, error: 'Could not obtain access token' };
   }
   
   try {
     const response = await fetch(
-      `${config.instanceUrl}/services/data/v59.0/sobjects/Lead/${leadId}`,
+      `${auth.instanceUrl}/services/data/v59.0/sobjects/Lead/${leadId}`,
       {
         method: 'PATCH',
         headers: {
-          'Authorization': `Bearer ${accessToken}`,
+          'Authorization': `Bearer ${auth.token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -164,25 +159,19 @@ export async function updateLeadProjectionUrl(
 }
 
 export async function getLeadOwner(leadId: string): Promise<LeadInfo | null> {
-  const config = getConfig();
-  if (!config) {
-    console.log('[Salesforce] Skipping Lead fetch - credentials not configured');
-    return null;
-  }
-  
-  const accessToken = await getAccessToken();
-  if (!accessToken) {
+  const auth = await getAccessToken();
+  if (!auth) {
     console.log('[Salesforce] Skipping Lead fetch - could not get access token');
     return null;
   }
   
   try {
     const response = await fetch(
-      `${config.instanceUrl}/services/data/v59.0/sobjects/Lead/${leadId}?fields=Id,OwnerId,Name,Email`,
+      `${auth.instanceUrl}/services/data/v59.0/sobjects/Lead/${leadId}?fields=Id,OwnerId,Name,Email`,
       {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${accessToken}`
+          'Authorization': `Bearer ${auth.token}`
         }
       }
     );
@@ -207,14 +196,8 @@ export async function createTask(
   subject: string,
   description: string
 ): Promise<{ ok: boolean; taskId?: string; error?: string }> {
-  const config = getConfig();
-  if (!config) {
-    console.log('[Salesforce] Skipping Task creation - credentials not configured');
-    return { ok: true };
-  }
-  
-  const accessToken = await getAccessToken();
-  if (!accessToken) {
+  const auth = await getAccessToken();
+  if (!auth) {
     console.log('[Salesforce] Skipping Task creation - could not get access token');
     return { ok: false, error: 'Could not obtain access token' };
   }
@@ -230,11 +213,11 @@ export async function createTask(
     };
     
     const response = await fetch(
-      `${config.instanceUrl}/services/data/v59.0/sobjects/Task`,
+      `${auth.instanceUrl}/services/data/v59.0/sobjects/Task`,
       {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${accessToken}`,
+          'Authorization': `Bearer ${auth.token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(taskPayload)
@@ -359,6 +342,7 @@ export async function testSalesforceConnection(): Promise<{
     
     cachedToken = {
       token: tokenData.access_token,
+      instanceUrl: tokenData.instance_url,
       expiresAt: Date.now() + (55 * 60 * 1000)
     };
     
