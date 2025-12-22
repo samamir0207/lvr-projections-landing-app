@@ -6,7 +6,8 @@ import type { ProjectionData, InsertEvent } from "@shared/schema";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask } from "./salesforce";
 import { buildFormSubmissionEmail, sendEmail } from "./email";
 
-const projectionDataSchema = z.object({
+// Flexible schema that accepts Apps Script format and transforms it
+const projectionInputSchema = z.object({
   meta: z.object({
     slug: z.string(),
     homeownerFirstName: z.string(),
@@ -24,10 +25,14 @@ const projectionDataSchema = z.object({
     market: z.string().optional(),
     isLuxe: z.boolean().optional()
   }),
+  // Accept either format for projections
   projections: z.object({
-    expectedRevenue: z.number(),
-    highRevenue: z.number(),
-    lowRevenue: z.number(),
+    expectedRevenue: z.number().optional(),
+    highRevenue: z.number().optional(),
+    lowRevenue: z.number().optional(),
+    expectedAnnualRevenue: z.number().optional(),
+    highAnnualRevenue: z.number().optional(),
+    lowAnnualRevenue: z.number().optional(),
     disclaimer: z.string().optional()
   }),
   monthlyRevenue: z.array(z.object({
@@ -35,13 +40,7 @@ const projectionDataSchema = z.object({
     low: z.number(),
     high: z.number()
   })),
-  seasonality: z.object({
-    peak: z.object({ daysBooked: z.number(), daysAvailable: z.number(), occupancy: z.number(), adr: z.number() }),
-    winter: z.object({ daysBooked: z.number(), daysAvailable: z.number(), occupancy: z.number(), adr: z.number() }),
-    highDemand: z.object({ daysBooked: z.number(), daysAvailable: z.number(), occupancy: z.number(), adr: z.number() }),
-    highShoulder: z.object({ daysBooked: z.number(), daysAvailable: z.number(), occupancy: z.number(), adr: z.number() }),
-    lowShoulder: z.object({ daysBooked: z.number(), daysAvailable: z.number(), occupancy: z.number(), adr: z.number() })
-  }).optional(),
+  // Accept either seasonalBreakdown array or seasonality object with seasons array
   seasonalBreakdown: z.array(z.object({
     key: z.string(),
     label: z.string(),
@@ -54,6 +53,20 @@ const projectionDataSchema = z.object({
     adrMin: z.number(),
     adrMax: z.number()
   })).optional(),
+  seasonality: z.object({
+    seasons: z.array(z.object({
+      key: z.string(),
+      label: z.string(),
+      subtitle: z.string(),
+      daysBookedMin: z.number(),
+      daysBookedMax: z.number(),
+      daysAvailable: z.number(),
+      occupancyMinPct: z.number(),
+      occupancyMaxPct: z.number(),
+      adrMin: z.number(),
+      adrMax: z.number()
+    })).optional()
+  }).optional(),
   aiNarrativePlaceholders: z.object({
     summary: z.string(),
     insights: z.string(),
@@ -72,6 +85,7 @@ const projectionDataSchema = z.object({
     aeId: z.string().optional(),
     aeSlug: z.string(),
     scheduleCallUrl: z.string().optional(),
+    aeCalendarUrl: z.string().optional(),
     aeName: z.string(),
     aeTitle: z.string(),
     aePhone: z.string(),
@@ -96,6 +110,40 @@ const projectionDataSchema = z.object({
     propertyUrl: z.string()
   })).optional()
 });
+
+// Transform input to normalized ProjectionData format
+function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>): ProjectionData {
+  // Normalize projections - prefer new names, fall back to Annual names
+  const projections = {
+    expectedRevenue: input.projections.expectedRevenue ?? input.projections.expectedAnnualRevenue ?? 0,
+    highRevenue: input.projections.highRevenue ?? input.projections.highAnnualRevenue ?? 0,
+    lowRevenue: input.projections.lowRevenue ?? input.projections.lowAnnualRevenue ?? 0,
+    disclaimer: input.projections.disclaimer || "Projections are estimates based on market data and comparable properties."
+  };
+
+  // Normalize seasonalBreakdown - prefer direct array, fall back to seasonality.seasons
+  const seasonalBreakdown = input.seasonalBreakdown || input.seasonality?.seasons || [];
+
+  // Normalize CTA - scheduleCallUrl can come as aeCalendarUrl
+  const cta = {
+    ...input.cta,
+    scheduleCallUrl: input.cta.scheduleCallUrl || input.cta.aeCalendarUrl || ""
+  };
+
+  return {
+    meta: input.meta,
+    property: input.property,
+    projections,
+    monthlyRevenue: input.monthlyRevenue,
+    seasonalBreakdown,
+    aiNarrativePlaceholders: input.aiNarrativePlaceholders,
+    trust: input.trust,
+    cta,
+    testimonials: input.testimonials,
+    benefits: input.benefits,
+    comparableProperties: input.comparableProperties
+  } as ProjectionData;
+}
 
 const eventSchema = z.object({
   event: z.string(),
@@ -166,9 +214,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/projections", async (req: Request, res: Response) => {
     try {
-      const parsed = projectionDataSchema.safeParse(req.body);
+      console.log('[API] POST /api/projections received:', JSON.stringify(req.body, null, 2).slice(0, 500));
+      
+      const parsed = projectionInputSchema.safeParse(req.body);
       
       if (!parsed.success) {
+        console.error('[API] Validation failed:', JSON.stringify(parsed.error.flatten(), null, 2));
         return res.status(400).json({ 
           ok: false, 
           error: "Invalid projection data", 
@@ -176,10 +227,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
       
-      const data = parsed.data as ProjectionData;
+      // Transform to normalized format
+      const data = normalizeProjectionInput(parsed.data);
       const slug = data.meta.slug;
       const aeSlug = data.cta.aeSlug;
       const leadId = data.meta.leadId;
+      
+      console.log(`[API] Creating projection: slug=${slug}, aeSlug=${aeSlug}, leadId=${leadId}`);
       
       const existing = await storage.getProjectionBySlug(slug);
       
