@@ -134,35 +134,36 @@ export async function updateLeadProjectionUrl(
   }
 }
 
-export async function getLeadOwner(leadId: string): Promise<LeadInfo | null> {
+export async function getLeadOwner(leadId: string): Promise<{ lead: LeadInfo | null; error?: string }> {
   const auth = await getAccessToken();
   if (!auth) {
     console.log('[Salesforce] Skipping Lead fetch - could not get access token');
-    return null;
+    return { lead: null, error: 'Could not obtain access token' };
   }
   
   try {
-    const response = await fetch(
-      `${auth.instanceUrl}/services/data/v59.0/sobjects/Lead/${leadId}?fields=Id,OwnerId,Name,Email`,
-      {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${auth.token}`
-        }
+    const url = `${auth.instanceUrl}/services/data/v59.0/sobjects/Lead/${leadId}?fields=Id,OwnerId,Name,Email`;
+    console.log(`[Salesforce] Fetching Lead: ${leadId}`);
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${auth.token}`
       }
-    );
+    });
     
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('[Salesforce] Failed to fetch Lead:', errorText);
-      return null;
+      console.error('[Salesforce] Failed to fetch Lead:', response.status, errorText);
+      return { lead: null, error: `HTTP ${response.status}: ${errorText}` };
     }
     
     const lead = await response.json() as LeadInfo;
-    return lead;
+    console.log(`[Salesforce] Lead fetched successfully: ${lead.Name || lead.Id}`);
+    return { lead };
   } catch (error) {
     console.error('[Salesforce] Error fetching Lead:', error);
-    return null;
+    return { lead: null, error: `Exception: ${String(error)}` };
   }
 }
 
@@ -219,10 +220,10 @@ export async function createClickTrackingTask(
   leadId: string,
   slug: string
 ): Promise<{ ok: boolean; taskId?: string; error?: string }> {
-  const lead = await getLeadOwner(leadId);
+  const { lead, error } = await getLeadOwner(leadId);
   
   if (!lead) {
-    return { ok: false, error: 'Could not fetch Lead info' };
+    return { ok: false, error: error || 'Could not fetch Lead info' };
   }
   
   return createTask(
@@ -238,10 +239,10 @@ export async function createFormSubmissionTask(
   slug: string,
   message?: string
 ): Promise<{ ok: boolean; error?: string }> {
-  const lead = await getLeadOwner(leadId);
+  const { lead, error } = await getLeadOwner(leadId);
   
   if (!lead) {
-    return { ok: false, error: 'Could not fetch Lead info' };
+    return { ok: false, error: error || 'Could not fetch Lead info' };
   }
   
   const description = message 
