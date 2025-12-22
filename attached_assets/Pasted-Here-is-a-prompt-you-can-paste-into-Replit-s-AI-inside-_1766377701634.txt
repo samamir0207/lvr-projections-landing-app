@@ -1,0 +1,109 @@
+Here is a prompt you can paste into Replit’s AI inside your projections Repl:
+
+⸻
+
+I need your help finishing an integration between this Repl and a Google Sheets Apps Script.
+
+Context:
+	1.	This Repl hosts a property projections landing page template for LocalVR.
+	2.	We have a backend route POST /api/projections that should accept projection data for a single property, insert it into the template, and return URLs:
+	•	publicUrl
+	•	trackingUrl
+	3.	From Google Sheets, an Apps Script builds a JSON payload and sends it to this endpoint.
+
+Right now the POST is returning this error:
+
+{
+  "ok": false,
+  "error": "Invalid projection data",
+  "details": {
+    "fieldErrors": {
+      "projections": ["Required","Required","Required"],
+      "seasonality": ["Expected object, received array"]
+    }
+  }
+}
+
+This tells me my JSON shape does not match the ProjectionData type you expect.
+
+What I need from you:
+	1.	Find the single property data type that the landing page uses. I believe it is something like ProjectionData or similar in shared/localvrData.ts or a related file.
+	2.	Show me the exact TypeScript type / interface / Zod schema for that data structure, especially the fields:
+	•	projections
+	•	monthlyRevenue
+	•	seasonality
+	3.	Tell me which fields are required vs optional, and what the expected shapes are. For example:
+	•	What is the exact structure of projections?
+(Keys, data types, and any nested objects.)
+	•	What is the exact structure of monthlyRevenue?
+Is it an array of 12 objects, a simple array of numbers, or an object with low and high arrays, etc?
+	•	What is the exact structure of seasonality?
+Is it an object like { seasons: Season[] } or something else? Which properties on each season are required?
+	4.	Please also paste an example of a valid sample data object that the app currently uses to render a working landing page. This can be the default hard coded property data if you have it.
+
+For reference, here is roughly what my Apps Script is sending right now (structure only, not exact values):
+
+{
+  "meta": {
+    "slug": "221-carnelian-bay-cir",
+    "homeownerFirstName": "Sam",
+    "homeownerFullName": "Sam Amir",
+    "leadId": "00QUb000004VHGn"
+  },
+  "property": {
+    "address": "221 Carnelian Bay Cir",
+    "city": "Inlet Beach",
+    "state": "FL",
+    "market": "30A",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2500
+  },
+  "projections": {
+    "lowAnnualRevenue": 58000,
+    "expectedAnnualRevenue": 72000,
+    "highAnnualRevenue": 87000,
+    "disclaimer": "Long disclaimer text..."
+  },
+  "monthlyRevenue": [
+    { "month": "Jan", "low": 4000, "high": 6000 },
+    { "month": "Feb", "low": 4500, "high": 6500 }
+    // ... through Dec
+  ],
+  "seasonality": {
+    "seasons": [
+      {
+        "name": "Peak Days",
+        "daysAvailable": 10,
+        "daysBookedLow": 8,
+        "daysBookedHigh": 10,
+        "occLowPercent": 80,
+        "occHighPercent": 100,
+        "adrLow": 740,
+        "adrHigh": 1109
+      }
+      // other seasons...
+    ]
+  },
+  "cta": {
+    "aeSlug": "kaci-wolkers",
+    "aeName": "Kaci Wolkers",
+    "aeTitle": "Account Executive",
+    "aeEmail": "kaci.wolkers@golocalvr.com",
+    "aePhone": "850-641-1001",
+    "aeCalendarUrl": "https://calendar.google.com/..."
+  }
+}
+
+The goal:
+	•	Either adjust my payload shape to match your expected schema, or, if needed, slightly relax the backend validation to accept this shape.
+	•	Then confirm what the payload should look like so I can update my Apps Script.
+
+Please:
+	1.	Identify the correct type used for request validation for POST /api/projections.
+	2.	Show the exact type / schema and a working example.
+	3.	Tell me precisely what I need to change in my JSON for projections, monthlyRevenue, and seasonality so that validation passes.
+
+⸻
+
+Use that with Replit, then paste back whatever schema or sample object it gives you and I can rewrite the Apps Script payload to match it exactly.
