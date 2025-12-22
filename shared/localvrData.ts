@@ -293,6 +293,24 @@ export function getSeasonSubtitlesForMarket(marketCode: string) {
   return MARKET_SEASON_SUBTITLES[normalized] || MARKET_SEASON_SUBTITLES["30A"];
 }
 
+// Market-specific contact form images
+// These appear next to the contact form at the bottom of the landing page
+export const MARKET_FORM_IMAGES: Record<string, string> = {
+  "30A": "/assets/form-image-30a.jpg",
+  "BC": "/assets/form-image-bc.jpg",
+  "PC": "/assets/form-image-pc.jpg",
+  "TE": "/assets/form-image-te.jpg",
+  "VA": "/assets/form-image-va.jpg",
+  "BS": "/assets/form-image-bs.jpg",
+  "LT": "/assets/form-image-lt.jpg"
+};
+
+// Get contact form image for a market, with fallback to 30A
+export function getFormImageForMarket(marketCode: string): string {
+  const normalized = marketCode.toUpperCase();
+  return MARKET_FORM_IMAGES[normalized] || MARKET_FORM_IMAGES["30A"];
+}
+
 function generateSlug(address: string): string {
   return address
     .toLowerCase()
