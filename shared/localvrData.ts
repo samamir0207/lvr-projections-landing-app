@@ -227,6 +227,72 @@ export function getComparablePropertiesForMarket(marketCode: string) {
   return MARKET_COMPARABLE_PROPERTIES[normalized] || MARKET_COMPARABLE_PROPERTIES["30A"];
 }
 
+// Market-specific season subtitles
+// Each market has different date ranges and event names for their seasons
+export const MARKET_SEASON_SUBTITLES: Record<string, {
+  peak_days: string;
+  winter_season: string;
+  summer_season: string;
+  high_shoulder: string;
+  low_shoulder: string;
+}> = {
+  "30A": {
+    peak_days: "NYE, Memorial Day, 4th of July, Christmas",
+    winter_season: "Dec 1–Feb 28",
+    summer_season: "Spring Break, May 20–Aug 15, Labor Day, Thanksgiving",
+    high_shoulder: "Mar 1–May 19",
+    low_shoulder: "Aug 16–Nov 30"
+  },
+  "BC": {
+    peak_days: "Christmas, NYE",
+    winter_season: "Nov 21–Mar 31",
+    summer_season: "June 16–Aug 20",
+    high_shoulder: "Apr 1–Apr 20, Jun 1–Jun 15, Aug 21–Oct 10, Nov 11–Nov 20",
+    low_shoulder: "Apr 21–May 31, Oct 11–Nov 10"
+  },
+  "PC": {
+    peak_days: "Christmas, NYE, Sundance",
+    winter_season: "Nov 25–Mar 31",
+    summer_season: "June 10–Sep 5",
+    high_shoulder: "Apr 1–Apr 15, May 25–Jun 10, Sep 6–Oct 10, Nov 16–Nov 25",
+    low_shoulder: "Apr 15–May 24, Oct 11–Nov 15"
+  },
+  "TE": {
+    peak_days: "Christmas, NYE, Bluegrass, Ride",
+    winter_season: "Nov 21–Mar 31",
+    summer_season: "June 16–Aug 20",
+    high_shoulder: "Apr 1–Apr 20, Jun 1–Jun 15, Aug 21–Oct 10, Nov 11–Nov 20",
+    low_shoulder: "Apr 21–May 31, Oct 11–Nov 10"
+  },
+  "VA": {
+    peak_days: "Christmas, NYE",
+    winter_season: "Nov 21–Mar 31",
+    summer_season: "June 16–Aug 20",
+    high_shoulder: "Apr 1–Apr 20, Jun 1–Jun 15, Aug 21–Oct 10, Nov 11–Nov 20",
+    low_shoulder: "Apr 21–May 31, Oct 11–Nov 10"
+  },
+  "BS": {
+    peak_days: "Christmas, NYE",
+    winter_season: "Nov 25–Mar 31",
+    summer_season: "Apr 1–Apr 15, May 25–Jun 10, Sep 6–Oct 10, Nov 16–Nov 25",
+    high_shoulder: "Apr 15–May 24, Oct 11–Nov 15",
+    low_shoulder: "June 10–Sep 5"
+  },
+  "LT": {
+    peak_days: "Christmas, NYE, 4th of July",
+    winter_season: "Thanksgiving, Dec 15–Mar 31",
+    summer_season: "May 25–Sep 10",
+    high_shoulder: "Apr 1–Apr 10, May 11–May 24, Sep 11–Oct 10",
+    low_shoulder: "Apr 11–May 10, Oct 11–Dec 15"
+  }
+};
+
+// Get season subtitles for a market, with fallback to 30A
+export function getSeasonSubtitlesForMarket(marketCode: string) {
+  const normalized = marketCode.toUpperCase();
+  return MARKET_SEASON_SUBTITLES[normalized] || MARKET_SEASON_SUBTITLES["30A"];
+}
+
 function generateSlug(address: string): string {
   return address
     .toLowerCase()
@@ -339,7 +405,7 @@ export const KACI_30A_DEFAULTS: MarketDefaults = {
       occupancy: 0.49,
       adr: 403
     },
-    highDemand: {
+    summerSeason: {
       daysBooked: 71,
       daysAvailable: 99,
       occupancy: 0.71,
@@ -469,8 +535,8 @@ const templatePlaceholder = createProjection({
       adrMax: 0
     },
     {
-      key: "high_demand",
-      label: "High Demand",
+      key: "summer_season",
+      label: "Summer Season",
       subtitle: "Spring Break, May 20–Aug 15, Labor Day, Thanksgiving",
       daysBookedMin: 0,
       daysBookedMax: 0,
@@ -564,8 +630,8 @@ const sarahProjection = createProjection({
       adrMax: 525
     },
     {
-      key: "high_demand",
-      label: "High Demand",
+      key: "summer_season",
+      label: "Summer Season",
       subtitle: "Spring Break, May 20–Aug 15, Labor Day, Thanksgiving",
       daysBookedMin: 62,
       daysBookedMax: 90,

@@ -97,7 +97,7 @@ export interface SeasonData {
 export interface Seasonality {
   peak: SeasonData;
   winter: SeasonData;
-  highDemand: SeasonData;
+  summerSeason: SeasonData;
   highShoulder: SeasonData;
   lowShoulder: SeasonData;
 }
