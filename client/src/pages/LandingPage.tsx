@@ -331,7 +331,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                 {property.address.split(',')[0]}
               </p>
               <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-1" data-testid="text-property-details">
-                {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms | {property.squareFeet.toLocaleString()} sq ft
+                {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms{property.squareFeet ? ` | ${property.squareFeet.toLocaleString()} sq ft` : ''}
               </p>
             </div>
             
