@@ -398,7 +398,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           projectionLow: projectionData.projections.lowRevenue,
           projectionExpected: projectionData.projections.expectedRevenue,
           projectionHigh: projectionData.projections.highRevenue,
-          projectionPageUrl: `${baseUrl}/${formData.aeSlug}/${formData.slug}`,
+          projectionPageUrl: `${baseUrl}/${projectionData.cta.aeSlug}/${formData.slug}`,
           leadId: formData.leadId
         });
         // TESTING: Override recipient to sam@golocalvr.com (TODO: revert after testing)
