@@ -41,19 +41,26 @@ function getConfig(): SalesforceConfig | null {
   return { instanceUrl, clientId, clientSecret };
 }
 
-async function getAccessToken(): Promise<{ token: string; instanceUrl: string } | null> {
+interface AuthResult {
+  auth: { token: string; instanceUrl: string } | null;
+  error?: string;
+}
+
+async function getAccessToken(): Promise<AuthResult> {
   const config = getConfig();
   if (!config) {
-    console.log('[Salesforce] Missing credentials for OAuth (need SALESFORCE_INSTANCE_URL, SALESFORCE_CLIENT_ID, SALESFORCE_CLIENT_SECRET)');
-    return null;
+    const error = 'Missing credentials (need SALESFORCE_INSTANCE_URL, SALESFORCE_CLIENT_ID, SALESFORCE_CLIENT_SECRET)';
+    console.log('[Salesforce]', error);
+    return { auth: null, error };
   }
   
   if (cachedToken && cachedToken.expiresAt > Date.now()) {
-    return { token: cachedToken.token, instanceUrl: cachedToken.instanceUrl };
+    return { auth: { token: cachedToken.token, instanceUrl: cachedToken.instanceUrl } };
   }
   
   try {
     const tokenUrl = `${config.instanceUrl}/services/oauth2/token`;
+    console.log('[Salesforce] Requesting OAuth token from:', tokenUrl);
     
     const params = new URLSearchParams({
       grant_type: 'client_credentials',
@@ -71,8 +78,9 @@ async function getAccessToken(): Promise<{ token: string; instanceUrl: string } 
     
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('[Salesforce] OAuth token request failed:', errorText);
-      return null;
+      const error = `OAuth HTTP ${response.status}: ${errorText}`;
+      console.error('[Salesforce] OAuth token request failed:', error);
+      return { auth: null, error };
     }
     
     const tokenData = await response.json() as TokenResponse;
@@ -84,10 +92,11 @@ async function getAccessToken(): Promise<{ token: string; instanceUrl: string } 
     };
     
     console.log('[Salesforce] OAuth token obtained successfully via client_credentials, instance:', tokenData.instance_url);
-    return { token: tokenData.access_token, instanceUrl: tokenData.instance_url };
+    return { auth: { token: tokenData.access_token, instanceUrl: tokenData.instance_url } };
   } catch (error) {
+    const errorMsg = `OAuth exception: ${String(error)}`;
     console.error('[Salesforce] Error getting OAuth token:', error);
-    return null;
+    return { auth: null, error: errorMsg };
   }
 }
 
@@ -99,10 +108,10 @@ export async function updateLeadProjectionUrl(
   leadId: string, 
   trackingUrl: string
 ): Promise<{ ok: boolean; error?: string }> {
-  const auth = await getAccessToken();
+  const { auth, error: authError } = await getAccessToken();
   if (!auth) {
     console.log('[Salesforce] Skipping Lead update - could not get access token');
-    return { ok: false, error: 'Could not obtain access token' };
+    return { ok: false, error: authError || 'Could not obtain access token' };
   }
   
   try {
@@ -135,10 +144,10 @@ export async function updateLeadProjectionUrl(
 }
 
 export async function getLeadOwner(leadId: string): Promise<{ lead: LeadInfo | null; error?: string }> {
-  const auth = await getAccessToken();
+  const { auth, error: authError } = await getAccessToken();
   if (!auth) {
     console.log('[Salesforce] Skipping Lead fetch - could not get access token');
-    return { lead: null, error: 'Could not obtain access token' };
+    return { lead: null, error: authError || 'Could not obtain access token' };
   }
   
   try {
@@ -173,10 +182,10 @@ export async function createTask(
   subject: string,
   description: string
 ): Promise<{ ok: boolean; taskId?: string; error?: string }> {
-  const auth = await getAccessToken();
+  const { auth, error: authError } = await getAccessToken();
   if (!auth) {
     console.log('[Salesforce] Skipping Task creation - could not get access token');
-    return { ok: false, error: 'Could not obtain access token' };
+    return { ok: false, error: authError || 'Could not obtain access token' };
   }
   
   try {
