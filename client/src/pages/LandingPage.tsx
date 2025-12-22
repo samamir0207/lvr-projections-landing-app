@@ -241,11 +241,11 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         {/* AE Contact Section */}
         <section className="bg-[#f7f4f0] px-5 py-6" data-testid="section-ae-contact">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 w-[160px] h-[160px] rounded-full overflow-hidden">
               <img 
                 src={cta.aeHeadshotUrl || "/assets/ae-headshot-default.png"}
                 alt={cta.aeName}
-                className="w-[160px] h-[160px] object-cover rounded-full"
+                className="w-full h-full object-cover object-center"
                 data-testid="img-ae-headshot"
               />
             </div>

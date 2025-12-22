@@ -16,12 +16,14 @@ export default function FooterSection({ aeName, aeTitle, aePhone, aeEmail, aeHea
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="flex items-center gap-6">
-            <img 
-              src={aeHeadshotUrl || "/assets/ae-headshot-default.png"}
-              alt={aeName}
-              className="w-32 h-32 rounded-full border-2 border-primary object-cover"
-              data-testid="img-ae-headshot"
-            />
+            <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-primary flex-shrink-0">
+              <img 
+                src={aeHeadshotUrl || "/assets/ae-headshot-default.png"}
+                alt={aeName}
+                className="w-full h-full object-cover object-center"
+                data-testid="img-ae-headshot"
+              />
+            </div>
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-1" data-testid="text-ae-name">
                 {aeName}
