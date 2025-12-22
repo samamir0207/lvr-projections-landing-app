@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import type { ProjectionData, InsertEvent } from "@shared/schema";
+import { KACI_30A_DEFAULTS } from "@shared/localvrData";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask } from "./salesforce";
 import { buildFormSubmissionEmail, sendEmail } from "./email";
 
@@ -111,7 +112,7 @@ const projectionInputSchema = z.object({
   })).optional()
 });
 
-// Transform input to normalized ProjectionData format
+// Transform input to normalized ProjectionData format with defaults for optional fields
 function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>): ProjectionData {
   // Normalize projections - prefer new names, fall back to Annual names
   const projections = {
@@ -124,11 +125,18 @@ function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>):
   // Normalize seasonalBreakdown - prefer direct array, fall back to seasonality.seasons
   const seasonalBreakdown = input.seasonalBreakdown || input.seasonality?.seasons || [];
 
-  // Normalize CTA - scheduleCallUrl can come as aeCalendarUrl
+  // Normalize CTA - scheduleCallUrl can come as aeCalendarUrl, merge with defaults
   const cta = {
+    ...KACI_30A_DEFAULTS.cta,
     ...input.cta,
-    scheduleCallUrl: input.cta.scheduleCallUrl || input.cta.aeCalendarUrl || ""
+    scheduleCallUrl: input.cta.scheduleCallUrl || input.cta.aeCalendarUrl || KACI_30A_DEFAULTS.cta.scheduleCallUrl
   };
+
+  // Use defaults for optional fields if not provided
+  const trust = input.trust || KACI_30A_DEFAULTS.trust;
+  const testimonials = input.testimonials || KACI_30A_DEFAULTS.testimonials;
+  const benefits = input.benefits || KACI_30A_DEFAULTS.benefits;
+  const comparableProperties = input.comparableProperties || KACI_30A_DEFAULTS.comparableProperties;
 
   return {
     meta: input.meta,
@@ -137,11 +145,11 @@ function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>):
     monthlyRevenue: input.monthlyRevenue,
     seasonalBreakdown,
     aiNarrativePlaceholders: input.aiNarrativePlaceholders,
-    trust: input.trust,
+    trust,
     cta,
-    testimonials: input.testimonials,
-    benefits: input.benefits,
-    comparableProperties: input.comparableProperties
+    testimonials,
+    benefits,
+    comparableProperties
   } as ProjectionData;
 }
 
