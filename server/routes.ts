@@ -215,7 +215,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         if (projection && projection.createdAt) {
           const daysSinceCreation = (Date.now() - new Date(projection.createdAt).getTime()) / (1000 * 60 * 60 * 24);
-          const minDaysForTask = 0.0007; // TEMPORARY: ~1 minute for testing (change back to 14)
+          const minDaysForTask = 14; // Only create Salesforce tasks for projections 14+ days old
           
           if (daysSinceCreation >= minDaysForTask) {
             console.log(`[Tracking] Projection is ${daysSinceCreation.toFixed(4)} days old (>= ${minDaysForTask}), creating Salesforce Task`);
@@ -495,8 +495,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           projectionPageUrl: `${baseUrl}/${projectionData.cta.aeSlug}/${formData.slug}`,
           leadId: formData.leadId
         });
-        // TESTING: Override recipient to sam@golocalvr.com (TODO: revert after testing)
-        emailPayload.to = 'sam@golocalvr.com';
         emailPayload.replyTo = formData.email;
         
         sendEmail(emailPayload).catch(err => {
