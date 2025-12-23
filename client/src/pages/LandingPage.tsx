@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDefaultProjection, MARKET_FORM_IMAGES } from "@shared/localvrData";
+import { getDefaultProjection, MARKET_FORM_IMAGES, getComparablePropertiesForMarket, getSeasonSubtitlesForMarket } from "@shared/localvrData";
 import type { ProjectionData } from "@shared/schema";
 import { initializeTracking, trackCTAClick, trackFormSubmit, trackInteraction } from "@/lib/analytics";
 import { UserCheck, ShieldCheck, SlidersHorizontal, ChevronLeft, ChevronRight, TrendingUp, MapPin, Gem } from "lucide-react";
@@ -48,11 +48,33 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
   
-  const { meta, property, projections, trust, cta, monthlyRevenue, seasonalBreakdown, testimonials, comparableProperties } = projectionData;
+  const { meta, property, projections, trust, cta, monthlyRevenue, seasonalBreakdown: rawSeasonalBreakdown, testimonials, comparableProperties: rawComparableProperties } = projectionData;
   
-  // Get market-specific form image based on property.market (from API)
+  // Get market-specific data based on property.market (from API)
   const marketCode = (property.market || "30A").toUpperCase();
   const formImage = MARKET_FORM_IMAGES[marketCode] || "/assets/form-image-30a.jpg";
+  
+  // Fallback to market-specific comparable properties when empty
+  const comparableProperties = (rawComparableProperties && rawComparableProperties.length > 0) 
+    ? rawComparableProperties 
+    : getComparablePropertiesForMarket(marketCode);
+  
+  // Get market-specific season subtitles for fallback
+  const marketSeasonSubtitles = getSeasonSubtitlesForMarket(marketCode);
+  
+  // Generate default seasonal breakdown if empty
+  const seasonalBreakdown = (rawSeasonalBreakdown && rawSeasonalBreakdown.length > 0) 
+    ? rawSeasonalBreakdown 
+    : [
+        { key: "peak", label: "Peak Days", subtitle: marketSeasonSubtitles.peak_days, daysBookedMin: 8, daysBookedMax: 10, daysAvailable: 10, occupancyMinPct: 80, occupancyMaxPct: 100, adrMin: 800, adrMax: 1200 },
+        { key: "winter", label: "Winter Season", subtitle: marketSeasonSubtitles.winter_season, daysBookedMin: 50, daysBookedMax: 70, daysAvailable: 100, occupancyMinPct: 50, occupancyMaxPct: 70, adrMin: 350, adrMax: 500 },
+        { key: "summer", label: "Summer Season", subtitle: marketSeasonSubtitles.summer_season, daysBookedMin: 60, daysBookedMax: 80, daysAvailable: 100, occupancyMinPct: 60, occupancyMaxPct: 80, adrMin: 600, adrMax: 900 },
+        { key: "high_shoulder", label: "High Shoulder", subtitle: marketSeasonSubtitles.high_shoulder, daysBookedMin: 30, daysBookedMax: 50, daysAvailable: 75, occupancyMinPct: 40, occupancyMaxPct: 65, adrMin: 450, adrMax: 650 },
+        { key: "low_shoulder", label: "Low Shoulder", subtitle: marketSeasonSubtitles.low_shoulder, daysBookedMin: 20, daysBookedMax: 40, daysAvailable: 80, occupancyMinPct: 25, occupancyMaxPct: 50, adrMin: 350, adrMax: 500 }
+      ];
+  
+  // Always use 90% retention rate (company standard)
+  const retentionRate = "90%";
   
   useEffect(() => {
     initializeTracking({
@@ -283,7 +305,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         <section className="bg-[#333333] px-5 py-10" data-testid="section-stats">
           <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center items-start gap-4 md:gap-0">
             <div className="text-center px-8 md:px-16">
-              <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
+              <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">{retentionRate.replace('%', '')}%</p>
               <p className="text-[16px] font-bold text-white leading-[24px]">Homeowner</p>
               <p className="text-[16px] font-bold text-white leading-[24px]">Retention</p>
             </div>
