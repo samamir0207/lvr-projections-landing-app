@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import type { ProjectionData, InsertEvent } from "@shared/schema";
-import { KACI_30A_DEFAULTS, getAeHeadshotUrl, getComparablePropertiesForMarket } from "@shared/localvrData";
+import { KACI_30A_DEFAULTS, getAeHeadshotUrl, getComparablePropertiesForMarket, getSeasonSubtitlesForMarket } from "@shared/localvrData";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask, testSalesforceConnection } from "./salesforce";
 import { buildFormSubmissionEmail, buildProjectionNotFoundEmail, sendEmail } from "./email";
 
@@ -123,7 +123,16 @@ function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>):
   };
 
   // Normalize seasonalBreakdown - prefer direct array, fall back to seasonality.seasons
-  const seasonalBreakdown = input.seasonalBreakdown || input.seasonality?.seasons || [];
+  // Apply market-specific season subtitles (date ranges)
+  const marketCode = input.property.market || "30A";
+  const marketSubtitles = getSeasonSubtitlesForMarket(marketCode);
+  const rawSeasonalBreakdown = input.seasonalBreakdown || input.seasonality?.seasons || [];
+  
+  // Override subtitles with market-specific values
+  const seasonalBreakdown = rawSeasonalBreakdown.map(season => ({
+    ...season,
+    subtitle: marketSubtitles[season.key as keyof typeof marketSubtitles] || season.subtitle
+  }));
 
   // Normalize CTA - scheduleCallUrl can come as aeCalendarUrl, merge with defaults
   // Auto-assign headshot based on AE email if not provided
@@ -140,7 +149,6 @@ function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>):
   const benefits = input.benefits || KACI_30A_DEFAULTS.benefits;
   
   // Use market-specific comparable properties based on property.market
-  const marketCode = input.property.market || "30A";
   const comparableProperties = input.comparableProperties || getComparablePropertiesForMarket(marketCode);
 
   return {

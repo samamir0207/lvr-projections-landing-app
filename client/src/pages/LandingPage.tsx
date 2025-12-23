@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import { getDefaultProjection, MARKET_FORM_IMAGES } from "@shared/localvrData";
 import type { ProjectionData } from "@shared/schema";
 import { initializeTracking, trackCTAClick, trackFormSubmit, trackInteraction } from "@/lib/analytics";
-import property1Image from "@assets/17_(1)_1765163999447.jpg";
-import property2Image from "@assets/14_1765164174413.jpg";
-import property3Image from "@assets/IMG_2398_(1)_1765164502296.jpg";
-import defaultFormImage from "@assets/104_(1)_1765166534372.jpg";
 import { UserCheck, ShieldCheck, SlidersHorizontal, ChevronLeft, ChevronRight, TrendingUp, MapPin, Gem } from "lucide-react";
 import {
   Chart as ChartJS,
@@ -55,9 +51,8 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
   const { meta, property, projections, trust, cta, monthlyRevenue, seasonalBreakdown, testimonials, comparableProperties } = projectionData;
   
   // Get market-specific form image based on property.market (from API)
-  // For now, all markets fall back to defaultFormImage until market-specific images are added
   const marketCode = (property.market || "30A").toUpperCase();
-  const formImage = defaultFormImage; // TODO: Use MARKET_FORM_IMAGES[marketCode] when images exist
+  const formImage = MARKET_FORM_IMAGES[marketCode] || "/assets/form-image-30a.jpg";
   
   useEffect(() => {
     initializeTracking({
@@ -68,12 +63,6 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
       src: urlParams.src
     });
   }, [meta.slug, cta.aeSlug, urlParams]);
-  
-  const propertyImages: Record<string, string> = {
-    property1: property1Image,
-    property2: property2Image,
-    property3: property3Image
-  };
   
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -493,7 +482,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             {comparableProperties.map((comp, index) => (
               <div key={index} className="bg-white p-7 rounded-lg shadow-sm flex flex-col">
                 <img 
-                  src={propertyImages[comp.image] || property1Image}
+                  src={comp.image}
                   alt={comp.title}
                   className="w-full h-[260px] object-cover rounded-md"
                 />
