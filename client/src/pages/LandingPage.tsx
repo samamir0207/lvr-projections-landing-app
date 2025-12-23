@@ -158,6 +158,9 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
   // Calculate dynamic Y-axis max: highest monthly value + 20%, rounded up to nearest $10k
   const highestMonthlyValue = Math.max(...monthlyRevenue.map(m => Math.max(m.high, m.low)));
   const dynamicYMax = Math.ceil((highestMonthlyValue * 1.2) / 10000) * 10000;
+  
+  // Dynamic chart height based on max value - taller for high-revenue properties
+  const chartHeight = dynamicYMax > 100000 ? 400 : dynamicYMax > 50000 ? 340 : 280;
 
   const chartData = {
     labels: monthlyRevenue.map(m => m.month),
@@ -369,7 +372,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             <div className="p-6">
               <div data-testid="section-chart">
               {/* Bar Chart */}
-              <div className="h-[280px] mb-8">
+              <div style={{ height: `${chartHeight}px` }} className="mb-8">
                 <Bar data={chartData} options={chartOptions as any} />
               </div>
               
@@ -448,7 +451,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             </p>
             <a 
               href="#contact-form"
-              className="inline-block bg-[#333333] text-[#f7f4f0] text-[14px] font-bold py-3 px-8 rounded-full"
+              className="inline-block bg-[#333333] text-[#f7f4f0] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px]"
               data-testid="button-gold-cta"
               onClick={() => trackCTAClick("gold_banner_cta")}
             >
