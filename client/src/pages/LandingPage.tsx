@@ -210,7 +210,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
   return (
     <div className="min-h-screen bg-white font-sans" style={{ fontFamily: "Arial, 'Helvetica Neue', Helvetica, sans-serif" }}>
-      <div className="max-w-[900px] mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         
         {/* Header Section */}
         <section className="bg-[#f7f4f0] px-5 pt-5 pb-4" data-testid="section-header">
@@ -433,7 +433,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
           </div>
           
           {/* Trust Pillars */}
-          <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-trust-pillars">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-trust-pillars">
             <div className="bg-[#f7f4f0] p-6 rounded-lg text-center">
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
                 <TrendingUp className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
@@ -517,7 +517,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
           </div>
           
           {/* Benefits Grid */}
-          <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-benefits-grid">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-benefits-grid">
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#f7f4f0] flex items-center justify-center">
                 <UserCheck className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
