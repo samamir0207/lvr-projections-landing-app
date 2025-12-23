@@ -173,3 +173,61 @@ export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; e
 export function isEmailConfigured(): boolean {
   return !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 }
+
+interface ProjectionNotFoundData {
+  attemptedUrl: string;
+  aeSlug: string;
+  slug: string;
+  userAgent?: string;
+  referer?: string;
+  timestamp: string;
+}
+
+export function buildProjectionNotFoundEmail(data: ProjectionNotFoundData): EmailPayload {
+  const subject = `[Error] Projection Not Found - ${data.slug}`;
+  
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #cc0000;">Projection Not Found Error</h2>
+      
+      <div style="background-color: #fff3f3; padding: 20px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 20px;">
+        <p style="margin: 0;"><strong>Someone tried to access a projection that doesn't exist.</strong></p>
+      </div>
+      
+      <div style="background-color: #f7f4f0; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="color: #333333; margin-top: 0;">Error Details</h3>
+        <p><strong>Attempted URL:</strong> <a href="${data.attemptedUrl}">${data.attemptedUrl}</a></p>
+        <p><strong>AE Slug:</strong> ${data.aeSlug}</p>
+        <p><strong>Property Slug:</strong> ${data.slug}</p>
+        <p><strong>Timestamp:</strong> ${data.timestamp}</p>
+        ${data.referer ? `<p><strong>Referer:</strong> ${data.referer}</p>` : ''}
+        ${data.userAgent ? `<p><strong>User Agent:</strong> ${data.userAgent}</p>` : ''}
+      </div>
+      
+      <p style="font-size: 12px; color: #666666;">
+        This error notification was sent automatically by the LocalVR Projections system.
+      </p>
+    </div>
+  `;
+  
+  const text = `
+Projection Not Found Error
+
+Someone tried to access a projection that doesn't exist.
+
+Error Details:
+- Attempted URL: ${data.attemptedUrl}
+- AE Slug: ${data.aeSlug}
+- Property Slug: ${data.slug}
+- Timestamp: ${data.timestamp}
+${data.referer ? `- Referer: ${data.referer}` : ''}
+${data.userAgent ? `- User Agent: ${data.userAgent}` : ''}
+  `.trim();
+  
+  return {
+    to: 'sam@golocalvr.com',
+    subject,
+    html,
+    text
+  };
+}

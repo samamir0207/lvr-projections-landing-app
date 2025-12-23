@@ -5,7 +5,7 @@ import { z } from "zod";
 import type { ProjectionData, InsertEvent } from "@shared/schema";
 import { KACI_30A_DEFAULTS, getAeHeadshotUrl } from "@shared/localvrData";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask, testSalesforceConnection } from "./salesforce";
-import { buildFormSubmissionEmail, sendEmail } from "./email";
+import { buildFormSubmissionEmail, buildProjectionNotFoundEmail, sendEmail } from "./email";
 
 // Flexible schema that accepts Apps Script format and transforms it
 const projectionInputSchema = z.object({
@@ -431,6 +431,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json({ ok: true, eventId: logged.id });
     } catch (error) {
       console.error("Error logging event:", error);
+      return res.status(500).json({ ok: false, error: "Internal server error" });
+    }
+  });
+
+  app.post("/api/report-error", async (req: Request, res: Response) => {
+    try {
+      const { aeSlug, slug, attemptedUrl, userAgent, referer } = req.body;
+      
+      console.log(`[Error Report] Projection not found:`, {
+        aeSlug,
+        slug,
+        attemptedUrl
+      });
+      
+      const emailPayload = buildProjectionNotFoundEmail({
+        attemptedUrl: attemptedUrl || '',
+        aeSlug: aeSlug || '',
+        slug: slug || '',
+        userAgent: userAgent || '',
+        referer: referer || '',
+        timestamp: new Date().toISOString()
+      });
+      
+      sendEmail(emailPayload).catch(err => {
+        console.error('[Error Report] Failed to send error notification email:', err);
+      });
+      
+      return res.json({ ok: true });
+    } catch (error) {
+      console.error("Error reporting error:", error);
       return res.status(500).json({ ok: false, error: "Internal server error" });
     }
   });

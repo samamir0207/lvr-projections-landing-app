@@ -3,20 +3,34 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import LandingPage from "@/pages/LandingPage";
 import ProjectionPage from "@/pages/ProjectionPage";
-import NotFound from "@/pages/not-found";
+
+function ErrorPage() {
+  return (
+    <div className="min-h-screen bg-[#f7f4f0] flex items-center justify-center">
+      <div className="text-center max-w-md mx-auto px-6">
+        <img 
+          src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/logo02.png" 
+          alt="LocalVR Logo" 
+          className="mx-auto w-[120px] mb-8"
+        />
+        <h1 className="text-2xl font-bold text-[#333333] mb-4">We Ran Into an Issue</h1>
+        <p className="text-[#333333]/70 mb-6">
+          Sorry, we couldn't load this page. Please reach out to your LocalVR representative for assistance.
+        </p>
+      </div>
+    </div>
+  );
+}
 
 function Router() {
   return (
     <Switch>
-      <Route path="/">
-        <LandingPage />
-      </Route>
+      <Route path="/" component={ErrorPage} />
       <Route path="/:aeSlug/:slug">
         <ProjectionPage />
       </Route>
-      <Route component={NotFound} />
+      <Route component={ErrorPage} />
     </Switch>
   );
 }
