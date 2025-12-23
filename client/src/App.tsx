@@ -23,10 +23,15 @@ function ErrorPage() {
   );
 }
 
+function HomeRedirect() {
+  window.location.href = "https://www.golocalvr.com/contact";
+  return null;
+}
+
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={ErrorPage} />
+      <Route path="/" component={HomeRedirect} />
       <Route path="/:aeSlug/:slug">
         <ProjectionPage />
       </Route>
