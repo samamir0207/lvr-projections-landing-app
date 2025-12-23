@@ -676,7 +676,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               <div className="w-full md:w-1/2 flex items-center">
                 <div className="bg-white rounded-lg shadow-md p-10 w-full">
                   <h3 className="text-[26px] font-bold text-[#333333] mb-4">
-                    Schedule a Call Today
+                    Schedule A Call Today
                   </h3>
                   <p className="text-[16px] text-[#333333]/70 leading-[26px] mb-6">
                     Curious how to earn strong income without turning your home into a revolving door of guests? {cta.aeName.split(' ')[0]}, your Local Expert, will walk you through a custom plan focused on premium rates, longer stays, and protecting your property.

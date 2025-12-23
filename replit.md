@@ -225,7 +225,7 @@ Response:
   - Calendar URL pulled from `cta.scheduleCallUrl` in JSON payload
   - Schedule section displays styled CTA card (image left, call details right)
   - Falls back to contact form if no valid Google Calendar URL provided
-  - Copy updated: "Schedule a Call Today" with strategy-focused messaging
+  - Copy updated: "Schedule A Call Today" with strategy-focused messaging
 
 - **Dec 23, 2025**: Fixed market-specific content rendering for all 7 markets
   - Comparable property images now use direct paths from MARKET_COMPARABLE_PROPERTIES (/assets/comp-{market}-{1,2,3}.{jpg,png})
