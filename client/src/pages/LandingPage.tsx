@@ -76,6 +76,36 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
   // Always use 90% retention rate (company standard)
   const retentionRate = "90%";
   
+  // Check if we have a valid calendar URL (Google Calendar appointment URL)
+  const hasCalendarUrl = cta.scheduleCallUrl && cta.scheduleCallUrl.includes('calendar.google.com');
+  
+  // Open Google Calendar popup
+  const openCalendarPopup = () => {
+    if (hasCalendarUrl) {
+      // Open Google Calendar in a popup window
+      const width = 544;
+      const height = 700;
+      const left = (window.innerWidth - width) / 2 + window.screenX;
+      const top = (window.innerHeight - height) / 2 + window.screenY;
+      window.open(
+        cta.scheduleCallUrl,
+        'google-calendar-popup',
+        `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+      );
+    }
+  };
+  
+  // Handle CTA click - either open popup or scroll to form
+  const handleCTAClick = (ctaId: string) => {
+    trackCTAClick(ctaId);
+    if (hasCalendarUrl) {
+      openCalendarPopup();
+    } else {
+      // Fallback: scroll to contact form
+      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   useEffect(() => {
     initializeTracking({
       slug: meta.slug,
@@ -330,14 +360,14 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         {/* Primary CTA */}
         <section className="bg-[#333333] px-5 pb-8 pt-4" data-testid="section-primary-cta">
           <div className="max-w-[1200px] mx-auto flex justify-center">
-            <a 
-              href="#contact-form"
-              className="inline-block bg-[#d3bda2] text-[#333333] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px]"
+            <button 
+              type="button"
+              className="inline-block bg-[#d3bda2] text-[#333333] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px] cursor-pointer"
               data-testid="button-primary-cta"
-              onClick={() => trackCTAClick("hero_primary_cta")}
+              onClick={() => handleCTAClick("hero_primary_cta")}
             >
               Review My Projections Now
-            </a>
+            </button>
           </div>
         </section>
 
@@ -449,14 +479,14 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               Want a local expert to walk you through these<br />
               numbers and what they mean for your home?
             </p>
-            <a 
-              href="#contact-form"
-              className="inline-block bg-[#333333] text-[#f7f4f0] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px]"
+            <button 
+              type="button"
+              className="inline-block bg-[#333333] text-[#f7f4f0] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px] cursor-pointer"
               data-testid="button-gold-cta"
-              onClick={() => trackCTAClick("gold_banner_cta")}
+              onClick={() => handleCTAClick("gold_banner_cta")}
             >
               Review My Projections Now
-            </a>
+            </button>
           </div>
         </section>
 
@@ -832,14 +862,14 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               {cta.aeName} | {cta.aeTitle}<br />
               {cta.aePhone} | {cta.aeEmail}
             </p>
-            <a 
-              href="#contact-form"
-              className="inline-block bg-[#d3bda2] text-[#333333] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px]"
+            <button 
+              type="button"
+              className="inline-block bg-[#d3bda2] text-[#333333] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px] cursor-pointer"
               data-testid="button-footer-cta"
-              onClick={() => trackCTAClick("footer_primary_cta")}
+              onClick={() => handleCTAClick("footer_primary_cta")}
             >
               Schedule My Revenue Review Call Now
-            </a>
+            </button>
             <p className="text-[11px] text-[#333333] leading-[16px] mt-8">
               © 2025 LocalVR. All rights reserved.
             </p>
