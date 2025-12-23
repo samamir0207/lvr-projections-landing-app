@@ -522,39 +522,39 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* Premier Service Benefits - Cream Background */}
-        <section className="bg-[#f7f4f0] px-5 pt-6 pb-8" data-testid="section-benefits-header">
-          <div className="max-w-[1200px] mx-auto text-center mb-8">
-            <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
+        <section className="bg-[#f7f4f0] px-5 pt-8 pb-10" data-testid="section-benefits-header">
+          <div className="max-w-[1200px] mx-auto text-center mb-10">
+            <p className="text-[24px] font-bold text-[#333333] leading-[30px]">
               How Our Premier Service Benefits Your Home
             </p>
           </div>
           
           {/* Benefits Grid */}
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-benefits-grid">
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#f7f4f0] flex items-center justify-center">
-                <UserCheck className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#f7f4f0] flex items-center justify-center">
+                <UserCheck className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Elite Guest Matchmaking</p>
-              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+              <p className="text-[17px] font-bold text-[#333333] leading-[22px] mb-3">Elite Guest Matchmaking</p>
+              <p className="text-[15px] text-[#333333]/70 leading-[22px]">
                 We rigorously screen and match guests so your home is occupied by respectful, high-value travelers who treat it like their own.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#f7f4f0] flex items-center justify-center">
-                <ShieldCheck className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#f7f4f0] flex items-center justify-center">
+                <ShieldCheck className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Premium Home Protection</p>
-              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+              <p className="text-[17px] font-bold text-[#333333] leading-[22px] mb-3">Premium Home Protection</p>
+              <p className="text-[15px] text-[#333333]/70 leading-[22px]">
                 We prioritize your home's long-term value with detailed inspections, proactive maintenance coordination, and up to $10,000 in damage protection per reservation.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#f7f4f0] flex items-center justify-center">
-                <SlidersHorizontal className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#f7f4f0] flex items-center justify-center">
+                <SlidersHorizontal className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Tailored Management for Your Home</p>
-              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+              <p className="text-[17px] font-bold text-[#333333] leading-[22px] mb-3">Tailored Management for Your Home</p>
+              <p className="text-[15px] text-[#333333]/70 leading-[22px]">
                 Your home and goals are unique. We tailor pricing, marketing, and owner use to your specific property, rather than forcing it into a generic template.
               </p>
             </div>
