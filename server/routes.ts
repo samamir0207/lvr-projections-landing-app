@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import type { ProjectionData, InsertEvent } from "@shared/schema";
-import { KACI_30A_DEFAULTS, getAeHeadshotUrl } from "@shared/localvrData";
+import { KACI_30A_DEFAULTS, getAeHeadshotUrl, getComparablePropertiesForMarket } from "@shared/localvrData";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask, testSalesforceConnection } from "./salesforce";
 import { buildFormSubmissionEmail, buildProjectionNotFoundEmail, sendEmail } from "./email";
 
@@ -138,7 +138,10 @@ function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>):
   const trust = input.trust || KACI_30A_DEFAULTS.trust;
   const testimonials = input.testimonials || KACI_30A_DEFAULTS.testimonials;
   const benefits = input.benefits || KACI_30A_DEFAULTS.benefits;
-  const comparableProperties = input.comparableProperties || KACI_30A_DEFAULTS.comparableProperties;
+  
+  // Use market-specific comparable properties based on property.market
+  const marketCode = input.property.market || "30A";
+  const comparableProperties = input.comparableProperties || getComparablePropertiesForMarket(marketCode);
 
   return {
     meta: input.meta,
@@ -321,12 +324,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Transform to normalized format
       const inputAeSlug = parsed.data.cta.aeSlug;
+      const inputAePhone = parsed.data.cta.aePhone;
+      const inputMarket = parsed.data.property.market;
       const data = normalizeProjectionInput(parsed.data);
       const slug = data.meta.slug;
       const aeSlug = data.cta.aeSlug;
       const leadId = data.meta.leadId;
       
       console.log(`[API] Creating projection: slug=${slug}, inputAeSlug=${inputAeSlug}, normalizedAeSlug=${aeSlug}, leadId=${leadId}`);
+      console.log(`[API] Market data: inputMarket=${inputMarket}, inputAePhone=${inputAePhone}, normalizedAePhone=${data.cta.aePhone}`);
       
       const existing = await storage.getProjectionBySlug(slug);
       

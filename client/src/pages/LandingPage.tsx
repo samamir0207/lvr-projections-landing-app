@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDefaultProjection, getMarketCodeFromLvrId, MARKET_FORM_IMAGES } from "@shared/localvrData";
+import { getDefaultProjection, MARKET_FORM_IMAGES } from "@shared/localvrData";
 import type { ProjectionData } from "@shared/schema";
 import { initializeTracking, trackCTAClick, trackFormSubmit, trackInteraction } from "@/lib/analytics";
 import property1Image from "@assets/17_(1)_1765163999447.jpg";
@@ -54,9 +54,10 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
   
   const { meta, property, projections, trust, cta, monthlyRevenue, seasonalBreakdown, testimonials, comparableProperties } = projectionData;
   
-  // Get market-specific form image based on property's LVR ID
-  const marketCode = getMarketCodeFromLvrId(property.internalId || "");
-  const formImage = MARKET_FORM_IMAGES[marketCode] || defaultFormImage;
+  // Get market-specific form image based on property.market (from API)
+  // For now, all markets fall back to defaultFormImage until market-specific images are added
+  const marketCode = (property.market || "30A").toUpperCase();
+  const formImage = defaultFormImage; // TODO: Use MARKET_FORM_IMAGES[marketCode] when images exist
   
   useEffect(() => {
     initializeTracking({
