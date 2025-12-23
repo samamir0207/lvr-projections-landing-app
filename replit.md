@@ -154,13 +154,44 @@ Kaci's contact info, testimonials, comparable properties, and 30A branding are a
 - react-hook-form with @hookform/resolvers for form handling
 
 **Third-Party Services:**
-- Calendly integration for booking calls (referenced in CTA URLs)
-- Google Tag Manager for analytics (placeholder configured)
+- Google Calendar Appointment Scheduling for booking calls (see Calendar Integration section)
+- Google Tag Manager for analytics (GTM-TMG94MMV configured for projections.golocalvr.com)
 
 **Asset Management:**
 - Static assets stored in `attached_assets/` directory
 - Property images referenced via `@assets` alias
 - AE headshots stored in attached_assets
+
+## Google Calendar Integration
+
+CTA buttons on the landing page open the AE's Google Calendar appointment scheduler in a new tab. The calendar URL is pulled dynamically from the JSON payload.
+
+**How it works:**
+1. Each AE has a Google Calendar Appointment Scheduling page (e.g., `https://calendar.google.com/calendar/appointments/schedules/...`)
+2. The URL is stored in `cta.scheduleCallUrl` in the projection JSON
+3. When a visitor clicks any CTA button, the page checks if the URL contains `calendar.google.com`
+4. If yes → Opens the calendar in a new browser tab
+5. If no → Falls back to scrolling to a contact form
+
+**Setting up an AE's calendar:**
+1. Go to Google Calendar → Create appointment schedule
+2. Copy the booking page URL (contains `/calendar/appointments/schedules/`)
+3. Add the URL to the AE's row in Google Sheets (Calendar URL column)
+4. When Apps Script creates/updates a projection, it includes this URL in the payload
+
+**JSON payload field:**
+```json
+{
+  "cta": {
+    "scheduleCallUrl": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0K-2-9Wo-...",
+    "aeName": "Jonah Jay",
+    ...
+  }
+}
+```
+
+**Fallback behavior:**
+If `scheduleCallUrl` is empty or doesn't contain `calendar.google.com`, the page shows a contact form instead of the calendar CTA card.
 
 ## Google Sheets Integration
 
@@ -188,6 +219,13 @@ Response:
 ```
 
 ## Recent Changes
+
+- **Dec 23, 2025**: Added Google Calendar integration for appointment scheduling
+  - CTA buttons now open the AE's Google Calendar booking page in a new tab
+  - Calendar URL pulled from `cta.scheduleCallUrl` in JSON payload
+  - Schedule section displays styled CTA card (image left, call details right)
+  - Falls back to contact form if no valid Google Calendar URL provided
+  - Copy updated: "Plan Your Luxury Rental Strategy" with strategy-focused messaging
 
 - **Dec 23, 2025**: Fixed market-specific content rendering for all 7 markets
   - Comparable property images now use direct paths from MARKET_COMPARABLE_PROPERTIES (/assets/comp-{market}-{1,2,3}.{jpg,png})
