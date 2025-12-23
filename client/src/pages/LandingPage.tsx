@@ -673,142 +673,168 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
           </div>
         </section>
 
-        {/* Contact Form Section */}
+        {/* Schedule Section - Calendar Embed or Contact Form Fallback */}
         <section id="contact-form" className="bg-[#f7f4f0] px-5 md:px-[60px] py-16" data-testid="section-contact-form">
-          <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-12">
-            {/* Home Image */}
-            <div className="w-full md:w-1/2">
-              <img 
-                src={formImage}
-                alt="Luxury vacation rental with pool"
-                className="w-full h-full object-cover rounded-lg shadow-md min-h-[500px]"
-              />
-            </div>
-            
-            {/* Contact Form */}
-            <div className="w-full md:w-1/2">
-              <div className="bg-white rounded-lg shadow-sm p-10 h-full">
-                <h3 className="text-[26px] font-bold text-[#333333] mb-8">
+          {hasCalendarUrl ? (
+            /* Google Calendar Inline Embed */
+            <div className="max-w-[900px] mx-auto">
+              <div className="text-center mb-8">
+                <h3 className="text-[26px] font-bold text-[#333333] mb-3">
                   Schedule Your Revenue Review
                 </h3>
-                
-                {formSubmitted ? (
-                  <div className="text-center py-8">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#d3bda2]/20 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-[#d3bda2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p className="text-[16px] font-bold text-[#333333] mb-2">Thank You!</p>
-                    <p className="text-[14px] text-[#333333]/70">
-                      We've received your information and will be in touch shortly to schedule your revenue review.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-5">
-                    {formError && (
-                      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-[15px]">
-                        {formError}
-                      </div>
-                    )}
-                    
-                    <div className="grid grid-cols-2 gap-5">
-                      <div>
-                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
-                          First Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="firstName"
-                          value={formData.firstName}
-                          onChange={handleFormChange}
-                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
-                          data-testid="input-first-name"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
-                          Last Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="lastName"
-                          value={formData.lastName}
-                          onChange={handleFormChange}
-                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
-                          data-testid="input-last-name"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleFormChange}
-                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
-                        data-testid="input-phone"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
-                        Email Address <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleFormChange}
-                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
-                        data-testid="input-email"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
-                        Rental Property Address <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="propertyAddress"
-                        value={formData.propertyAddress}
-                        onChange={handleFormChange}
-                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
-                        data-testid="input-property-address"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
-                        Comments
-                      </label>
-                      <textarea
-                        name="comments"
-                        value={formData.comments}
-                        onChange={handleFormChange}
-                        rows={4}
-                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2] resize-none"
-                        data-testid="input-comments"
-                      />
-                    </div>
-                    
-                    <button
-                      type="submit"
-                      className="w-full bg-[#333333] text-white text-[16px] font-bold py-4 px-6 rounded-full hover:bg-[#444444] transition-colors"
-                      data-testid="button-submit-form"
-                    >
-                      Submit
-                    </button>
-                  </form>
-                )}
+                <p className="text-[16px] text-[#333333]/70">
+                  Pick a time that works for you. {cta.aeName.split(' ')[0]} will walk you through your projections and answer any questions.
+                </p>
+              </div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <iframe 
+                  src={cta.scheduleCallUrl}
+                  style={{ border: 0 }}
+                  width="100%" 
+                  height="600" 
+                  frameBorder="0"
+                  title="Schedule appointment"
+                  data-testid="calendar-embed"
+                />
               </div>
             </div>
-          </div>
+          ) : (
+            /* Fallback Contact Form */
+            <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-12">
+              {/* Home Image */}
+              <div className="w-full md:w-1/2">
+                <img 
+                  src={formImage}
+                  alt="Luxury vacation rental with pool"
+                  className="w-full h-full object-cover rounded-lg shadow-md min-h-[500px]"
+                />
+              </div>
+              
+              {/* Contact Form */}
+              <div className="w-full md:w-1/2">
+                <div className="bg-white rounded-lg shadow-sm p-10 h-full">
+                  <h3 className="text-[26px] font-bold text-[#333333] mb-8">
+                    Schedule Your Revenue Review
+                  </h3>
+                  
+                  {formSubmitted ? (
+                    <div className="text-center py-8">
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#d3bda2]/20 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-[#d3bda2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <p className="text-[16px] font-bold text-[#333333] mb-2">Thank You!</p>
+                      <p className="text-[14px] text-[#333333]/70">
+                        We've received your information and will be in touch shortly to schedule your revenue review.
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleFormSubmit} className="space-y-5">
+                      {formError && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-[15px]">
+                          {formError}
+                        </div>
+                      )}
+                      
+                      <div className="grid grid-cols-2 gap-5">
+                        <div>
+                          <label className="block text-[15px] font-medium text-[#333333] mb-2">
+                            First Name <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleFormChange}
+                            className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                            data-testid="input-first-name"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[15px] font-medium text-[#333333] mb-2">
+                            Last Name <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleFormChange}
+                            className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                            data-testid="input-last-name"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
+                          Phone
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleFormChange}
+                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                          data-testid="input-phone"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
+                          Email Address <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleFormChange}
+                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                          data-testid="input-email"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
+                          Rental Property Address <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="propertyAddress"
+                          value={formData.propertyAddress}
+                          onChange={handleFormChange}
+                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                          data-testid="input-property-address"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
+                          Comments
+                        </label>
+                        <textarea
+                          name="comments"
+                          value={formData.comments}
+                          onChange={handleFormChange}
+                          rows={4}
+                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2] resize-none"
+                          data-testid="input-comments"
+                        />
+                      </div>
+                      
+                      <button
+                        type="submit"
+                        className="w-full bg-[#333333] text-white text-[16px] font-bold py-4 px-6 rounded-full hover:bg-[#444444] transition-colors"
+                        data-testid="button-submit-form"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </section>
 
         {/* FAQs Section */}
