@@ -24,8 +24,11 @@ function ErrorPage() {
 }
 
 function HomeRedirect() {
-  window.location.href = "https://www.golocalvr.com/contact";
-  return null;
+  if (import.meta.env.PROD) {
+    window.location.href = "https://www.golocalvr.com/contact";
+    return null;
+  }
+  return <ErrorPage />;
 }
 
 function Router() {
