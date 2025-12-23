@@ -79,27 +79,12 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
   // Check if we have a valid calendar URL (Google Calendar appointment URL)
   const hasCalendarUrl = cta.scheduleCallUrl && cta.scheduleCallUrl.includes('calendar.google.com');
   
-  // Open Google Calendar popup
-  const openCalendarPopup = () => {
-    if (hasCalendarUrl) {
-      // Open Google Calendar in a popup window
-      const width = 544;
-      const height = 700;
-      const left = (window.innerWidth - width) / 2 + window.screenX;
-      const top = (window.innerHeight - height) / 2 + window.screenY;
-      window.open(
-        cta.scheduleCallUrl,
-        'google-calendar-popup',
-        `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
-      );
-    }
-  };
-  
-  // Handle CTA click - either open popup or scroll to form
+  // Handle CTA click - open calendar in new tab or scroll to form
   const handleCTAClick = (ctaId: string) => {
     trackCTAClick(ctaId);
     if (hasCalendarUrl) {
-      openCalendarPopup();
+      // Open calendar URL in new tab
+      window.open(cta.scheduleCallUrl, '_blank');
     } else {
       // Fallback: scroll to contact form
       document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
