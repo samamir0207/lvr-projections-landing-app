@@ -320,17 +320,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Transform to normalized format
+      const inputAeSlug = parsed.data.cta.aeSlug;
       const data = normalizeProjectionInput(parsed.data);
       const slug = data.meta.slug;
       const aeSlug = data.cta.aeSlug;
       const leadId = data.meta.leadId;
       
-      console.log(`[API] Creating projection: slug=${slug}, aeSlug=${aeSlug}, leadId=${leadId}`);
+      console.log(`[API] Creating projection: slug=${slug}, inputAeSlug=${inputAeSlug}, normalizedAeSlug=${aeSlug}, leadId=${leadId}`);
       
       const existing = await storage.getProjectionBySlug(slug);
       
       if (existing) {
-        await storage.updateProjection(slug, data);
+        await storage.updateProjection(slug, aeSlug, data);
       } else {
         await storage.createProjection(slug, aeSlug, data);
       }

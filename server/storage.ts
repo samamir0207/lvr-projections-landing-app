@@ -23,7 +23,7 @@ export interface IStorage {
   getProjectionByAeAndSlug(aeSlug: string, slug: string): Promise<ProjectionData | null>;
   getProjectionWithMeta(slug: string): Promise<Projection | null>;
   createProjection(slug: string, aeSlug: string, data: ProjectionData): Promise<Projection>;
-  updateProjection(slug: string, data: ProjectionData): Promise<Projection | null>;
+  updateProjection(slug: string, aeSlug: string, data: ProjectionData): Promise<Projection | null>;
   
   logEvent(event: InsertEvent): Promise<AnalyticsEvent>;
   getEventsBySlug(slug: string): Promise<AnalyticsEvent[]>;
@@ -77,9 +77,9 @@ export class DatabaseStorage implements IStorage {
     return projection;
   }
 
-  async updateProjection(slug: string, data: ProjectionData): Promise<Projection | null> {
+  async updateProjection(slug: string, aeSlug: string, data: ProjectionData): Promise<Projection | null> {
     const [projection] = await db.update(projections)
-      .set({ data, updatedAt: new Date() })
+      .set({ data, aeSlug, updatedAt: new Date() })
       .where(eq(projections.slug, slug))
       .returning();
     return projection || null;
