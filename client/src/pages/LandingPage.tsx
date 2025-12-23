@@ -641,21 +641,21 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* Contact Form Section */}
-        <section id="contact-form" className="bg-[#f7f4f0] px-5 md:px-[60px] py-12" data-testid="section-contact-form">
-          <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-stretch gap-10">
+        <section id="contact-form" className="bg-[#f7f4f0] px-5 md:px-[60px] py-16" data-testid="section-contact-form">
+          <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-12">
             {/* Home Image */}
             <div className="w-full md:w-1/2">
               <img 
                 src={formImage}
                 alt="Luxury vacation rental with pool"
-                className="w-full h-full object-cover rounded-lg shadow-md min-h-[400px]"
+                className="w-full h-full object-cover rounded-lg shadow-md min-h-[500px]"
               />
             </div>
             
             {/* Contact Form */}
             <div className="w-full md:w-1/2">
-              <div className="bg-white rounded-lg shadow-sm p-8 h-full">
-                <h3 className="text-[20px] font-bold text-[#333333] mb-6">
+              <div className="bg-white rounded-lg shadow-sm p-10 h-full">
+                <h3 className="text-[26px] font-bold text-[#333333] mb-8">
                   Schedule Your Revenue Review
                 </h3>
                 
@@ -672,16 +672,16 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <form onSubmit={handleFormSubmit} className="space-y-5">
                     {formError && (
-                      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-[13px]">
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-[15px]">
                         {formError}
                       </div>
                     )}
                     
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-[13px] font-medium text-[#333333] mb-1">
+                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
                           First Name <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -689,12 +689,12 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                           name="firstName"
                           value={formData.firstName}
                           onChange={handleFormChange}
-                          className="w-full px-4 py-2.5 border border-[#e5e5e5] rounded-md text-[14px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
                           data-testid="input-first-name"
                         />
                       </div>
                       <div>
-                        <label className="block text-[13px] font-medium text-[#333333] mb-1">
+                        <label className="block text-[15px] font-medium text-[#333333] mb-2">
                           Last Name <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -702,14 +702,14 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                           name="lastName"
                           value={formData.lastName}
                           onChange={handleFormChange}
-                          className="w-full px-4 py-2.5 border border-[#e5e5e5] rounded-md text-[14px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                          className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
                           data-testid="input-last-name"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className="block text-[13px] font-medium text-[#333333] mb-1">
+                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
                         Phone
                       </label>
                       <input
@@ -717,13 +717,13 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                         name="phone"
                         value={formData.phone}
                         onChange={handleFormChange}
-                        className="w-full px-4 py-2.5 border border-[#e5e5e5] rounded-md text-[14px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
                         data-testid="input-phone"
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-[13px] font-medium text-[#333333] mb-1">
+                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
                         Email Address <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -731,13 +731,13 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                         name="email"
                         value={formData.email}
                         onChange={handleFormChange}
-                        className="w-full px-4 py-2.5 border border-[#e5e5e5] rounded-md text-[14px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
                         data-testid="input-email"
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-[13px] font-medium text-[#333333] mb-1">
+                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
                         Rental Property Address <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -745,28 +745,28 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                         name="propertyAddress"
                         value={formData.propertyAddress}
                         onChange={handleFormChange}
-                        className="w-full px-4 py-2.5 border border-[#e5e5e5] rounded-md text-[14px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
+                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2]"
                         data-testid="input-property-address"
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-[13px] font-medium text-[#333333] mb-1">
+                      <label className="block text-[15px] font-medium text-[#333333] mb-2">
                         Comments
                       </label>
                       <textarea
                         name="comments"
                         value={formData.comments}
                         onChange={handleFormChange}
-                        rows={3}
-                        className="w-full px-4 py-2.5 border border-[#e5e5e5] rounded-md text-[14px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2] resize-none"
+                        rows={4}
+                        className="w-full px-4 py-3 border border-[#e5e5e5] rounded-md text-[16px] focus:outline-none focus:border-[#d3bda2] focus:ring-1 focus:ring-[#d3bda2] resize-none"
                         data-testid="input-comments"
                       />
                     </div>
                     
                     <button
                       type="submit"
-                      className="w-full bg-[#333333] text-white text-[14px] font-bold py-3 px-6 rounded-full hover:bg-[#444444] transition-colors"
+                      className="w-full bg-[#333333] text-white text-[16px] font-bold py-4 px-6 rounded-full hover:bg-[#444444] transition-colors"
                       data-testid="button-submit-form"
                     >
                       Submit
@@ -779,38 +779,38 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* FAQs Section */}
-        <section className="bg-[#333333] px-5 pt-8" data-testid="section-faqs-header">
+        <section className="bg-[#333333] px-5 pt-10" data-testid="section-faqs-header">
           <div className="max-w-[1200px] mx-auto text-center">
-            <p className="text-[22px] font-bold text-[#d3bda2] leading-[28px]">
+            <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">
               FAQ's
             </p>
           </div>
         </section>
 
         {/* FAQ Grid */}
-        <section className="bg-[#333333] px-5 py-8 pb-12" data-testid="section-faqs">
-          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">Who is actually taking care of my home locally?</p>
-              <p className="text-[14px] text-white/90 leading-[20px]">
+        <section className="bg-[#333333] px-5 py-10 pb-14" data-testid="section-faqs">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="py-4 px-5">
+              <p className="text-[18px] font-bold text-[#d3bda2] leading-[24px] mb-3">Who is actually taking care of my home locally?</p>
+              <p className="text-[16px] text-white/90 leading-[24px]">
                 Your home is supported by a dedicated local team of Luxury Home Specialists, not a remote call center. On the ground you have full-time inspectors, maintenance coordination, and management based right here in market. They know the neighborhoods, vendors, and seasonal nuances, and they're in and out of your home regularly to make sure it's cared for like a true second home, not a commodity.
               </p>
             </div>
-            <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">How will you market my luxury home?</p>
-              <p className="text-[14px] text-white/90 leading-[20px]">
+            <div className="py-4 px-5">
+              <p className="text-[18px] font-bold text-[#d3bda2] leading-[24px] mb-3">How will you market my luxury home?</p>
+              <p className="text-[16px] text-white/90 leading-[24px]">
                 We position your home as a high-end experience, not just another rental. Your listing gets professional photography, styled copy, and distribution across premium channels—Airbnb Luxe, Vrbo, Marriott Homes & Villas, Capital One Premier Collection, AMEX, and our direct booking site. We also reach qualified guests through luxury travel advisors, realtors, and repeat-guest marketing.
               </p>
             </div>
-            <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">What protection do you provide for my property?</p>
-              <p className="text-[14px] text-white/90 leading-[20px]">
+            <div className="py-4 px-5">
+              <p className="text-[18px] font-bold text-[#d3bda2] leading-[24px] mb-3">What protection do you provide for my property?</p>
+              <p className="text-[16px] text-white/90 leading-[24px]">
                 Every qualified reservation is backed by up to $1M in liability coverage and up to $10,000 in damage protection, in addition to our strict house rules and screening standards. We layer that with detailed inspections, documented condition reports, and fast response if anything is out of place. The goal is simple: you shouldn't have to trade peace of mind for rental income.
               </p>
             </div>
-            <div className="py-3 px-4">
-              <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">Do you focus on occupancy or on quality bookings?</p>
-              <p className="text-[14px] text-white/90 leading-[20px]">
+            <div className="py-4 px-5">
+              <p className="text-[18px] font-bold text-[#d3bda2] leading-[24px] mb-3">Do you focus on occupancy or on quality bookings?</p>
+              <p className="text-[16px] text-white/90 leading-[24px]">
                 We focus on profitable, high-quality occupancy, not just filling nights. Our revenue strategy prioritizes longer stays, higher ADR, and guests who value your home and the experience it offers. That means fewer turnovers, less wear and tear, and stronger annual revenue than a "race to the bottom" pricing approach.
               </p>
             </div>
