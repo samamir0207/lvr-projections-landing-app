@@ -436,39 +436,39 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* Why You Can Trust Section */}
-        <section className="bg-white px-5 pt-12 pb-8" data-testid="section-trust-header">
-          <div className="max-w-[1200px] mx-auto text-center mb-8">
-            <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
+        <section className="bg-white px-5 pt-12 pb-10" data-testid="section-trust-header">
+          <div className="max-w-[1200px] mx-auto text-center mb-10">
+            <p className="text-[24px] font-bold text-[#333333] leading-[30px]">
               Why You Can Trust These Projections
             </p>
           </div>
           
           {/* Trust Pillars */}
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8" data-testid="section-trust-pillars">
-            <div className="bg-[#f7f4f0] p-6 rounded-lg text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
-                <TrendingUp className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-[#f7f4f0] p-8 rounded-lg text-center">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-white flex items-center justify-center">
+                <TrendingUp className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Real Data, Not Guesswork</p>
-              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+              <p className="text-[17px] font-bold text-[#333333] leading-[22px] mb-3">Real Data, Not Guesswork</p>
+              <p className="text-[15px] text-[#333333]/70 leading-[22px]">
                 We use anonymized performance data from comparable homes we manage in your market, combined with third-party short-term rental market data.
               </p>
             </div>
-            <div className="bg-[#f7f4f0] p-6 rounded-lg text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
-                <MapPin className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-[#f7f4f0] p-8 rounded-lg text-center">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-white flex items-center justify-center">
+                <MapPin className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Market-Specific, Not Nationwide Averages</p>
-              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+              <p className="text-[17px] font-bold text-[#333333] leading-[22px] mb-3">Market-Specific, Not Nationwide Averages</p>
+              <p className="text-[15px] text-[#333333]/70 leading-[22px]">
                 Every projection incorporates local demand patterns, seasonality, events, and rate trends for your specific neighborhood.
               </p>
             </div>
-            <div className="bg-[#f7f4f0] p-6 rounded-lg text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
-                <Gem className="w-7 h-7 text-[#d3bda2]" strokeWidth={1.5} />
+            <div className="bg-[#f7f4f0] p-8 rounded-lg text-center">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-white flex items-center justify-center">
+                <Gem className="w-8 h-8 text-[#d3bda2]" strokeWidth={1.5} />
               </div>
-              <p className="text-[14px] font-bold text-[#333333] leading-[18px] mb-2">Luxury-Focused Approach</p>
-              <p className="text-[13px] text-[#333333]/70 leading-[18px]">
+              <p className="text-[17px] font-bold text-[#333333] leading-[22px] mb-3">Luxury-Focused Approach</p>
+              <p className="text-[15px] text-[#333333]/70 leading-[22px]">
                 Our luxury program focuses on high-value guests, premium pricing, and protecting your home's long-term value.
               </p>
             </div>
