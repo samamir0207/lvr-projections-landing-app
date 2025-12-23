@@ -821,20 +821,20 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* Final CTA Footer */}
-        <section className="bg-[#f7f4f0] px-5 py-10" data-testid="section-footer">
+        <section className="bg-[#f7f4f0] px-5 py-12" data-testid="section-footer">
           <div className="max-w-[1200px] mx-auto text-center">
             <img 
               src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/logo02.png" 
               alt="LocalVR Logo" 
-              className="mx-auto w-[150px] mb-5"
+              className="mx-auto w-[200px] mb-6"
             />
-            <p className="text-[14px] text-[#333333] leading-[20px] mb-5">
+            <p className="text-[17px] text-[#333333] leading-[26px] mb-6">
               {cta.aeName} | {cta.aeTitle}<br />
               {cta.aePhone} | {cta.aeEmail}
             </p>
             <a 
               href="#contact-form"
-              className="inline-block bg-[#d3bda2] text-[#333333] text-[14px] font-bold py-3 px-6 rounded-full"
+              className="inline-block bg-[#d3bda2] text-[#333333] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px]"
               data-testid="button-footer-cta"
               onClick={() => trackCTAClick("footer_primary_cta")}
             >
