@@ -278,34 +278,34 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* Stats Bar */}
-        <section className="bg-[#333333] px-5 py-8" data-testid="section-stats">
-          <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center items-start w-full">
-            <div className="text-center px-6 md:px-10">
-              <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
-              <p className="text-[14px] font-bold text-white leading-[20px]">Homeowner</p>
-              <p className="text-[14px] font-bold text-white leading-[20px]">Retention</p>
+        <section className="bg-[#333333] px-5 py-10" data-testid="section-stats">
+          <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center items-start gap-4 md:gap-0">
+            <div className="text-center px-8 md:px-16">
+              <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
+              <p className="text-[16px] font-bold text-white leading-[24px]">Homeowner</p>
+              <p className="text-[16px] font-bold text-white leading-[24px]">Retention</p>
             </div>
-            <div className="hidden md:block w-[1px] h-[70px] bg-[#d3bda2]/50"></div>
-            <div className="text-center px-6 md:px-10">
-              <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">10+ Years</p>
-              <p className="text-[14px] font-bold text-white leading-[20px]">Managing High-End</p>
-              <p className="text-[14px] font-bold text-white leading-[20px]">Vacation Rentals</p>
+            <div className="hidden md:block w-[1px] h-[85px] bg-[#d3bda2]/50"></div>
+            <div className="text-center px-8 md:px-16">
+              <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">10+ Years</p>
+              <p className="text-[16px] font-bold text-white leading-[24px]">Managing High-End</p>
+              <p className="text-[16px] font-bold text-white leading-[24px]">Vacation Rentals</p>
             </div>
-            <div className="hidden md:block w-[1px] h-[70px] bg-[#d3bda2]/50"></div>
-            <div className="text-center px-6 md:px-10">
-              <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">1:10 Ratio</p>
-              <p className="text-[14px] font-bold text-white leading-[20px]">Home Care Experts to</p>
-              <p className="text-[14px] font-bold text-white leading-[20px]">Properties Managed</p>
+            <div className="hidden md:block w-[1px] h-[85px] bg-[#d3bda2]/50"></div>
+            <div className="text-center px-8 md:px-16">
+              <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">1:10 Ratio</p>
+              <p className="text-[16px] font-bold text-white leading-[24px]">Home Care Experts to</p>
+              <p className="text-[16px] font-bold text-white leading-[24px]">Properties Managed</p>
             </div>
           </div>
         </section>
 
         {/* Primary CTA */}
-        <section className="bg-[#333333] px-5 pb-6 pt-2" data-testid="section-primary-cta">
+        <section className="bg-[#333333] px-5 pb-8 pt-4" data-testid="section-primary-cta">
           <div className="max-w-[1200px] mx-auto flex justify-center">
             <a 
               href="#contact-form"
-              className="inline-block bg-[#d3bda2] text-[#333333] text-[12px] font-bold py-[12px] px-6 rounded-full leading-[14px]"
+              className="inline-block bg-[#d3bda2] text-[#333333] text-[16px] font-bold py-4 px-10 rounded-full leading-[20px]"
               data-testid="button-primary-cta"
               onClick={() => trackCTAClick("hero_primary_cta")}
             >
