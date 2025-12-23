@@ -352,14 +352,20 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               
               {/* Seasonal Breakdown Table */}
               <div className="overflow-x-auto">
-                <table className="w-full text-[11px]" data-testid="table-seasonal">
+                <table className="w-full text-[11px] table-fixed" data-testid="table-seasonal">
+                  <colgroup>
+                    <col className="w-[15%]" />
+                    {seasonalBreakdown.map((season) => (
+                      <col key={`col-${season.key}`} style={{ width: `${85 / seasonalBreakdown.length}%` }} />
+                    ))}
+                  </colgroup>
                   <thead>
                     <tr className="border-b border-[#333333]">
                       <th className="text-left py-2 pr-2 font-bold text-[#333333]"></th>
                       {seasonalBreakdown.map((season) => (
-                        <th key={season.key} className="text-center py-2 px-2 font-bold text-[#333333]">
-                          <div>{season.label}</div>
-                          <div className="font-normal text-[10px] text-[#333333]/60 italic">{season.subtitle}</div>
+                        <th key={season.key} className="text-center py-2 px-1 font-bold text-[#333333]">
+                          <div className="leading-tight">{season.label}</div>
+                          <div className="font-normal text-[9px] text-[#333333]/60 italic leading-tight break-words">{season.subtitle}</div>
                         </th>
                       ))}
                     </tr>
