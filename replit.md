@@ -189,6 +189,13 @@ Response:
 
 ## Recent Changes
 
+- **Dec 23, 2025**: Fixed market-specific content rendering for all 7 markets
+  - Comparable property images now use direct paths from MARKET_COMPARABLE_PROPERTIES (/assets/comp-{market}-{1,2,3}.{jpg,png})
+  - Form images now use MARKET_FORM_IMAGES[marketCode] instead of hardcoded default
+  - Season subtitles (date ranges) are now applied from MARKET_SEASON_SUBTITLES based on property.market
+  - All market images stored in client/public/assets/ directory (30A, BC, PC, TE, VA, BS, LT)
+  - Frontend no longer uses lookup table for property images; uses comp.image path directly
+
 - **Dec 23, 2025**: Fixed critical aeSlug bug in projection updates
   - Bug: When a projection was updated (same slug, different AE), the database ae_slug column was not being updated
   - This caused page loads to fail with 404 because getProjectionByAeAndSlug validates that stored aeSlug matches URL

@@ -128,11 +128,14 @@ function normalizeProjectionInput(input: z.infer<typeof projectionInputSchema>):
   const marketSubtitles = getSeasonSubtitlesForMarket(marketCode);
   const rawSeasonalBreakdown = input.seasonalBreakdown || input.seasonality?.seasons || [];
   
-  // Override subtitles with market-specific values
-  const seasonalBreakdown = rawSeasonalBreakdown.map(season => ({
-    ...season,
-    subtitle: marketSubtitles[season.key as keyof typeof marketSubtitles] || season.subtitle
-  }));
+  // Override subtitles with market-specific values (only if defined for this market)
+  const seasonalBreakdown = rawSeasonalBreakdown.map(season => {
+    const marketSubtitle = marketSubtitles[season.key as keyof typeof marketSubtitles];
+    return {
+      ...season,
+      subtitle: marketSubtitle || season.subtitle
+    };
+  });
 
   // Normalize CTA - scheduleCallUrl can come as aeCalendarUrl, merge with defaults
   // Auto-assign headshot based on AE email if not provided
