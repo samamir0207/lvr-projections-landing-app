@@ -676,10 +676,10 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               <div className="w-full md:w-1/2 flex items-center">
                 <div className="bg-white rounded-lg shadow-md p-10 w-full">
                   <h3 className="text-[26px] font-bold text-[#333333] mb-4">
-                    Schedule Your Revenue Review
+                    Plan Your Luxury Rental Strategy
                   </h3>
                   <p className="text-[16px] text-[#333333]/70 leading-[26px] mb-6">
-                    Ready to learn what your property could earn? {cta.aeName.split(' ')[0]} will walk you through your custom projections and answer any questions you have.
+                    Curious how to earn strong income without turning your home into a revolving door of guests? {cta.aeName.split(' ')[0]}, your Local Expert, will walk you through a custom plan focused on premium rates, longer stays, and protecting your property.
                   </p>
                   
                   <div className="space-y-4 mb-8">
@@ -689,7 +689,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
-                      <span className="text-[15px] text-[#333333]">30-minute consultation call</span>
+                      <span className="text-[15px] text-[#333333]">30-minute strategy call</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-[#d3bda2]/20 flex items-center justify-center flex-shrink-0">
@@ -697,15 +697,15 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
                       </div>
-                      <span className="text-[15px] text-[#333333]">Review your custom revenue projections</span>
+                      <span className="text-[15px] text-[#333333]">Review your custom projections and ideal booking pattern for fewer, higher-ADR stays</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-[#d3bda2]/20 flex items-center justify-center flex-shrink-0">
                         <svg className="w-5 h-5 text-[#d3bda2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                       </div>
-                      <span className="text-[15px] text-[#333333]">Get answers to all your questions</span>
+                      <span className="text-[15px] text-[#333333]">Discuss how we protect your home while hosting high-caliber guests</span>
                     </div>
                   </div>
                   
@@ -715,7 +715,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                     className="w-full bg-[#333333] text-white text-[16px] font-bold py-4 px-6 rounded-full hover:bg-[#444444] transition-colors cursor-pointer"
                     data-testid="button-schedule-cta"
                   >
-                    Pick a Time That Works for You
+                    Plan My Rental Strategy
                   </button>
                 </div>
               </div>
