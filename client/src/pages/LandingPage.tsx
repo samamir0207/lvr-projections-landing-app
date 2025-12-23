@@ -214,11 +214,10 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
   return (
     <div className="min-h-screen bg-white font-sans" style={{ fontFamily: "Arial, 'Helvetica Neue', Helvetica, sans-serif" }}>
-      <div className="max-w-[1200px] mx-auto">
         
         {/* Header Section */}
         <section className="bg-[#f7f4f0] px-5 pt-5 pb-4" data-testid="section-header">
-          <div className="text-center">
+          <div className="max-w-[1200px] mx-auto text-center">
             <img 
               src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/logo02.png" 
               alt="LocalVR Logo" 
@@ -238,7 +237,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* AE Contact Section */}
         <section className="bg-[#f7f4f0] px-5 py-6" data-testid="section-ae-contact">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+          <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex-shrink-0 w-[160px] h-[160px] rounded-full overflow-hidden">
               <img 
                 src={cta.aeHeadshotUrl || "/assets/ae-headshot-default.png"}
@@ -280,7 +279,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Stats Bar */}
         <section className="bg-[#333333] px-5 py-8" data-testid="section-stats">
-          <div className="flex flex-wrap justify-center items-start w-full pl-8">
+          <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center items-start w-full">
             <div className="text-center px-6 md:px-10">
               <p className="text-[28px] font-bold text-[#d3bda2] leading-[36px]">{trust.stats.homeownerSatisfaction.replace('%', '')}%</p>
               <p className="text-[14px] font-bold text-white leading-[20px]">Homeowner</p>
@@ -303,7 +302,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Primary CTA */}
         <section className="bg-[#333333] px-5 pb-6 pt-2" data-testid="section-primary-cta">
-          <div className="flex justify-center">
+          <div className="max-w-[1200px] mx-auto flex justify-center">
             <a 
               href="#contact-form"
               className="inline-block bg-[#d3bda2] text-[#333333] text-[12px] font-bold py-[12px] px-6 rounded-full leading-[14px]"
@@ -318,7 +317,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         {/* Combined Projected Earnings & Breakdown Section */}
         <section className="bg-[#f7f4f0] px-5 md:px-8 py-10" data-testid="section-projection-breakdown">
           {/* Unified Projections Card */}
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div className="max-w-[1200px] mx-auto bg-white rounded-lg shadow-sm overflow-hidden">
             {/* Card Header with Property Info */}
             <div className="text-center py-8 px-6 border-b border-[#e5e5e5]">
               <p className="text-[22px] font-bold text-[#333333] leading-[30px]">
@@ -418,7 +417,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Gold CTA Banner */}
         <section className="bg-[#d3bda2] py-8 px-5" data-testid="section-gold-cta">
-          <div className="text-center">
+          <div className="max-w-[1200px] mx-auto text-center">
             <p className="text-[18px] font-bold text-[#333333] leading-[24px] mb-5">
               Want a local expert to walk you through these<br />
               numbers and what they mean for your home?
@@ -436,7 +435,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Why You Can Trust Section */}
         <section className="bg-white px-5 pt-12 pb-8" data-testid="section-trust-header">
-          <div className="text-center mb-8">
+          <div className="max-w-[1200px] mx-auto text-center mb-8">
             <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
               Why You Can Trust These Projections
             </p>
@@ -476,7 +475,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Portfolio Section */}
         <section className="bg-[#f7f4f0] px-5 pt-10" data-testid="section-portfolio-header">
-          <div className="text-center">
+          <div className="max-w-[1200px] mx-auto text-center">
             <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
               See Homes Like Yours in Our Collection
             </p>
@@ -490,12 +489,14 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         <section className="bg-[#f7f4f0] px-5 md:px-[40px] py-10" data-testid="section-portfolio-cards">
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             {comparableProperties.map((comp, index) => (
-              <div key={index} className="bg-white p-7 rounded-lg shadow-sm flex flex-col">
-                <img 
-                  src={comp.image}
-                  alt={comp.title}
-                  className="w-full h-[260px] object-cover rounded-md"
-                />
+              <div key={index} className="bg-white p-5 rounded-lg shadow-sm flex flex-col">
+                <div className="aspect-square overflow-hidden rounded-md">
+                  <img 
+                    src={comp.image}
+                    alt={comp.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="mt-6 flex flex-col flex-1">
                   <p className="text-[17px] font-bold text-[#333333] leading-[24px] min-h-[48px]">
                     {comp.title}
@@ -520,7 +521,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Premier Service Benefits - Cream Background */}
         <section className="bg-[#f7f4f0] px-5 pt-6 pb-8" data-testid="section-benefits-header">
-          <div className="text-center mb-8">
+          <div className="max-w-[1200px] mx-auto text-center mb-8">
             <p className="text-[20px] font-bold text-[#333333] leading-[24px]">
               How Our Premier Service Benefits Your Home
             </p>
@@ -755,7 +756,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* FAQs Section */}
         <section className="bg-[#333333] px-5 pt-8" data-testid="section-faqs-header">
-          <div className="text-center">
+          <div className="max-w-[1200px] mx-auto text-center">
             <p className="text-[22px] font-bold text-[#d3bda2] leading-[28px]">
               FAQ's
             </p>
@@ -763,8 +764,8 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* FAQ Grid */}
-        <section className="bg-[#333333] px-5 md:px-[100px] py-8 pb-12" data-testid="section-faqs">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="bg-[#333333] px-5 py-8 pb-12" data-testid="section-faqs">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="py-3 px-4">
               <p className="text-[15px] font-bold text-[#d3bda2] leading-[20px] mb-2">Who is actually taking care of my home locally?</p>
               <p className="text-[14px] text-white/90 leading-[20px]">
@@ -794,7 +795,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Final CTA Footer */}
         <section className="bg-[#f7f4f0] px-5 py-10" data-testid="section-footer">
-          <div className="text-center">
+          <div className="max-w-[1200px] mx-auto text-center">
             <img 
               src="https://xjsfpg.stripocdn.email/content/guids/CABINET_a1666b788af88a208e34207cc9ca2dc1fa9d52d87d5c599e0f5fb4629c86f99a/images/logo02.png" 
               alt="LocalVR Logo" 
@@ -818,7 +819,6 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
           </div>
         </section>
 
-      </div>
     </div>
   );
 }
