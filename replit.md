@@ -189,6 +189,12 @@ Response:
 
 ## Recent Changes
 
+- **Dec 23, 2025**: Fixed critical aeSlug bug in projection updates
+  - Bug: When a projection was updated (same slug, different AE), the database ae_slug column was not being updated
+  - This caused page loads to fail with 404 because getProjectionByAeAndSlug validates that stored aeSlug matches URL
+  - Fix: updateProjection() now takes aeSlug parameter and updates the column along with data
+  - Added enhanced logging to track input vs normalized aeSlug values
+
 - **Dec 22, 2025**: Improved Salesforce task creation logic for tracking links
   - Added `viewer=ae` parameter support: AE preview links don't create Salesforce tasks
   - Added 14-day age threshold: Tasks only created when projection is 14+ days old (indicates organic interest)
