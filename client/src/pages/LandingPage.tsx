@@ -319,25 +319,25 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
           {/* Unified Projections Card */}
           <div className="max-w-[1200px] mx-auto bg-white rounded-lg shadow-sm overflow-hidden">
             {/* Card Header with Property Info */}
-            <div className="text-center py-8 px-6 border-b border-[#e5e5e5]">
-              <p className="text-[22px] font-bold text-[#333333] leading-[30px]">
+            <div className="text-center py-10 px-6 border-b border-[#e5e5e5]">
+              <p className="text-[28px] font-bold text-[#333333] leading-[36px]">
                 Your Projected Earnings for
               </p>
-              <p className="text-[20px] font-bold italic text-[#d3bda2] leading-[28px] mt-2" data-testid="text-property-address">
+              <p className="text-[24px] font-bold italic text-[#d3bda2] leading-[32px] mt-3" data-testid="text-property-address">
                 {property.address.split(',')[0]}
               </p>
-              <p className="text-[13px] text-[#333333]/70 leading-[18px] mt-1" data-testid="text-property-details">
+              <p className="text-[15px] text-[#333333]/70 leading-[22px] mt-2" data-testid="text-property-details">
                 {property.bedrooms} Bedrooms | {property.bathrooms} Bathrooms{property.squareFeet ? ` | ${property.squareFeet.toLocaleString()} sq ft` : ''}
               </p>
             </div>
             
             {/* Revenue Estimate Highlight */}
-            <div className="text-center py-6 px-6 bg-[#333333]">
-              <p className="text-[13px] text-white/80 mb-2">Estimated Annual Revenue</p>
-              <div className="inline-flex items-center gap-3">
-                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatRevenueRounded(projections.lowRevenue)}</span>
-                <span className="text-[16px] text-white/60">to</span>
-                <span className="text-[28px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatRevenueRounded(projections.highRevenue)}</span>
+            <div className="text-center py-8 px-6 bg-[#333333]">
+              <p className="text-[16px] text-white/80 mb-3">Estimated Annual Revenue</p>
+              <div className="inline-flex items-center gap-4">
+                <span className="text-[40px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatRevenueRounded(projections.lowRevenue)}</span>
+                <span className="text-[18px] text-white/60">to</span>
+                <span className="text-[40px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatRevenueRounded(projections.highRevenue)}</span>
               </div>
             </div>
             
