@@ -676,26 +676,41 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         {/* Schedule Section - Calendar Embed or Contact Form Fallback */}
         <section id="contact-form" className="bg-[#f7f4f0] px-5 md:px-[60px] py-16" data-testid="section-contact-form">
           {hasCalendarUrl ? (
-            /* Google Calendar Inline Embed */
-            <div className="max-w-[900px] mx-auto">
-              <div className="text-center mb-8">
-                <h3 className="text-[26px] font-bold text-[#333333] mb-3">
-                  Schedule Your Revenue Review
-                </h3>
-                <p className="text-[16px] text-[#333333]/70">
-                  Pick a time that works for you. {cta.aeName.split(' ')[0]} will walk you through your projections and answer any questions.
-                </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <iframe 
-                  src={cta.scheduleCallUrl}
-                  style={{ border: 0 }}
-                  width="100%" 
-                  height="600" 
-                  frameBorder="0"
-                  title="Schedule appointment"
-                  data-testid="calendar-embed"
+            /* Google Calendar Inline Embed - Same layout as form */
+            <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-12">
+              {/* Home Image */}
+              <div className="w-full md:w-1/2">
+                <img 
+                  src={formImage}
+                  alt="Luxury vacation rental"
+                  className="w-full h-full object-cover rounded-lg shadow-md min-h-[600px]"
                 />
+              </div>
+              
+              {/* Calendar Embed */}
+              <div className="w-full md:w-1/2">
+                <div className="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+                  <div className="p-6 pb-0">
+                    <h3 className="text-[26px] font-bold text-[#333333] mb-2">
+                      Schedule Your Revenue Review
+                    </h3>
+                    <p className="text-[15px] text-[#333333]/70">
+                      Pick a time that works for you. {cta.aeName.split(' ')[0]} will walk you through your projections.
+                    </p>
+                  </div>
+                  <div className="flex-1 min-h-[550px]">
+                    <iframe 
+                      src={cta.scheduleCallUrl}
+                      style={{ border: 0 }}
+                      width="100%" 
+                      height="100%" 
+                      frameBorder="0"
+                      title="Schedule appointment"
+                      data-testid="calendar-embed"
+                      className="min-h-[550px]"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           ) : (
