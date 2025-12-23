@@ -133,9 +133,9 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
     }).format(rounded);
   };
 
-  // Calculate dynamic Y-axis max: highest monthly value + 20%, rounded up to nearest $5k
+  // Calculate dynamic Y-axis max: highest monthly value + 20%, rounded up to nearest $10k
   const highestMonthlyValue = Math.max(...monthlyRevenue.map(m => Math.max(m.high, m.low)));
-  const dynamicYMax = Math.ceil((highestMonthlyValue * 1.2) / 5000) * 5000;
+  const dynamicYMax = Math.ceil((highestMonthlyValue * 1.2) / 10000) * 10000;
 
   const chartData = {
     labels: monthlyRevenue.map(m => m.month),
@@ -203,10 +203,12 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
           font: {
             size: 11,
           },
+          stepSize: 10000,
           callback: function(value: number) {
             return '$' + (value / 1000) + 'k';
           }
         },
+        min: 0,
         max: dynamicYMax,
       }
     }
@@ -351,7 +353,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               
               {/* Seasonal Breakdown Table */}
               <div className="overflow-x-auto">
-                <table className="w-full text-[11px] table-fixed" data-testid="table-seasonal">
+                <table className="w-full text-[13px] table-fixed" data-testid="table-seasonal">
                   <colgroup>
                     <col className="w-[15%]" />
                     {seasonalBreakdown.map((season) => (
@@ -360,44 +362,44 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                   </colgroup>
                   <thead>
                     <tr className="border-b border-[#333333]">
-                      <th className="text-left py-2 pr-2 font-bold text-[#333333]"></th>
+                      <th className="text-left py-3 pr-2 font-bold text-[#333333]"></th>
                       {seasonalBreakdown.map((season) => (
-                        <th key={season.key} className="text-center py-2 px-1 font-bold text-[#333333]">
+                        <th key={season.key} className="text-center py-3 px-1 font-bold text-[#333333]">
                           <div className="leading-tight">{season.label}</div>
-                          <div className="font-normal text-[9px] text-[#333333]/60 italic leading-tight break-words">{season.subtitle}</div>
+                          <div className="font-normal text-[10px] text-[#333333]/60 italic leading-tight break-words">{season.subtitle}</div>
                         </th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-2 font-bold text-[#333333]">Days Booked</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333]">Days Booked</td>
                       {seasonalBreakdown.map((season) => (
-                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                        <td key={season.key} className="text-center py-4 px-2 text-[#333333]">
                           {season.daysBookedMin}-{season.daysBookedMax}
                         </td>
                       ))}
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-2 font-bold text-[#333333]">Days Available</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333]">Days Available</td>
                       {seasonalBreakdown.map((season) => (
-                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                        <td key={season.key} className="text-center py-4 px-2 text-[#333333]">
                           {season.daysAvailable}
                         </td>
                       ))}
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-3 pr-2 font-bold text-[#333333]">Occupancy</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333]">Occupancy</td>
                       {seasonalBreakdown.map((season) => (
-                        <td key={season.key} className="text-center py-3 px-2 text-[#333333]">
+                        <td key={season.key} className="text-center py-4 px-2 text-[#333333]">
                           {Math.round(season.occupancyMinPct)}% - {Math.round(season.occupancyMaxPct)}%
                         </td>
                       ))}
                     </tr>
                     <tr>
-                      <td className="py-3 pr-2 font-bold text-[#333333]">Average Daily Rate</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333]">Average Daily Rate</td>
                       {seasonalBreakdown.map((season) => (
-                        <td key={season.key} className="text-center py-3 px-2 text-[#333333] whitespace-nowrap">
+                        <td key={season.key} className="text-center py-4 px-2 text-[#333333] whitespace-nowrap">
                           ${Math.round(season.adrMin).toLocaleString()} - ${Math.round(season.adrMax).toLocaleString()}
                         </td>
                       ))}
