@@ -133,6 +133,10 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
     }).format(rounded);
   };
 
+  // Calculate dynamic Y-axis max: highest monthly value + 20%, rounded up to nearest $5k
+  const highestMonthlyValue = Math.max(...monthlyRevenue.map(m => Math.max(m.high, m.low)));
+  const dynamicYMax = Math.ceil((highestMonthlyValue * 1.2) / 5000) * 5000;
+
   const chartData = {
     labels: monthlyRevenue.map(m => m.month),
     datasets: [
@@ -203,7 +207,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             return '$' + (value / 1000) + 'k';
           }
         },
-        max: 25000,
+        max: dynamicYMax,
       }
     }
   };
