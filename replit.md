@@ -220,6 +220,12 @@ Response:
 
 ## Recent Changes
 
+- **Jan 5, 2026**: Added email notification to AE when lead views projection
+  - When a Salesforce task is created (projection 14+ days old), an email is also sent to the AE
+  - Email uses `cta.aeEmail` from the projection data
+  - Includes property address, link to projection page, and days since creation
+  - Email sent via existing SMTP/nodemailer configuration
+
 - **Dec 23, 2025**: Added Google Calendar integration for appointment scheduling
   - CTA buttons now open the AE's Google Calendar booking page in a new tab
   - Calendar URL pulled from `cta.scheduleCallUrl` in JSON payload

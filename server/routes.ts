@@ -5,7 +5,7 @@ import { z } from "zod";
 import type { ProjectionData, InsertEvent } from "@shared/schema";
 import { KACI_30A_DEFAULTS, getAeHeadshotUrl, getComparablePropertiesForMarket, getSeasonSubtitlesForMarket } from "@shared/localvrData";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask, testSalesforceConnection } from "./salesforce";
-import { buildFormSubmissionEmail, buildProjectionNotFoundEmail, sendEmail } from "./email";
+import { buildFormSubmissionEmail, buildProjectionNotFoundEmail, buildLeadViewedProjectionEmail, sendEmail } from "./email";
 
 // Flexible schema that accepts Apps Script format and transforms it
 const projectionInputSchema = z.object({
@@ -255,6 +255,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
               });
               
               console.log(`[Tracking] Salesforce Task result:`, sfResult);
+              
+              // Send email notification to AE if Salesforce task was created successfully
+              if (sfResult.ok && projection.data) {
+                const projectionData = projection.data as ProjectionData;
+                const aeEmail = projectionData.cta?.aeEmail;
+                
+                if (aeEmail) {
+                  const baseUrl = getBaseUrl();
+                  const emailPayload = buildLeadViewedProjectionEmail({
+                    propertyAddress: projectionData.property.address,
+                    propertyCity: projectionData.property.city,
+                    projectionSlug: projectionSlug,
+                    projectionPageUrl: `${baseUrl}/${aeSlug}/${projectionSlug}`,
+                    leadId: leadId,
+                    daysSinceCreation: daysSinceCreation
+                  });
+                  emailPayload.to = aeEmail;
+                  
+                  console.log(`[Email] Sending lead viewed notification to AE: ${aeEmail}`);
+                  sendEmail(emailPayload).catch(err => {
+                    console.error('[Email] Failed to send lead viewed notification:', err);
+                  });
+                }
+              }
             } catch (err) {
               const errorMsg = err instanceof Error ? err.message : String(err);
               console.error('[Tracking] Failed to create Salesforce Task:', errorMsg);

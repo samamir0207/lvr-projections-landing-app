@@ -174,6 +174,68 @@ export function isEmailConfigured(): boolean {
   return !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 }
 
+interface LeadViewedProjectionData {
+  leadName?: string;
+  propertyAddress: string;
+  propertyCity: string;
+  projectionSlug: string;
+  projectionPageUrl: string;
+  leadId?: string;
+  daysSinceCreation: number;
+}
+
+export function buildLeadViewedProjectionEmail(data: LeadViewedProjectionData): EmailPayload {
+  const subject = `Lead Viewed Projection - ${data.propertyAddress}`;
+  
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #333333;">Lead Viewed Their Projection Page</h2>
+      
+      <div style="background-color: #e8f5e9; padding: 20px; border-radius: 8px; border: 1px solid #c8e6c9; margin-bottom: 20px;">
+        <p style="margin: 0;"><strong>A lead just viewed their projection page after ${Math.round(data.daysSinceCreation)} days.</strong> This could indicate renewed interest - consider following up!</p>
+      </div>
+      
+      <div style="background-color: #f7f4f0; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="color: #333333; margin-top: 0;">Property Details</h3>
+        <p><strong>Address:</strong> ${data.propertyAddress}</p>
+        <p><strong>City:</strong> ${data.propertyCity}</p>
+        ${data.leadId ? `<p><strong>Salesforce Lead ID:</strong> ${data.leadId}</p>` : ''}
+      </div>
+      
+      <div style="margin-top: 20px; text-align: center;">
+        <a href="${data.projectionPageUrl}" style="display: inline-block; background-color: #d3bda2; color: #333333; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: bold;">View Projection Page</a>
+      </div>
+      
+      <p style="margin-top: 30px; font-size: 12px; color: #666666; text-align: center;">
+        This email was sent from the LocalVR Revenue Projections system.<br>
+        A Salesforce task has also been created for this lead.
+      </p>
+    </div>
+  `;
+  
+  const text = `
+Lead Viewed Their Projection Page
+
+A lead just viewed their projection page after ${Math.round(data.daysSinceCreation)} days. This could indicate renewed interest - consider following up!
+
+Property Details:
+- Address: ${data.propertyAddress}
+- City: ${data.propertyCity}
+${data.leadId ? `- Salesforce Lead ID: ${data.leadId}` : ''}
+
+View Projection Page: ${data.projectionPageUrl}
+
+A Salesforce task has also been created for this lead.
+  `.trim();
+  
+  return {
+    to: '',
+    subject,
+    html,
+    text
+  };
+}
+
 interface ProjectionNotFoundData {
   attemptedUrl: string;
   aeSlug: string;
