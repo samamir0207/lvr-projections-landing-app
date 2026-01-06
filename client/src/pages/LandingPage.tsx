@@ -321,19 +321,21 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
 
         {/* Stats Bar */}
         <section className="bg-[#333333] px-5 py-10" data-testid="section-stats">
-          <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center items-start gap-4 md:gap-0">
+          <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0">
             <div className="text-center px-8 md:px-16">
               <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">{retentionRate.replace('%', '')}%</p>
               <p className="text-[16px] font-bold text-white leading-[24px]">Homeowner</p>
               <p className="text-[16px] font-bold text-white leading-[24px]">Retention</p>
             </div>
             <div className="hidden md:block w-[1px] h-[85px] bg-[#d3bda2]/50"></div>
+            <div className="block md:hidden w-[60px] h-[1px] bg-[#d3bda2]/50"></div>
             <div className="text-center px-8 md:px-16">
               <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">10+ Years</p>
               <p className="text-[16px] font-bold text-white leading-[24px]">Managing High-End</p>
               <p className="text-[16px] font-bold text-white leading-[24px]">Vacation Rentals</p>
             </div>
             <div className="hidden md:block w-[1px] h-[85px] bg-[#d3bda2]/50"></div>
+            <div className="block md:hidden w-[60px] h-[1px] bg-[#d3bda2]/50"></div>
             <div className="text-center px-8 md:px-16">
               <p className="text-[36px] font-bold text-[#d3bda2] leading-[44px]">1:10 Ratio</p>
               <p className="text-[16px] font-bold text-white leading-[24px]">Home Care Experts to</p>
@@ -376,10 +378,10 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             {/* Revenue Estimate Highlight */}
             <div className="text-center py-8 px-6 bg-[#333333]">
               <p className="text-[16px] text-white/80 mb-3">Estimated Annual Revenue</p>
-              <div className="inline-flex items-center gap-4">
-                <span className="text-[40px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatRevenueRounded(projections.lowRevenue)}</span>
-                <span className="text-[18px] text-white/60">to</span>
-                <span className="text-[40px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatRevenueRounded(projections.highRevenue)}</span>
+              <div className="inline-flex flex-wrap justify-center items-center gap-2 md:gap-4">
+                <span className="text-[28px] md:text-[40px] font-bold text-[#d3bda2]" data-testid="text-low-revenue">{formatRevenueRounded(projections.lowRevenue)}</span>
+                <span className="text-[16px] md:text-[18px] text-white/60">to</span>
+                <span className="text-[28px] md:text-[40px] font-bold text-[#d3bda2]" data-testid="text-high-revenue">{formatRevenueRounded(projections.highRevenue)}</span>
               </div>
             </div>
             
@@ -392,28 +394,22 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
               </div>
               
               {/* Seasonal Breakdown Table */}
-              <div className="overflow-x-auto">
-                <table className="w-full text-[13px] table-fixed" data-testid="table-seasonal">
-                  <colgroup>
-                    <col className="w-[15%]" />
-                    {seasonalBreakdown.map((season) => (
-                      <col key={`col-${season.key}`} style={{ width: `${85 / seasonalBreakdown.length}%` }} />
-                    ))}
-                  </colgroup>
+              <div className="overflow-x-auto pb-2">
+                <table className="w-full text-[13px] min-w-[650px]" data-testid="table-seasonal">
                   <thead>
                     <tr className="border-b border-[#333333]">
-                      <th className="text-left py-3 pr-2 font-bold text-[#333333]"></th>
+                      <th className="text-left py-3 pr-2 font-bold text-[#333333] w-[100px] min-w-[100px]"></th>
                       {seasonalBreakdown.map((season) => (
-                        <th key={season.key} className="text-center py-3 px-1 font-bold text-[#333333]">
+                        <th key={season.key} className="text-center py-3 px-2 font-bold text-[#333333] min-w-[100px]">
                           <div className="leading-tight">{season.label}</div>
-                          <div className="font-normal text-[10px] text-[#333333]/60 italic leading-tight break-words">{season.subtitle}</div>
+                          <div className="font-normal text-[10px] text-[#333333]/60 italic leading-tight">{season.subtitle}</div>
                         </th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 pr-2 font-bold text-[#333333]">Days Booked</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333] whitespace-nowrap">Days Booked</td>
                       {seasonalBreakdown.map((season) => (
                         <td key={season.key} className="text-center py-4 px-2 text-[#333333]">
                           {season.daysBookedMin}-{season.daysBookedMax}
@@ -421,7 +417,7 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                       ))}
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 pr-2 font-bold text-[#333333]">Days Available</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333] whitespace-nowrap">Days Available</td>
                       {seasonalBreakdown.map((season) => (
                         <td key={season.key} className="text-center py-4 px-2 text-[#333333]">
                           {season.daysAvailable}
@@ -429,15 +425,15 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
                       ))}
                     </tr>
                     <tr className="border-b border-[#e5e5e5]">
-                      <td className="py-4 pr-2 font-bold text-[#333333]">Occupancy</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333] whitespace-nowrap">Occupancy</td>
                       {seasonalBreakdown.map((season) => (
-                        <td key={season.key} className="text-center py-4 px-2 text-[#333333]">
+                        <td key={season.key} className="text-center py-4 px-2 text-[#333333] whitespace-nowrap">
                           {Math.round(season.occupancyMinPct)}% - {Math.round(season.occupancyMaxPct)}%
                         </td>
                       ))}
                     </tr>
                     <tr>
-                      <td className="py-4 pr-2 font-bold text-[#333333]">Average Daily Rate</td>
+                      <td className="py-4 pr-2 font-bold text-[#333333] whitespace-nowrap">Average Daily Rate</td>
                       {seasonalBreakdown.map((season) => (
                         <td key={season.key} className="text-center py-4 px-2 text-[#333333] whitespace-nowrap">
                           ${Math.round(season.adrMin).toLocaleString()} - ${Math.round(season.adrMax).toLocaleString()}
@@ -659,22 +655,22 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
         </section>
 
         {/* Schedule Section - CTA Card or Contact Form Fallback */}
-        <section id="contact-form" className="bg-[#f7f4f0] px-5 md:px-[60px] py-16" data-testid="section-contact-form">
+        <section id="contact-form" className="bg-[#f7f4f0] px-5 md:px-[60px] py-12 md:py-16" data-testid="section-contact-form">
           {hasCalendarUrl ? (
             /* Styled CTA Card with Popup Trigger */
-            <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-12">
+            <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
               {/* Home Image */}
               <div className="w-full md:w-1/2">
                 <img 
                   src={formImage}
                   alt="Luxury vacation rental"
-                  className="w-full h-full object-cover rounded-lg shadow-md min-h-[500px]"
+                  className="w-full h-full object-cover rounded-lg shadow-md min-h-[300px] md:min-h-[500px]"
                 />
               </div>
               
               {/* Schedule CTA Card */}
               <div className="w-full md:w-1/2 flex items-center">
-                <div className="bg-white rounded-lg shadow-md p-10 w-full">
+                <div className="bg-white rounded-lg shadow-md p-6 md:p-10 w-full">
                   <h3 className="text-[26px] font-bold text-[#333333] mb-4">
                     Schedule A Call Today
                   </h3>
@@ -722,19 +718,19 @@ export default function LandingPage({ data, urlParams = {} }: LandingPageProps) 
             </div>
           ) : (
             /* Fallback Contact Form */
-            <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-12">
+            <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-stretch gap-8 md:gap-12">
               {/* Home Image */}
               <div className="w-full md:w-1/2">
                 <img 
                   src={formImage}
                   alt="Luxury vacation rental with pool"
-                  className="w-full h-full object-cover rounded-lg shadow-md min-h-[500px]"
+                  className="w-full h-full object-cover rounded-lg shadow-md min-h-[300px] md:min-h-[500px]"
                 />
               </div>
               
               {/* Contact Form */}
               <div className="w-full md:w-1/2">
-                <div className="bg-white rounded-lg shadow-sm p-10 h-full">
+                <div className="bg-white rounded-lg shadow-sm p-6 md:p-10 h-full">
                   <h3 className="text-[26px] font-bold text-[#333333] mb-8">
                     Schedule Your Revenue Review
                   </h3>
