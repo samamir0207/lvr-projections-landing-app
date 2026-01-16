@@ -1,18 +1,21 @@
-import { 
-  type User, 
-  type InsertUser, 
-  type ProjectionData, 
-  type Projection, 
+import {
+  type User,
+  type InsertUser,
+  type ProjectionData,
+  type Projection,
   type InsertProjection,
   type InsertEvent,
   type AnalyticsEvent,
+  type InsertProjectionRun,
+  type ProjectionRun,
   projections,
   analyticsEvents,
+  projectionRuns,
   users
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -27,6 +30,9 @@ export interface IStorage {
   
   logEvent(event: InsertEvent): Promise<AnalyticsEvent>;
   getEventsBySlug(slug: string): Promise<AnalyticsEvent[]>;
+
+  logProjectionRun(run: InsertProjectionRun): Promise<ProjectionRun>;
+  getProjectionRuns(limit?: number): Promise<ProjectionRun[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -92,6 +98,26 @@ export class DatabaseStorage implements IStorage {
 
   async getEventsBySlug(slug: string): Promise<AnalyticsEvent[]> {
     return db.select().from(analyticsEvents).where(eq(analyticsEvents.slug, slug));
+  }
+
+  async logProjectionRun(run: InsertProjectionRun): Promise<ProjectionRun> {
+    console.log('[Storage] Logging projection run:', {
+      slug: run.slug,
+      aeSlug: run.aeSlug,
+      aeName: run.aeName,
+      action: run.action,
+      address: run.address
+    });
+    const [logged] = await db.insert(projectionRuns).values(run).returning();
+    console.log('[Storage] Projection run logged with id:', logged.id);
+    return logged;
+  }
+
+  async getProjectionRuns(limit: number = 100): Promise<ProjectionRun[]> {
+    return db.select()
+      .from(projectionRuns)
+      .orderBy(desc(projectionRuns.createdAt))
+      .limit(limit);
   }
 }
 

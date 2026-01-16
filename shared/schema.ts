@@ -35,6 +35,35 @@ export const insertProjectionSchema = createInsertSchema(projections).omit({
 export type InsertProjection = z.infer<typeof insertProjectionSchema>;
 export type Projection = typeof projections.$inferSelect;
 
+// Projection runs log - tracks every time a projection is created or updated
+export const projectionRuns = pgTable("projection_runs", {
+  id: serial("id").primaryKey(),
+  slug: varchar("slug", { length: 255 }).notNull(),
+  aeSlug: varchar("ae_slug", { length: 255 }).notNull(),
+  aeName: varchar("ae_name", { length: 255 }),
+  aeEmail: varchar("ae_email", { length: 255 }),
+  leadId: varchar("lead_id", { length: 255 }),
+  lvrId: varchar("lvr_id", { length: 255 }),
+  ownerName: varchar("owner_name", { length: 255 }),
+  address: varchar("address", { length: 500 }),
+  city: varchar("city", { length: 255 }),
+  state: varchar("state", { length: 50 }),
+  market: varchar("market", { length: 100 }),
+  publicUrl: varchar("public_url", { length: 500 }),
+  previewUrl: varchar("preview_url", { length: 500 }),
+  gsheetUrl: varchar("gsheet_url", { length: 500 }),
+  action: varchar("action", { length: 50 }).notNull(), // 'create' or 'update'
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertProjectionRunSchema = createInsertSchema(projectionRuns).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertProjectionRun = z.infer<typeof insertProjectionRunSchema>;
+export type ProjectionRun = typeof projectionRuns.$inferSelect;
+
 export const analyticsEvents = pgTable("analytics_events", {
   id: serial("id").primaryKey(),
   event: varchar("event", { length: 255 }).notNull(),

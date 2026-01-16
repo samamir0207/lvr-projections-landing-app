@@ -2,7 +2,7 @@ import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
-import type { ProjectionData, InsertEvent } from "@shared/schema";
+import type { ProjectionData, InsertEvent, InsertProjectionRun } from "@shared/schema";
 import { KACI_30A_DEFAULTS, getAeHeadshotUrl, getComparablePropertiesForMarket, getSeasonSubtitlesForMarket } from "@shared/localvrData";
 import { updateLeadProjectionUrl, createClickTrackingTask, createFormSubmissionTask, testSalesforceConnection } from "./salesforce";
 import { buildFormSubmissionEmail, buildProjectionNotFoundEmail, buildLeadViewedProjectionEmail, sendEmail } from "./email";
@@ -13,7 +13,8 @@ const projectionInputSchema = z.object({
     slug: z.string(),
     homeownerFirstName: z.string(),
     homeownerFullName: z.string(),
-    leadId: z.string()
+    leadId: z.string(),
+    gsheetUrl: z.string().optional()
   }),
   property: z.object({
     internalId: z.string().optional(),
@@ -370,25 +371,51 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(`[API] Market data: inputMarket=${inputMarket}, inputAePhone=${inputAePhone}, normalizedAePhone=${data.cta.aePhone}`);
       
       const existing = await storage.getProjectionBySlug(slug);
-      
+      const isUpdate = !!existing;
+
       if (existing) {
         await storage.updateProjection(slug, aeSlug, data);
       } else {
         await storage.createProjection(slug, aeSlug, data);
       }
-      
+
       const baseUrl = getBaseUrl();
       const publicUrl = `${baseUrl}/${aeSlug}/${slug}`;
       const trackingUrl = `${baseUrl}/t?lid=${encodeURIComponent(leadId)}&slug=${encodeURIComponent(slug)}&ae=${encodeURIComponent(aeSlug)}`;
-      
+      const previewUrl = `${trackingUrl}&viewer=ae`;
+
+      // Log the projection run
+      const runLog: InsertProjectionRun = {
+        slug,
+        aeSlug,
+        aeName: data.cta.aeName,
+        aeEmail: data.cta.aeEmail,
+        leadId,
+        lvrId: data.property.internalId || null,
+        ownerName: data.meta.homeownerFullName,
+        address: data.property.address,
+        city: data.property.city,
+        state: data.property.state,
+        market: data.property.market || null,
+        publicUrl,
+        previewUrl,
+        gsheetUrl: parsed.data.meta.gsheetUrl || null,
+        action: isUpdate ? 'update' : 'create'
+      };
+
+      storage.logProjectionRun(runLog).catch(err => {
+        console.error('[Runs] Failed to log projection run:', err);
+      });
+
       updateLeadProjectionUrl(leadId, trackingUrl).catch(err => {
         console.error('[Salesforce] Failed to update Lead:', err);
       });
-      
-      return res.json({ 
-        ok: true, 
+
+      return res.json({
+        ok: true,
         publicUrl,
         trackingUrl,
+        previewUrl,
         slug,
         aeSlug
       });
@@ -426,6 +453,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json({ ok: true, data });
     } catch (error) {
       console.error("Error fetching projection:", error);
+      return res.status(500).json({ ok: false, error: "Internal server error" });
+    }
+  });
+
+  // Admin endpoint - get projection runs log
+  app.get("/api/admin/runs", async (req: Request, res: Response) => {
+    try {
+      const limit = parseInt(req.query.limit as string) || 100;
+      const runs = await storage.getProjectionRuns(limit);
+
+      console.log(`[Admin] Fetched ${runs.length} projection runs`);
+
+      return res.json({
+        ok: true,
+        count: runs.length,
+        runs
+      });
+    } catch (error) {
+      console.error("Error fetching projection runs:", error);
       return res.status(500).json({ ok: false, error: "Internal server error" });
     }
   });
